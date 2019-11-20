@@ -1,0 +1,21 @@
+We chose to use my (Bryan) code because it was most complete.
+
+We first reviewed Eric's code and the overall code was not tested. Additionally within Sales
+Application, restock inventory was not implemented correctly causing issues on the the other
+methods that depend on it working.
+
+When we reviewed Harry's code, his SalesApplication had a lot of bugs. His ShoppingCart class was
+not finished which is a large part of the customer's usage in SalesApplication. His
+EmployeeInterface was also not finished which caused issues in for the rest of the application that
+depended on them. Furthermore, he did not follow SOLID design principles well in some of his code.
+
+We then reviewed Tien's code, which was overall not finished andh is SalesApplication was not tested.
+Furthermore, his code was not well structured and he did not follow the SOLID principles well.
+
+When we reviewed my code, my code was generally tested for basic functionality. We noticed some edge
+cases were not covered, for example, creating a blank password was allowed. Additionally some things
+minor things were not implemented such as totalprice not being sanitized in the
+DatabaseInsertHelper.insertSale() function. Other than that, the code was well structured except for
+in some parts of SalesApplication and followed SOlID generally well. Overall, the application is
+able to perform all basic functionality that was required in SalesApplication for base cases and
+that was the main reason we chose to use my code as the base for the project.

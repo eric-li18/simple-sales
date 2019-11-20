@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/almond"
+  android:orientation="vertical">
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.1" />
+  <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.07"
+    android:contentDescription="@string/logo"
+    android:src="@drawable/salesapplogo" />
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.1" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.7"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/rounded_30dp"
+    android:orientation="vertical">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="30dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="@string/variable"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0.5"
+        android:fontFamily="@font/futurabook"
+        android:text="@string/first_name"
+        android:textColor="@color/grey" />
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_weight="0.5"
+        android:fontFamily="@font/futurabook"
+        android:text="@string/last_name"
+        android:textColor="@color/grey" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="20dp"
+      android:orientation="horizontal">
+      <EditText
+        android:id="@+id/first_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/grey"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+      <EditText
+        android:id="@+id/last_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_weight="0.5"
+        android:backgroundTint="@color/grey"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0.15"
+        android:fontFamily="@font/futurabook"
+        android:text="@string/age"
+        android:textColor="@color/grey" />
+      <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_weight="0.85"
+        android:fontFamily="@font/futurabook"
+        android:text="@string/address"
+        android:textColor="@color/grey" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="20dp"
+      android:orientation="horizontal">
+      <EditText
+        android:id="@+id/age"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_weight="0.15"
+        android:backgroundTint="@color/grey"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+      <EditText
+        android:id="@+id/address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_weight="0.85"
+        android:backgroundTint="@color/grey"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+    </LinearLayout>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/password"
+      android:textColor="@color/grey" />
+
+    <EditText
+      android:id="@+id/password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/grey"
+      android:importantForAutofill="no"
+      android:inputType="textPassword" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/reenter_password"
+      android:textColor="@color/grey" />
+
+    <EditText
+      android:id="@+id/reenter_password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/grey"
+      android:importantForAutofill="no"
+      android:inputType="textPassword" />
+
+  </LinearLayout>
+  <Button
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="40dp"
+    android:layout_weight="0.1"
+    android:background="@drawable/rounded_40dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/sign_up"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+</LinearLayout>

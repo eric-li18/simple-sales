@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="orange">#FF5B00</color>
+  <color name="almond">#FEEBCD</color>
+  <color name="yellow">#FFC509</color>
+  <color name="white">#FFFFFF</color>
+  <color name="burgundy">#462842</color>
+  <color name="black">#000000</color>
+  <color name="grey">#8A94A3</color>
+  <color name="platinum">#E8E8E8</color>
+</resources>
