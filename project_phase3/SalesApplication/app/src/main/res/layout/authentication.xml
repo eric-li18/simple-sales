@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/almond"
+  android:orientation="vertical">
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.2" />
+  <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.07"
+    android:contentDescription="@string/logo"
+    android:src="@drawable/salesapplogo" />
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.1" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_weight="0.4"
+    android:background="@drawable/rounded_30dp"
+    android:orientation="vertical">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="30dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="@string/log_in"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/user_id"
+      android:textColor="@color/grey" />
+    <EditText
+      android:id="@+id/userId"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/grey"
+      android:importantForAutofill="no"
+      android:inputType="text" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/password"
+      android:textColor="@color/grey" />
+
+    <EditText
+      android:id="@+id/password"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:backgroundTint="@color/grey"
+      android:importantForAutofill="no"
+      android:inputType="textPassword" />
+
+  </LinearLayout>
+  <Button
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="40dp"
+    android:layout_weight="0.1"
+    android:background="@drawable/rounded_40dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/log_in"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+</LinearLayout>

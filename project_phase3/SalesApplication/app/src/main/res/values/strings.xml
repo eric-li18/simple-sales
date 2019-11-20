@@ -1,0 +1,37 @@
+<resources>
+<!--  Bryan-->
+  <string name="app_name">SalesApplication</string>
+  <string name="sign_in">Sign in as</string>
+  <string name="admin">Admin</string>
+  <string name="employee">Employee</string>
+  <string name="customer">Customer</string>
+  <string name="log_in">Log in</string>
+  <string name="user_id">UserId</string>
+  <string name="password">Password</string>
+  <string name="reenter_password">Re-enter password</string>
+  <string name="logo">logo</string>
+  <string name="sign_up">Sign up</string>
+  <string name="first_name">First name</string>
+  <string name="last_name">Last name</string>
+  <string name="age">Age</string>
+  <string name="address">Address</string>
+  <string name="variable">This is going to be a variable</string>
+  <string name="hockey_stick">Hockey Stick</string>
+  <string name="price">$0.99</string>
+  <string name="items">Available Items</string>
+  <string name="hi">Hi, Mo</string>
+  <string name="restore">Restore your last cart</string>
+  <string name="total">Total: </string>
+  <string name="add">ADD TO CART</string>
+  <string name="checkout">Checkout</string>
+<!--  Eric-->
+  <string name="pickup">Pick up where you left off</string>
+  <string name="welcome">Welcome back!</string>
+<!--  Tien-->
+  <string name="add_customer">Add a new customer</string>
+  <string name="add_employee">Add a new employee</string>
+  <string name="restock">Restock inventory</string>
+  <string name="promote">Promote an employee</string>
+  <string name="sales_log">View sales log</string>
+<!--  Harry-->
+</resources>
