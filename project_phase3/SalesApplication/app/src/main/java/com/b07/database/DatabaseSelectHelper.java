@@ -1,15 +1,5 @@
-package com.b07.database.helper;
+package com.b07.database;
 
-import com.b07.exceptions.AuthenticationException;
-import com.b07.store.ShoppingCart;
-import com.b07.validation.Validator;
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import com.b07.database.DatabaseSelector;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.InventoryImpl;
@@ -21,6 +11,14 @@ import com.b07.store.SalesLog;
 import com.b07.store.SalesLogImpl;
 import com.b07.users.User;
 import com.b07.users.UserFactory;
+import com.b07.validation.Validator;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /*
  * TODO: Complete the below methods to be able to get information out of the database. TODO: The
