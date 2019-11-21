@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class DatabaseInsertHelper {
 
-  public static long insertRole(String name, Context context) {
+  public static int insertRole(String name, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long roleId = -1;
 
@@ -21,10 +21,10 @@ public class DatabaseInsertHelper {
       System.out.println("Ensure the method arguments are correct for insertRole.");
     }
     dbA.close();
-    return roleId;
+    return Math.toIntExact(roleId);
   }
 
-  public static long insertNewUser(String name, int age, String address, String password,
+  public static int insertNewUser(String name, int age, String address, String password,
       Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long userId = -1;
@@ -36,19 +36,19 @@ public class DatabaseInsertHelper {
       System.out.println("Ensure the method arguments are correct for insertNewUser.");
     }
     dbA.close();
-    return userId;
+    return Math.toIntExact(userId);
   }
 
-  public static long insertUserRole(int userId, int roleId, Context context) {
+  public static int insertUserRole(int userId, int roleId, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long userRoleId = -1;
 
     userRoleId = dbA.insertUserRole(userId, roleId);
     dbA.close();
-    return userRoleId;
+    return Math.toIntExact(userRoleId);
   }
 
-  public static long insertItem(String name, BigDecimal price, Context context) {
+  public static int insertItem(String name, BigDecimal price, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long itemId = -1;
 
@@ -57,10 +57,10 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("Ensure the method arguments are correct for insertItem");
     }
-    return itemId;
+    return Math.toIntExact(itemId);
   }
 
-  public static long insertInventory(int itemId, int quantity, Context context) {
+  public static int insertInventory(int itemId, int quantity, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long inventoryId = -1;
 
@@ -69,10 +69,10 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("Ensure the method arguments are correct for insertInventory.");
     }
-    return inventoryId;
+    return Math.toIntExact(inventoryId);
   }
 
-  public static long insertSale(int userId, BigDecimal totalPrice, Context context) {
+  public static int insertSale(int userId, BigDecimal totalPrice, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long saleId = -1;
 
@@ -81,10 +81,10 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("Ensure the method arguments are correct for insertSale.");
     }
-    return saleId;
+    return Math.toIntExact(saleId);
   }
 
-  public static long insertItemizedSale(int saleId, int itemId, int quantity, Context context) {
+  public static int insertItemizedSale(int saleId, int itemId, int quantity, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long itemizedId = -1;
 
@@ -94,10 +94,10 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("Ensure the method arguments are correct for insertItemizedSale.");
     }
-    return itemizedId;
+    return Math.toIntExact(itemizedId);
   }
 
-  public static long insertAccount(int userId, boolean active, Context context) {
+  public static int insertAccount(int userId, boolean active, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long accountId = -1;
 
@@ -106,10 +106,10 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("The user id is not valid");
     }
-    return accountId;
+    return Math.toIntExact(accountId);
   }
 
-  public static long insertAccountLine(int accountId, int itemId, int quantity, Context context) {
+  public static int insertAccountLine(int accountId, int itemId, int quantity, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long insertId = -1;
     if (Validator.validateItemId(itemId) && Validator.validateSaleQuantity(quantity)) {
@@ -117,7 +117,7 @@ public class DatabaseInsertHelper {
     } else {
       System.out.println("Ensure the arguments are correct for insert account line");
     }
-    return insertId;
+    return Math.toIntExact(insertId);
   }
 }
 
