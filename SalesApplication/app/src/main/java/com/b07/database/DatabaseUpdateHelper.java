@@ -1,10 +1,10 @@
-package com.b07.database.helper;
+package com.b07.database;
 
+import com.b07.database.DatabaseUpdater;
+import com.b07.validation.Validator;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
-import com.b07.database.DatabaseUpdater;
-import com.b07.validation.Validator;
 
 public class DatabaseUpdateHelper extends DatabaseUpdater {
 

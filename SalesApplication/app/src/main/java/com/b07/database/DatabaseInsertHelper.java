@@ -1,23 +1,23 @@
-package com.b07.database.helper;
+package com.b07.database;
 
-import com.b07.database.DatabaseInserter;
+import android.content.Context;
 import com.b07.exceptions.DatabaseInsertException;
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class DatabaseInsertHelper extends DatabaseInserter {
-
-  public static int insertRole(String name) {
+public class DatabaseInsertHelper{
+  public static int insertRole(String name, Context context) {
+    DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     int roleId = -1;
 
     if (Validator.validateRoleName(name)) {
-      Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+//      Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
 
       try {
         if (Validator.validateRoleUnique(name)) {
-          roleId = DatabaseInserter.insertRole(name, connection);
+          roleId = dbA.insertRole(name);
         } else {
           roleId = DatabaseSelectHelper.getRoleIdFromName(name);
         }
