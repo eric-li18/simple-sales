@@ -1,6 +1,7 @@
 package com.b07.database;
 
-import com.b07.database.DatabaseSelector;
+import android.content.Context;
+import android.database.Cursor;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.InventoryImpl;
 import com.b07.inventory.Item;
@@ -13,20 +14,14 @@ import com.b07.users.User;
 import com.b07.users.UserFactory;
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/*
- * TODO: Complete the below methods to be able to get information out of the database. TODO: The
- * given code is there to aide you in building your methods. You don't have TODO: to keep the exact
- * code that is given (for example, DELETE the System.out.println()) TODO: and decide how to handle
- * the possible exceptions
+/**
+ * @author Eric
  */
-public class DatabaseSelectHelper extends DatabaseSelector {
+public class DatabaseSelectHelper {
 
   /**
    * Method to return the roleId from role name
@@ -34,612 +29,324 @@ public class DatabaseSelectHelper extends DatabaseSelector {
    * @param roleName the role name
    * @return the roleId
    */
-  public static int getRoleIdFromName(String roleName) {
-    for (int roleId : DatabaseSelectHelper.getRoleIds()) {
-      if (roleName.contentEquals(DatabaseSelectHelper.getRoleName(roleId))) {
+  public static int getRoleIdFromName(String roleName, Context context) {
+    for (int roleId : DatabaseSelectHelper.getRoleIds(context)) {
+      if (roleName.contentEquals(DatabaseSelectHelper.getRoleName(roleId, context))) {
         return roleId;
       }
     }
     return -1;
   }
 
-  public static List<Integer> getRoleIds() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static List<Integer> getRoleIds(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = DatabaseSelectHelper.getRoles();
+    List<Integer> ids = new ArrayList<>();
 
-    ResultSet results = null;
-    List<Integer> ids = null;
-
-    try {
-      results = DatabaseSelector.getRoles(connection);
-      ids = new ArrayList<>();
-      while (results.next()) {
-        ids.add(results.getInt("ID"));
-      }
-    } catch (SQLException ex) {
-      System.out.println("Could not get roleIds from the database.");
-    } finally {
-      if (results != null) {
-        try {
-          results.close();
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+    while (cursor.moveToNext()) {
+      ids.add(cursor.getInt(cursor.getColumnIndex("ID")));
     }
+    cursor.close();
     return ids;
   }
 
-  public static String getRoleName(int roleId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-
+  public static String getRoleName(int roleId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     String role = null;
-
-    try {
-      role = DatabaseSelector.getRole(roleId, connection);
-    } catch (SQLException ex) {
-      System.out.println("Could not get roleName from the database.");
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-    }
+    role = myDB.getRole(roleId);
     return role;
   }
 
-  public static int getUserRoleId(int userId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-
+  public static int getUserRoleId(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     int roleId = -1;
-
-    try {
-      roleId = DatabaseSelector.getUserRole(userId, connection);
-    } catch (SQLException ex) {
-      System.out.println("Could not get userRoleId from the database.");
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-    }
+    roleId = myDB.getUserRole(userId);
     return roleId;
   }
 
-  public static List<Integer> getUsersByRole(int roleId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-
-    ResultSet results = null;
+  public static List<Integer> getUsersByRole(int roleId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
     List<Integer> userIds = null;
 
-    try {
-      results = DatabaseSelector.getUsersByRole(roleId, connection);
+    cursor = myDB.getUsersByRole(roleId);
+    if (cursor != null) {
       userIds = new ArrayList<>();
-      while (results.next()) {
-
-        userIds.add(results.getInt("USERID"));
+      while (cursor.moveToNext()) {
+        userIds.add(cursor.getInt(cursor.getColumnIndex("USERID")));
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get users by role from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return userIds;
   }
 
-  public static List<User> getUsersDetails() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static List<User> getUsersDetails(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     List<User> users = null;
 
-    try {
-      results = DatabaseSelector.getUsersDetails(connection);
+    cursor = myDB.getUsersDetails();
+    if (cursor != null) {
       users = new ArrayList<>();
-      while (results.next()) {
-        int userId = results.getInt("ID");
-        String name = results.getString("NAME");
-        int age = results.getInt("AGE");
-        String address = results.getString("ADDRESS");
+      while (cursor.moveToNext()) {
+        int userId = cursor.getInt(cursor.getColumnIndex("ID"));
+        String name = cursor.getString(cursor.getColumnIndex("NAME"));
+        int age = cursor.getInt(cursor.getColumnIndex("AGE"));
+        String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
 
-        int roleId = DatabaseSelectHelper.getUserRoleId(userId);
-        String roleName = DatabaseSelectHelper.getRoleName(roleId);
+        int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
+        String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
         User user = UserFactory.createUser(roleName, userId, name, age, address);
 
         users.add(user);
-
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get all user's details from the database.");
-    } finally {
-      if (results != null) {
-        try {
-          results.close();
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return users;
   }
 
-  public static User getUserDetails(int userId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static User getUserDetails(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     User user = null;
-    int roleId = DatabaseSelectHelper.getUserRoleId(userId);
+    cursor = myDB.getUserDetails(userId);
 
-    if (roleId != -1) {
-      String roleName = DatabaseSelectHelper.getRoleName(roleId);
-      try {
-        results = DatabaseSelector.getUserDetails(userId, connection);
-        int id = results.getInt("ID");
-        String name = results.getString("NAME");
-        int age = results.getInt("AGE");
-        String address = results.getString("ADDRESS");
+    if (cursor != null) {
+      int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
+      if (roleId != -1) {
+        String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
+        int id = cursor.getInt(cursor.getColumnIndex("ID"));
+        String name = cursor.getString(cursor.getColumnIndex("NAME"));
+        int age = cursor.getInt(cursor.getColumnIndex("AGE"));
+        String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
 
         user = UserFactory.createUser(roleName, id, name, age, address);
-      } catch (SQLException ex) {
-        System.out.println("Could not get user details from the database.");
-      } finally {
-        try {
-          if (results != null) {
-            results.close();
-          }
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
-        try {
-          if (connection != null) {
-            connection.close();
-          }
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
       }
+      cursor.close();
     }
     return user;
   }
 
-  public static String getPassword(int userId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static String getPassword(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
     String password = null;
-
-    try {
-      password = DatabaseSelector.getPassword(userId, connection);
-    } catch (SQLException ex) {
-      System.out.println("Could not get user's detail from the database.");
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-    }
+    password = myDB.getPassword(userId);
     return password;
   }
 
-  public static List<Item> getAllItems() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static List<Item> getAllItems(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     List<Item> items = null;
 
-    try {
-      results = DatabaseSelector.getAllItems(connection);
+    cursor = myDB.getAllItems();
+    if (cursor != null) {
       items = new ArrayList<>();
-      while (results.next()) {
-        int itemId = results.getInt("ID");
-        String name = results.getString("NAME");
-        BigDecimal price = new BigDecimal(results.getString("PRICE"));
+      while (cursor.moveToNext()) {
+        int itemId = cursor.getInt(cursor.getColumnIndex("ID"));
+        String name = cursor.getString(cursor.getColumnIndex("NAME"));
+        BigDecimal price = new BigDecimal(cursor.getString(cursor.getColumnIndex("PRICE")));
         Item item = new ItemImpl(itemId, name, price);
-
         items.add(item);
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get all items from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return items;
   }
 
-  public static Item getItem(int itemId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static Item getItem(int itemId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
     Item item = null;
-    ResultSet results = null;
+    Cursor cursor = null;
 
-    try {
-      results = DatabaseSelector.getItem(itemId, connection);
+    cursor = myDB.getItem(itemId);
+    if (cursor != null) {
       item = new ItemImpl();
-      item.setId(results.getInt("ID"));
-      item.setName(results.getString("NAME"));
-      item.setPrice(new BigDecimal(results.getString("PRICE")));
-    } catch (SQLException ex) {
-      System.out.println("Could not get item from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-      }
+      item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
+      item.setName(cursor.getString(cursor.getColumnIndex("NAME")));
+      item.setPrice(new BigDecimal(cursor.getString(cursor.getColumnIndex("PRICE"))));
+      cursor.close();
     }
     return item;
   }
 
-  public static Inventory getInventory() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static Inventory getInventory(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
     Inventory inventory = null;
-    ResultSet results = null;
+    Cursor cursor = null;
 
-    try {
-      results = DatabaseSelector.getInventory(connection);
+    cursor = myDB.getInventory();
+    if (cursor != null) {
       inventory = new InventoryImpl();
-      while (results.next()) {
-        int itemId = results.getInt("ITEMID");
-        int quantity = results.getInt("QUANTITY");
-        Item item = DatabaseSelectHelper.getItem(itemId);
+      while (cursor.moveToNext()) {
+        int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
+        int quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
+        Item item = DatabaseSelectHelper.getItem(itemId, context);
         inventory.updateMap(item, quantity);
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get inventory from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return inventory;
-
   }
 
-  public static int getInventoryQuantity(int itemId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static int getInventoryQuantity(int itemId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
     int quantity = -1;
-
-    try {
-      quantity = DatabaseSelector.getInventoryQuantity(itemId, connection);
-    } catch (SQLException ex) {
-      System.out.println("Could not get inventory quantity from the database");
-    } finally {
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-    }
+    quantity = myDB.getInventoryQuantity(itemId);
     return quantity;
   }
 
-  public static SalesLog getSales() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static SalesLog getSales(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     SalesLog salesLog = null;
 
-    try {
-      results = DatabaseSelector.getSales(connection);
+    cursor = myDB.getSales();
+    if (cursor != null) {
       salesLog = new SalesLogImpl();
-      while (results.next()) {
+      while (cursor.moveToNext()) {
         Sale sale = new SaleImpl();
-        int saleId = results.getInt("ID");
-        int userId = results.getInt("USERID");
-        User user = DatabaseSelectHelper.getUserDetails(userId);
-        BigDecimal totalPrice = new BigDecimal(results.getString("TOTALPRICE"));
-        Sale itemizedSale = DatabaseSelectHelper.getItemizedSaleById(saleId);
-
+        int saleId = cursor.getInt(cursor.getColumnIndex("ID"));
+        int userId = cursor.getInt(cursor.getColumnIndex("USERID"));
+        User user = DatabaseSelectHelper.getUserDetails(userId, context);
+        BigDecimal totalPrice = new BigDecimal(
+            cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
+        Sale itemizedSale = DatabaseSelectHelper.getItemizedSaleById(saleId, context);
         sale.setId(saleId);
         sale.setUser(user);
         sale.setTotalPrice(totalPrice);
         sale.setItemMap(itemizedSale.getItemMap());
-
         salesLog.updateLog(sale);
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get sales from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return salesLog;
   }
 
-  public static Sale getSaleById(int saleId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static Sale getSaleById(int saleId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     Sale sale = null;
 
-    try {
-      results = DatabaseSelector.getSaleById(saleId, connection);
-
-      User user = DatabaseSelectHelper.getUserDetails(results.getInt("USERID"));
-      BigDecimal totalPrice = new BigDecimal(results.getString("TOTALPRICE"));
+    cursor = myDB.getSaleById(saleId);
+    if (cursor != null) {
+      User user = DatabaseSelectHelper
+          .getUserDetails(cursor.getInt(cursor.getColumnIndex("USERID")), context);
+      BigDecimal totalPrice = new BigDecimal(cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
       sale = new SaleImpl();
       sale.setId(saleId);
       sale.setUser(user);
       sale.setTotalPrice(totalPrice);
-    } catch (SQLException ex) {
-      System.out.println("Could not get sales by id from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return sale;
   }
 
-  public static List<Sale> getSalesToUser(int userId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static List<Sale> getSalesToUser(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     List<Sale> sales = null;
 
-    try {
-      results = DatabaseSelectHelper.getSalesToUser(userId, connection);
-      User user = DatabaseSelectHelper.getUserDetails(userId);
+    cursor = myDB.getSalesToUser(userId);
+    if (cursor != null) {
+      User user = DatabaseSelectHelper.getUserDetails(userId, context);
       sales = new ArrayList<>();
-      while (results.next()) {
+      while (cursor.moveToNext()) {
         Sale sale = new SaleImpl();
-        int id = results.getInt("ID");
-        BigDecimal totalPrice = new BigDecimal(results.getString("TOTALPRICE"));
+        int id = cursor.getInt(cursor.getColumnIndex("ID"));
+        BigDecimal totalPrice = new BigDecimal(
+            cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
 
         sale.setId(id);
         sale.setUser(user);
         sale.setTotalPrice(totalPrice);
-
         sales.add(sale);
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get sales to user from the database.");
-    } finally {
-      if (results != null) {
-        try {
-          results.close();
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return sales;
   }
 
-  public static Sale getItemizedSaleById(int saleId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-    ResultSet results = null;
+  public static Sale getItemizedSaleById(int saleId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
     Sale sale = null;
 
-    try {
-      results = DatabaseSelector.getItemizedSaleById(saleId, connection);
-
+    cursor = myDB.getItemizedSaleById(saleId);
+    if (cursor != null) {
       sale = new SaleImpl();
-      while (results.next()) {
-        int itemId = results.getInt("ITEMID");
-        Item item = DatabaseSelectHelper.getItem(itemId);
-        Integer quantity = results.getInt("QUANTITY");
+      while (cursor.moveToNext()) {
+        int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
+        Item item = DatabaseSelectHelper.getItem(itemId, context);
+        Integer quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
         sale.updateMap(item, quantity);
       }
       sale.setId(saleId);
-    } catch (SQLException ex) {
-      System.out.println("Could not get itemized sale by id from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return sale;
   }
 
-  public static SalesLog getItemizedSales() {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
+  public static SalesLog getItemizedSales(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
 
-    ResultSet results = null;
+    Cursor cursor = null;
     SalesLog salesLog = null;
 
-    try {
-      results = DatabaseSelector.getItemizedSales(connection);
+    cursor = myDB.getItemizedSales();
+    if (cursor != null) {
       salesLog = new SalesLogImpl();
-      while (results.next()) {
-        int saleId = results.getInt("SALEID");
-        Sale sale = getItemizedSaleById(saleId);
+      while (cursor.moveToNext()) {
+        int saleId = cursor.getInt(cursor.getColumnIndex("SALEID"));
+        Sale sale = getItemizedSaleById(saleId, context);
         salesLog.updateLog(sale);
       }
-    } catch (SQLException ex) {
-      System.out.println("Could not get itemized sales from the database.");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return salesLog;
   }
 
-  public static int getUserAccounts(int userId) {
-    ResultSet results = null;
+  public static int getUserAccounts(int userId, Context context) {
+    Cursor cursor = null;
     int accId = -1;
 
     if (Validator.validateUserId(userId)) {
-      Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-      try {
-        results = DatabaseSelector.getUserAccounts(userId, connection);
-        while (results.next()) {
-          accId = results.getInt("id");
+      DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+      cursor = myDB.getUserAccounts(userId);
+      if (cursor != null) {
+        while (cursor.moveToNext()) {
+          accId = cursor.getInt(cursor.getColumnIndex("ID"));
         }
-      } catch (SQLException e) {
-        System.out.println("Could not get User Accounts");
-      } finally {
-        try {
-          if (results != null) {
-            results.close();
-          }
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
-        try {
-          if (connection != null) {
-            connection.close();
-          }
-        } catch (SQLException ex) {
-          System.out.println("Connection not closed.");
-        }
+        cursor.close();
       }
     }
     return accId;
   }
 
-  public static HashMap<Item, Integer> getAccountDetails(int accountId) {
-    Connection connection = DatabaseDriverHelper.connectOrCreateDataBase();
-    ResultSet results = null;
-    HashMap<Item, Integer> items = new HashMap<>();
+  public static HashMap<Item, Integer> getAccountDetails(int accountId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    HashMap<Item, Integer> items = null;
 
-    try {
-      results = DatabaseSelector.getAccountDetails(accountId, connection);
-      while (results.next()) {
-        int itemId = results.getInt("itemId");
-        int quantity = results.getInt("quantity");
-        items.put(DatabaseSelectHelper.getItem(itemId), quantity);
+    cursor = myDB.getAccountDetails(accountId);
+    if (cursor != null) {
+      items = new HashMap<>();
+      while (cursor.moveToNext()) {
+        int itemId = cursor.getInt(cursor.getColumnIndex("itemId"));
+        int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
+        items.put(DatabaseSelectHelper.getItem(itemId, context), quantity);
       }
-    } catch (SQLException e) {
-      System.out.println("Invalid account id");
-    } finally {
-      try {
-        if (results != null) {
-          results.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
-      try {
-        if (connection != null) {
-          connection.close();
-        }
-      } catch (SQLException ex) {
-        System.out.println("Connection not closed.");
-      }
+      cursor.close();
     }
     return items;
   }
