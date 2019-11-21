@@ -16,7 +16,6 @@
       android:fontFamily="@font/futuramedium"
       android:text="@string/welcome"
       android:textAlignment="center"
-      android:textAppearance=""
       android:textColor="@color/black"
       android:textSize="36sp" />
 
