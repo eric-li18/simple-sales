@@ -215,23 +215,20 @@ public class DatabaseSelectHelper {
     SalesLog salesLog = null;
 
     cursor = myDB.getSales();
-    if (cursor.moveToFirst()) {
-      salesLog = new SalesLogImpl();
-      while (cursor.moveToNext()) {
-        Sale sale = new SaleImpl();
-        int saleId = cursor.getInt(cursor.getColumnIndex("ID"));
-        int userId = cursor.getInt(cursor.getColumnIndex("USERID"));
-        User user = DatabaseSelectHelper.getUserDetails(userId, context);
-        BigDecimal totalPrice = new BigDecimal(
-            cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
-        Sale itemizedSale = DatabaseSelectHelper.getItemizedSaleById(saleId, context);
-        sale.setId(saleId);
-        sale.setUser(user);
-        sale.setTotalPrice(totalPrice);
-        sale.setItemMap(itemizedSale.getItemMap());
-        salesLog.updateLog(sale);
-      }
-
+    salesLog = new SalesLogImpl();
+    while (cursor.moveToNext()) {
+      Sale sale = new SaleImpl();
+      int saleId = cursor.getInt(cursor.getColumnIndex("ID"));
+      int userId = cursor.getInt(cursor.getColumnIndex("USERID"));
+      User user = DatabaseSelectHelper.getUserDetails(userId, context);
+      BigDecimal totalPrice = new BigDecimal(
+          cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
+      Sale itemizedSale = DatabaseSelectHelper.getItemizedSaleById(saleId, context);
+      sale.setId(saleId);
+      sale.setUser(user);
+      sale.setTotalPrice(totalPrice);
+      sale.setItemMap(itemizedSale.getItemMap());
+      salesLog.updateLog(sale);
     }
     cursor.close();
     myDB.close();
@@ -245,7 +242,7 @@ public class DatabaseSelectHelper {
     Sale sale = null;
 
     cursor = myDB.getSaleById(saleId);
-    if (cursor != null) {
+    if (cursor.moveToFirst()) {
       User user = DatabaseSelectHelper
           .getUserDetails(cursor.getInt(cursor.getColumnIndex("USERID")), context);
       BigDecimal totalPrice = new BigDecimal(cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
@@ -255,6 +252,7 @@ public class DatabaseSelectHelper {
       sale.setTotalPrice(totalPrice);
       cursor.close();
     }
+    myDB.close();
     return sale;
   }
 
@@ -265,22 +263,21 @@ public class DatabaseSelectHelper {
     List<Sale> sales = null;
 
     cursor = myDB.getSalesToUser(userId);
-    if (cursor != null) {
-      User user = DatabaseSelectHelper.getUserDetails(userId, context);
-      sales = new ArrayList<>();
-      while (cursor.moveToNext()) {
-        Sale sale = new SaleImpl();
-        int id = cursor.getInt(cursor.getColumnIndex("ID"));
-        BigDecimal totalPrice = new BigDecimal(
-            cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
+    User user = DatabaseSelectHelper.getUserDetails(userId, context);
+    sales = new ArrayList<>();
+    while (cursor.moveToNext()) {
+      Sale sale = new SaleImpl();
+      int id = cursor.getInt(cursor.getColumnIndex("ID"));
+      BigDecimal totalPrice = new BigDecimal(
+          cursor.getString(cursor.getColumnIndex("TOTALPRICE")));
 
-        sale.setId(id);
-        sale.setUser(user);
-        sale.setTotalPrice(totalPrice);
-        sales.add(sale);
-      }
-      cursor.close();
+      sale.setId(id);
+      sale.setUser(user);
+      sale.setTotalPrice(totalPrice);
+      sales.add(sale);
     }
+    cursor.close();
+    myDB.close();
     return sales;
   }
 
@@ -290,17 +287,16 @@ public class DatabaseSelectHelper {
     Sale sale = null;
 
     cursor = myDB.getItemizedSaleById(saleId);
-    if (cursor != null) {
-      sale = new SaleImpl();
-      while (cursor.moveToNext()) {
-        int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
-        Item item = DatabaseSelectHelper.getItem(itemId, context);
-        Integer quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
-        sale.updateMap(item, quantity);
-      }
-      sale.setId(saleId);
-      cursor.close();
+    sale = new SaleImpl();
+    while (cursor.moveToNext()) {
+      int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
+      Item item = DatabaseSelectHelper.getItem(itemId, context);
+      Integer quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
+      sale.updateMap(item, quantity);
     }
+    sale.setId(saleId);
+    cursor.close();
+    myDB.close();
     return sale;
   }
 
@@ -311,15 +307,14 @@ public class DatabaseSelectHelper {
     SalesLog salesLog = null;
 
     cursor = myDB.getItemizedSales();
-    if (cursor != null) {
-      salesLog = new SalesLogImpl();
-      while (cursor.moveToNext()) {
-        int saleId = cursor.getInt(cursor.getColumnIndex("SALEID"));
-        Sale sale = getItemizedSaleById(saleId, context);
-        salesLog.updateLog(sale);
-      }
-      cursor.close();
+    salesLog = new SalesLogImpl();
+    while (cursor.moveToNext()) {
+      int saleId = cursor.getInt(cursor.getColumnIndex("SALEID"));
+      Sale sale = getItemizedSaleById(saleId, context);
+      salesLog.updateLog(sale);
     }
+    cursor.close();
+    myDB.close();
     return salesLog;
   }
 
@@ -330,12 +325,11 @@ public class DatabaseSelectHelper {
     if (Validator.validateUserId(userId, context)) {
       DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
       cursor = myDB.getUserAccounts(userId);
-      if (cursor != null) {
-        while (cursor.moveToNext()) {
-          accId = cursor.getInt(cursor.getColumnIndex("ID"));
-        }
-        cursor.close();
+      while (cursor.moveToNext()) {
+        accId = cursor.getInt(cursor.getColumnIndex("ID"));
       }
+      cursor.close();
+      myDB.close();
     }
     return accId;
   }
@@ -346,15 +340,14 @@ public class DatabaseSelectHelper {
     HashMap<Item, Integer> items = null;
 
     cursor = myDB.getAccountDetails(accountId);
-    if (cursor != null) {
-      items = new HashMap<>();
-      while (cursor.moveToNext()) {
-        int itemId = cursor.getInt(cursor.getColumnIndex("itemId"));
-        int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
-        items.put(DatabaseSelectHelper.getItem(itemId, context), quantity);
-      }
-      cursor.close();
+    items = new HashMap<>();
+    while (cursor.moveToNext()) {
+      int itemId = cursor.getInt(cursor.getColumnIndex("itemId"));
+      int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
+      items.put(DatabaseSelectHelper.getItem(itemId, context), quantity);
     }
+    cursor.close();
+    myDB.close();
     return items;
   }
 }
