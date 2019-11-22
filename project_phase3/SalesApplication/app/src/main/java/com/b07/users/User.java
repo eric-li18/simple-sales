@@ -1,6 +1,7 @@
 package com.b07.users;
 
-import com.b07.database.helper.DatabaseSelectHelper;
+import android.content.Context;
+import com.b07.database.DatabaseSelectHelper;
 import com.b07.security.PasswordHelpers;
 
 /**
@@ -108,8 +109,8 @@ public abstract class User {
    * @param password the user's entered password
    * @return true if the entered password matches the password in the database, false otherwise
    */
-  public final boolean authenticate(String password) {
-    String dbPassword = DatabaseSelectHelper.getPassword(id);
+  public final boolean authenticate(String password, Context context) {
+    String dbPassword = DatabaseSelectHelper.getPassword(id, context);
     return PasswordHelpers.comparePassword(dbPassword, password);
   }
 

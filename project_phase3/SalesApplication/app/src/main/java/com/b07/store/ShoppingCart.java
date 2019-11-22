@@ -1,8 +1,9 @@
 package com.b07.store;
 
-import com.b07.database.helper.DatabaseInsertHelper;
-import com.b07.database.helper.DatabaseSelectHelper;
-import com.b07.database.helper.DatabaseUpdateHelper;
+import android.content.Context;
+import com.b07.database.DatabaseInsertHelper;
+import com.b07.database.DatabaseSelectHelper;
+import com.b07.database.DatabaseUpdateHelper;
 import com.b07.exceptions.AuthenticationException;
 import com.b07.inventory.Item;
 import com.b07.users.Customer;
@@ -136,33 +137,33 @@ public class ShoppingCart {
    *
    * @return true if the operation is successful, false otherwise
    */
-  public boolean checkOut() {
+  public boolean checkOut(Context context) {
     if (this.customer != null) {
       BigDecimal totalWithTax = total.multiply(TAXRATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
       List<Item> itemList = getItems();
       for (Item item : itemList) {
-        int quantity = DatabaseSelectHelper.getInventoryQuantity(item.getId());
+        int quantity = DatabaseSelectHelper.getInventoryQuantity(item.getId(), context);
         int remainingStock = quantity - items.get(item);
         if (remainingStock < 0) {
           return false;
         }
       }
-      int saleId = DatabaseInsertHelper.insertSale(this.customer.getId(), totalWithTax);
+      int saleId = DatabaseInsertHelper.insertSale(this.customer.getId(), totalWithTax, context);
       if (saleId == -1) {
         return false;
       }
 
       for (Item item : itemList) {
         int itemizedSaleId =
-            DatabaseInsertHelper.insertItemizedSale(saleId, item.getId(), items.get(item));
+            DatabaseInsertHelper.insertItemizedSale(saleId, item.getId(), items.get(item), context);
         if (itemizedSaleId == -1) {
           return false;
         }
         boolean complete =
-            DatabaseUpdateHelper.updateInventoryQuantity(-items.get(item), item.getId());
+            DatabaseUpdateHelper.updateInventoryQuantity(-items.get(item), item.getId(), context);
         if (!complete) {
           for (Item revert : itemList) {
-            DatabaseUpdateHelper.updateInventoryQuantity(+items.get(item), item.getId());
+            DatabaseUpdateHelper.updateInventoryQuantity(+items.get(item), item.getId(), context);
             if (revert.getId() == item.getId()) {
               return false;
             }

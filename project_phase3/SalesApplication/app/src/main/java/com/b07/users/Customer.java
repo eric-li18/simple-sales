@@ -1,6 +1,7 @@
 package com.b07.users;
 
-import com.b07.database.helper.DatabaseSelectHelper;
+import android.content.Context;
+import com.b07.database.DatabaseSelectHelper;
 
 public class Customer extends User {
 
@@ -12,12 +13,12 @@ public class Customer extends User {
    * @param age     the user's age
    * @param address the user's address
    */
-  public Customer(int id, String name, int age, String address) {
+  public Customer(int id, String name, int age, String address, Context context) {
     setId(id);
     setName(name);
     setAge(age);
     setAddress(address);
-    setRoleId(DatabaseSelectHelper.getUserRoleId(id));
+    setRoleId(DatabaseSelectHelper.getUserRoleId(id, context));
   }
 
   /**
@@ -29,12 +30,12 @@ public class Customer extends User {
    * @param address       the user's address
    * @param authenticated if the user has been authenticated
    */
-  public Customer(int id, String name, int age, String address, boolean authenticated) {
+  public Customer(int id, String name, int age, String address, boolean authenticated, Context context) {
     setId(id);
     setName(name);
     setAge(age);
     setAddress(address);
-    setRoleId(DatabaseSelectHelper.getUserRoleId(id));
+    setRoleId(DatabaseSelectHelper.getUserRoleId(id, context));
     setAuthenticate(authenticated);
   }
 }

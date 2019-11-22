@@ -1,6 +1,7 @@
 package com.b07.store;
 
-import com.b07.database.helper.DatabaseSelectHelper;
+import android.content.Context;
+import com.b07.database.DatabaseSelectHelper;
 import com.b07.users.Roles;
 import com.b07.users.User;
 import java.io.BufferedReader;
@@ -16,7 +17,7 @@ public class StoreAuthentication {
    * @return the userId if authenticated, -1 if not authenticated
    * @throws IOException if there is an exception thrown by bufferedReader
    */
-  public static int authenticationInterface(BufferedReader bufferedReader, String role)
+  public static int authenticationInterface(BufferedReader bufferedReader, String role, Context context)
       throws IOException {
     User user;
     boolean authenticated;
@@ -36,8 +37,8 @@ public class StoreAuthentication {
     System.out.println("Enter your password:");
     password = bufferedReader.readLine();
 
-    roleId = DatabaseSelectHelper.getUserRoleId(userId);
-    roleName = DatabaseSelectHelper.getRoleName(roleId);
+    roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
+    roleName = DatabaseSelectHelper.getRoleName(roleId, context);
 
     if (roleName == null || roleId == -1) {
       System.out.println("You are not in the system");
@@ -61,8 +62,8 @@ public class StoreAuthentication {
       }
     }
 
-    user = DatabaseSelectHelper.getUserDetails(userId);
-    authenticated = user.authenticate(password);
+    user = DatabaseSelectHelper.getUserDetails(userId, context);
+    authenticated = user.authenticate(password, context);
     if (authenticated) {
       return userId;
     } else {
