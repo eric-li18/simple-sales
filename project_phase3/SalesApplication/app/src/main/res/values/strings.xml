@@ -11,7 +11,7 @@
   <string name="reenter_password">Re-enter password</string>
   <string name="logo">logo</string>
   <string name="sign_up">Sign up</string>
-  <string name="first_name">First name</string>
+  <string name="first_name">First and last name</string>
   <string name="last_name">Last name</string>
   <string name="age">Age</string>
   <string name="address">Address</string>

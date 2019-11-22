@@ -22,9 +22,9 @@
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="0.7"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
+    android:layout_weight="0.7"
     android:background="@drawable/rounded_30dp"
     android:orientation="vertical">
     <TextView
@@ -44,8 +44,8 @@
       <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:layout_weight="0.5"
         android:fontFamily="@font/futurabook"
         android:text="@string/first_name"
@@ -53,11 +53,11 @@
       <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="17dp"
-        android:layout_marginLeft="17dp"
-        android:layout_weight="0.5"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="17dp"
+        android:layout_weight="0.15"
         android:fontFamily="@font/futurabook"
-        android:text="@string/last_name"
+        android:text="@string/age"
         android:textColor="@color/grey" />
     </LinearLayout>
 
@@ -77,12 +77,12 @@
         android:importantForAutofill="no"
         android:inputType="text" />
       <EditText
-        android:id="@+id/last_name"
+        android:id="@+id/age"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.15"
         android:backgroundTint="@color/grey"
         android:importantForAutofill="no"
         android:inputType="text" />
@@ -92,19 +92,11 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:orientation="horizontal">
+
       <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_weight="0.15"
-        android:fontFamily="@font/futurabook"
-        android:text="@string/age"
-        android:textColor="@color/grey" />
-      <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="17dp"
         android:layout_marginRight="17dp"
         android:layout_weight="0.85"
         android:fontFamily="@font/futurabook"
@@ -117,16 +109,7 @@
       android:layout_height="wrap_content"
       android:layout_marginBottom="20dp"
       android:orientation="horizontal">
-      <EditText
-        android:id="@+id/age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="17dp"
-        android:layout_marginRight="17dp"
-        android:layout_weight="0.15"
-        android:backgroundTint="@color/grey"
-        android:importantForAutofill="no"
-        android:inputType="text" />
+
       <EditText
         android:id="@+id/address"
         android:layout_width="0dp"
