@@ -16,6 +16,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+
+    <activity android:name=".store.StoreAuthenticationActivity"/>
+    <activity android:name=".store.AccountCreationActivity"/>
   </application>
 
 </manifest>

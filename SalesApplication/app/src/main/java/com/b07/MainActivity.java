@@ -1,39 +1,39 @@
 package com.b07;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import com.b07.database.DatabaseInsertHelper;
-import android.util.Log;
 import com.b07.database.DatabaseSelectHelper;
-import com.b07.users.User;
-import java.util.List;
-
+import com.b07.store.AccountCreationActivity;
+import com.b07.store.StoreAuthenticationActivity;
+import com.b07.users.Roles;
 
 public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.sign_up);
-    String TAG = "mainActivity";
-    int userId = DatabaseInsertHelper.insertNewUser("Bryan Liu", 19, "idk", "abc123", this);
-    int roleId = DatabaseInsertHelper.insertRole("EMPLOYEE", this);
-    DatabaseInsertHelper.insertUserRole(userId, roleId, this);
-    User user = DatabaseSelectHelper.getUserDetails(userId, this);
-    if(user == null){
-      Log.e(TAG, "user is null!");
-    }
-    else {
-      String name = user.getName();
-      Log.e(TAG, name);
-      Log.e(TAG, "I am here");
+    startUp();
+  }
+
+  private void startUp() {
+    int adminId = DatabaseSelectHelper.getRoleIdFromName(Roles.ADMIN.name(), this);
+    int employeeId = DatabaseSelectHelper.getRoleIdFromName(Roles.EMPLOYEE.name(), this);
+    if (adminId == -1 || employeeId == -1) {
+      Intent intent = new Intent(this, AccountCreationActivity.class);
+      startActivity(intent);
+
+//      int userId = DatabaseInsertHelper.insertNewUser("Bryan liu", 19, "idk", "abc123", this);
+//      int roleId = DatabaseInsertHelper.insertRole(Roles.ADMIN.name(), this);
+//      DatabaseInsertHelper.insertUserRole(userId, roleId, this);
+//
+//      userId = DatabaseInsertHelper.insertNewUser("Eric Li", 19, "idk", "abc123", this);
+//      roleId = DatabaseInsertHelper.insertRole(Roles.EMPLOYEE.name(), this);
+//      DatabaseInsertHelper.insertUserRole(userId, roleId, this);
+    } else {
+      Intent intent = new Intent(this, StoreAuthenticationActivity.class);
+      startActivity(intent);
     }
 
-    List<Integer> roleIds = DatabaseSelectHelper.getRoleIds(this);
-    for (Integer i : roleIds){
-      Log.e(TAG, i.toString());
-    }
-    List<Integer> users = DatabaseSelectHelper.getUsersByRole(3, this);
-    Log.e(TAG, "hi");
   }
 }
