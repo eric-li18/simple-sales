@@ -7,7 +7,7 @@
   <View
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="0.1" />
+    android:layout_weight="0.05" />
   <ImageView
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -17,7 +17,7 @@
   <View
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight="0.1" />
+    android:layout_weight="0.05" />
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -28,13 +28,13 @@
     android:background="@drawable/rounded_30dp"
     android:orientation="vertical">
     <TextView
+      android:id="@+id/sign_up"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="20dp"
       android:layout_marginTop="30dp"
       android:layout_marginBottom="30dp"
       android:fontFamily="@font/futuramedium"
-      android:text="@string/variable"
       android:textColor="@color/black"
       android:textSize="20sp" />
     <LinearLayout
@@ -67,7 +67,7 @@
       android:layout_marginBottom="20dp"
       android:orientation="horizontal">
       <EditText
-        android:id="@+id/first_name"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="17dp"
@@ -96,8 +96,8 @@
       <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="17dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="17dp"
         android:layout_weight="0.85"
         android:fontFamily="@font/futurabook"
         android:text="@string/address"
@@ -152,20 +152,31 @@
       android:id="@+id/reenter_password"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="17dp"
-      android:layout_marginRight="17dp"
+      android:layout_marginStart="17dp"
+      android:layout_marginEnd="17dp"
       android:layout_marginBottom="20dp"
       android:backgroundTint="@color/grey"
       android:importantForAutofill="no"
       android:inputType="textPassword" />
 
   </LinearLayout>
+  <TextView
+    android:id="@+id/error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red"
+    android:layout_gravity="center"
+    android:layout_marginTop="30dp"
+
+    />
   <Button
+    android:onClick="signUp"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="40dp"
-    android:layout_marginRight="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
     android:layout_marginBottom="40dp"
     android:layout_weight="0.1"
     android:background="@drawable/rounded_40dp"
