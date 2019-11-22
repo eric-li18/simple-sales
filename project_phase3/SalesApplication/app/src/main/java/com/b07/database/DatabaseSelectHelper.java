@@ -47,6 +47,7 @@ public class DatabaseSelectHelper {
       ids.add(cursor.getInt(cursor.getColumnIndex("ID")));
     }
     cursor.close();
+    myDB.close();
     return ids;
   }
 
@@ -54,6 +55,7 @@ public class DatabaseSelectHelper {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     String role = null;
     role = myDB.getRole(roleId);
+    myDB.close();
     return role;
   }
 
@@ -61,6 +63,7 @@ public class DatabaseSelectHelper {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     int roleId = -1;
     roleId = myDB.getUserRole(userId);
+    myDB.close();
     return roleId;
   }
 
@@ -70,13 +73,12 @@ public class DatabaseSelectHelper {
     List<Integer> userIds = null;
 
     cursor = myDB.getUsersByRole(roleId);
-    if (cursor != null) {
-      userIds = new ArrayList<>();
-      while (cursor.moveToNext()) {
-        userIds.add(cursor.getInt(cursor.getColumnIndex("USERID")));
-     }
-      cursor.close();
+    userIds = new ArrayList<>();
+    while (cursor.moveToNext()) {
+      userIds.add(cursor.getInt(cursor.getColumnIndex("USERID")));
     }
+    myDB.close();
+    cursor.close();
     return userIds;
   }
 
@@ -87,22 +89,21 @@ public class DatabaseSelectHelper {
     List<User> users = null;
 
     cursor = myDB.getUsersDetails();
-    if (cursor != null) {
-      users = new ArrayList<>();
-      while (cursor.moveToNext()) {
-        int userId = cursor.getInt(cursor.getColumnIndex("ID"));
-        String name = cursor.getString(cursor.getColumnIndex("NAME"));
-        int age = cursor.getInt(cursor.getColumnIndex("AGE"));
-        String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
+    users = new ArrayList<>();
+    while (cursor.moveToNext()) {
+      int userId = cursor.getInt(cursor.getColumnIndex("ID"));
+      String name = cursor.getString(cursor.getColumnIndex("NAME"));
+      int age = cursor.getInt(cursor.getColumnIndex("AGE"));
+      String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
 
-        int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
-        String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
-        User user = UserFactory.createUser(roleName, userId, name, age, address, context);
+      int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
+      String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
+      User user = UserFactory.createUser(roleName, userId, name, age, address, context);
 
-        users.add(user);
-      }
-      cursor.close();
+      users.add(user);
     }
+    cursor.close();
+    myDB.close();
     return users;
   }
 
@@ -125,8 +126,10 @@ public class DatabaseSelectHelper {
 
         user = UserFactory.createUser(roleName, id, name, age, address, context);
       }
-      cursor.close();
+
     }
+    cursor.close();
+    myDB.close();
     return user;
   }
 
@@ -135,6 +138,7 @@ public class DatabaseSelectHelper {
 
     String password = null;
     password = myDB.getPassword(userId);
+    myDB.close();
     return password;
   }
 
@@ -145,17 +149,16 @@ public class DatabaseSelectHelper {
     List<Item> items = null;
 
     cursor = myDB.getAllItems();
-    if (cursor != null) {
-      items = new ArrayList<>();
-      while (cursor.moveToNext()) {
-        int itemId = cursor.getInt(cursor.getColumnIndex("ID"));
-        String name = cursor.getString(cursor.getColumnIndex("NAME"));
-        BigDecimal price = new BigDecimal(cursor.getString(cursor.getColumnIndex("PRICE")));
-        Item item = new ItemImpl(itemId, name, price);
-        items.add(item);
-      }
-      cursor.close();
+    items = new ArrayList<>();
+    while (cursor.moveToNext()) {
+      int itemId = cursor.getInt(cursor.getColumnIndex("ID"));
+      String name = cursor.getString(cursor.getColumnIndex("NAME"));
+      BigDecimal price = new BigDecimal(cursor.getString(cursor.getColumnIndex("PRICE")));
+      Item item = new ItemImpl(itemId, name, price);
+      items.add(item);
     }
+    cursor.close();
+    myDB.close();
     return items;
   }
 
@@ -166,13 +169,14 @@ public class DatabaseSelectHelper {
     Cursor cursor = null;
 
     cursor = myDB.getItem(itemId);
-    if (cursor != null) {
+    if (cursor.moveToFirst()) {
       item = new ItemImpl();
       item.setId(cursor.getInt(cursor.getColumnIndex("ID")));
       item.setName(cursor.getString(cursor.getColumnIndex("NAME")));
       item.setPrice(new BigDecimal(cursor.getString(cursor.getColumnIndex("PRICE"))));
-      cursor.close();
     }
+    cursor.close();
+    myDB.close();
     return item;
   }
 
@@ -183,16 +187,15 @@ public class DatabaseSelectHelper {
     Cursor cursor = null;
 
     cursor = myDB.getInventory();
-    if (cursor != null) {
-      inventory = new InventoryImpl();
-      while (cursor.moveToNext()) {
-        int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
-        int quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
-        Item item = DatabaseSelectHelper.getItem(itemId, context);
-        inventory.updateMap(item, quantity);
-      }
-      cursor.close();
+    inventory = new InventoryImpl();
+    while (cursor.moveToNext()) {
+      int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
+      int quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
+      Item item = DatabaseSelectHelper.getItem(itemId, context);
+      inventory.updateMap(item, quantity);
     }
+    cursor.close();
+    myDB.close();
     return inventory;
   }
 
@@ -201,6 +204,7 @@ public class DatabaseSelectHelper {
 
     int quantity = -1;
     quantity = myDB.getInventoryQuantity(itemId);
+    myDB.close();
     return quantity;
   }
 
@@ -211,7 +215,7 @@ public class DatabaseSelectHelper {
     SalesLog salesLog = null;
 
     cursor = myDB.getSales();
-    if (cursor != null) {
+    if (cursor.moveToFirst()) {
       salesLog = new SalesLogImpl();
       while (cursor.moveToNext()) {
         Sale sale = new SaleImpl();
@@ -227,8 +231,10 @@ public class DatabaseSelectHelper {
         sale.setItemMap(itemizedSale.getItemMap());
         salesLog.updateLog(sale);
       }
-      cursor.close();
+
     }
+    cursor.close();
+    myDB.close();
     return salesLog;
   }
 

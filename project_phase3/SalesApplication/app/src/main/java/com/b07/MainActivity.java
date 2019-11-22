@@ -6,6 +6,7 @@ import com.b07.database.DatabaseInsertHelper;
 import android.util.Log;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.users.User;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -15,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.sign_up);
     String TAG = "mainActivity";
-    int userId = DatabaseInsertHelper.insertNewUser("Eric Li", 19, "idk", "abc123", this);
-    int roleId = DatabaseInsertHelper.insertRole("ADMIN", this);
+    int userId = DatabaseInsertHelper.insertNewUser("Bryan Liu", 19, "idk", "abc123", this);
+    int roleId = DatabaseInsertHelper.insertRole("EMPLOYEE", this);
     DatabaseInsertHelper.insertUserRole(userId, roleId, this);
     User user = DatabaseSelectHelper.getUserDetails(userId, this);
     if(user == null){
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
       String name = user.getName();
       Log.e(TAG, name);
       Log.e(TAG, "I am here");
+    }
+
+    List<Integer> roleIds = DatabaseSelectHelper.getRoleIds(this);
+    for (Integer i : roleIds){
+      Log.e(TAG, i.toString());
     }
   }
 }
