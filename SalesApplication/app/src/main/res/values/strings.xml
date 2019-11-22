@@ -15,7 +15,6 @@
   <string name="last_name">Last name</string>
   <string name="age">Age</string>
   <string name="address">Address</string>
-  <string name="variable">This is going to be a variable</string>
   <string name="hockey_stick">Hockey Stick</string>
   <string name="price">$0.99</string>
   <string name="items">Available Items</string>
@@ -24,6 +23,13 @@
   <string name="total">Total: </string>
   <string name="add">ADD TO CART</string>
   <string name="checkout">Checkout</string>
+
+  <!--AccountCreation-->
+  <string name="name_eror">Ensure you have a valid name</string>
+  <string name="age_error">Ensure you have a valid age</string>
+  <string name="address_error">Ensure you have a valid address</string>
+  <string name="password_error">Ensure you have a valid password</string>
+  <string name="password_mismatch">Your passwords do not match</string>
 <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
   <string name="welcome">Welcome back!</string>

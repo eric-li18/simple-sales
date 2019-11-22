@@ -239,4 +239,8 @@ public class Validator {
   public static boolean validateTotalLessThanMaxItems(int totalItems, int maxItems) {
     return totalItems <= maxItems;
   }
+
+  public static boolean validateEmpty(String string){
+    return string.trim().equals("");
+  }
 }
