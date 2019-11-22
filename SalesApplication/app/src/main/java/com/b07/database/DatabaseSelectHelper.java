@@ -40,7 +40,7 @@ public class DatabaseSelectHelper {
 
   public static List<Integer> getRoleIds(Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
-    Cursor cursor = DatabaseSelectHelper.getRoles();
+    Cursor cursor = myDB.getRoles();
     List<Integer> ids = new ArrayList<>();
 
     while (cursor.moveToNext()) {
