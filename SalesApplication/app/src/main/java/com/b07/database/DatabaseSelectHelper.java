@@ -74,7 +74,7 @@ public class DatabaseSelectHelper {
       userIds = new ArrayList<>();
       while (cursor.moveToNext()) {
         userIds.add(cursor.getInt(cursor.getColumnIndex("USERID")));
-      }
+     }
       cursor.close();
     }
     return userIds;
@@ -97,7 +97,7 @@ public class DatabaseSelectHelper {
 
         int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
         String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
-        User user = UserFactory.createUser(roleName, userId, name, age, address);
+        User user = UserFactory.createUser(roleName, userId, name, age, address, context);
 
         users.add(user);
       }
@@ -113,16 +113,17 @@ public class DatabaseSelectHelper {
     User user = null;
     cursor = myDB.getUserDetails(userId);
 
-    if (cursor != null) {
+    if (cursor.moveToFirst()) {
       int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
       if (roleId != -1) {
         String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
+
         int id = cursor.getInt(cursor.getColumnIndex("ID"));
         String name = cursor.getString(cursor.getColumnIndex("NAME"));
         int age = cursor.getInt(cursor.getColumnIndex("AGE"));
         String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
 
-        user = UserFactory.createUser(roleName, id, name, age, address);
+        user = UserFactory.createUser(roleName, id, name, age, address, context);
       }
       cursor.close();
     }
@@ -320,7 +321,7 @@ public class DatabaseSelectHelper {
     Cursor cursor = null;
     int accId = -1;
 
-    if (Validator.validateUserId(userId)) {
+    if (Validator.validateUserId(userId, context)) {
       DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
       cursor = myDB.getUserAccounts(userId);
       if (cursor != null) {

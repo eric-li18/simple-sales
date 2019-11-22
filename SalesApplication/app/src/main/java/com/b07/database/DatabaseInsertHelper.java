@@ -12,10 +12,10 @@ public class DatabaseInsertHelper {
     long roleId = -1;
 
     if (Validator.validateRoleName(name)) {
-      if (Validator.validateRoleUnique(name)) {
+      if (Validator.validateRoleUnique(name, context)) {
         roleId = dbA.insertRole(name);
       } else {
-        roleId = DatabaseSelectHelper.getRoleIdFromName(name);
+        roleId = DatabaseSelectHelper.getRoleIdFromName(name, context);
       }
     } else {
       System.out.println("Ensure the method arguments are correct for insertRole.");
@@ -64,7 +64,7 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long inventoryId = -1;
 
-    if (Validator.validateNewItemQuantity(quantity) && Validator.validateItemId(itemId)) {
+    if (Validator.validateNewItemQuantity(quantity) && Validator.validateItemId(itemId, context)) {
       inventoryId = dbA.insertInventory(itemId, quantity);
     } else {
       System.out.println("Ensure the method arguments are correct for insertInventory.");
@@ -76,7 +76,7 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long saleId = -1;
 
-    if (Validator.validateUserId(userId)) {
+    if (Validator.validateUserId(userId, context)) {
       saleId = dbA.insertSale(userId, totalPrice);
     } else {
       System.out.println("Ensure the method arguments are correct for insertSale.");
@@ -88,7 +88,7 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long itemizedId = -1;
 
-    if (Validator.validateItemId(itemId) && Validator.validateSaleId(saleId)
+    if (Validator.validateItemId(itemId, context) && Validator.validateSaleId(saleId, context)
         && Validator.validateSaleQuantity(quantity)) {
       itemizedId = dbA.insertItemizedSale(saleId, itemId, quantity);
     } else {
@@ -101,7 +101,7 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long accountId = -1;
 
-    if (Validator.validateUserId(userId)) {
+    if (Validator.validateUserId(userId, context)) {
       accountId = dbA.insertAccount(userId, active);
     } else {
       System.out.println("The user id is not valid");
@@ -112,7 +112,7 @@ public class DatabaseInsertHelper {
   public static int insertAccountLine(int accountId, int itemId, int quantity, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long insertId = -1;
-    if (Validator.validateItemId(itemId) && Validator.validateSaleQuantity(quantity)) {
+    if (Validator.validateItemId(itemId, context) && Validator.validateSaleQuantity(quantity)) {
       insertId = dbA.insertAccountLine(accountId, itemId, quantity);
     } else {
       System.out.println("Ensure the arguments are correct for insert account line");

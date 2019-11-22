@@ -3,8 +3,6 @@ package com.b07.database;
 import android.content.Context;
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.SQLException;
 
 public class DatabaseUpdateHelper {
 
@@ -13,7 +11,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateRoleName(name) && Validator.validateRoleId(id)) {
+    if (Validator.validateRoleName(name) && Validator.validateRoleId(id, context)) {
       complete = dbA.updateRoleName(name, id);
       if (!complete) {
         System.out.println("Could not update roleName in the database.");
@@ -27,7 +25,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateUserId(userId) && Validator.validateUserName(name)) {
+    if (Validator.validateUserId(userId, context) && Validator.validateUserName(name)) {
       complete = dbA.updateUserName(name, userId);
       if (!complete) {
         System.out.println("Could not update userName in the database.");
@@ -41,7 +39,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateUserId(userId) && Validator.validateAge(age)) {
+    if (Validator.validateUserId(userId,context) && Validator.validateAge(age)) {
       complete = dbA.updateUserAge(age, userId);
       if (!complete) {
         System.out.println("Could not update user age in the database.");
@@ -55,7 +53,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateUserId(userId) && Validator.validateAddress(address)) {
+    if (Validator.validateUserId(userId, context) && Validator.validateAddress(address)) {
       complete = dbA.updateUserAddress(address, userId);
       if (!complete) {
         System.out.println("Could not update user address in the database.");
@@ -69,7 +67,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateUserId(userId) && Validator.validateRoleId(roleId)) {
+    if (Validator.validateUserId(userId, context) && Validator.validateRoleId(roleId, context)) {
       complete = dbA.updateUserRole(roleId, userId);
       if (!complete) {
         System.out.println("Could not update user role in the database.");
@@ -83,7 +81,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateItemId(itemId) && Validator.validateItemName(name)) {
+    if (Validator.validateItemId(itemId, context) && Validator.validateItemName(name)) {
       complete = dbA.updateItemName(name, itemId);
       if (!complete) {
         System.out.println("Could not update item name in the database.");
@@ -97,7 +95,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateItemId(itemId) && Validator.validatePrice(price)) {
+    if (Validator.validateItemId(itemId, context) && Validator.validatePrice(price)) {
       complete = dbA.updateItemPrice(price, itemId);
       if (!complete) {
         System.out.println("Could not update item price in the database.");
@@ -110,9 +108,9 @@ public class DatabaseUpdateHelper {
   public static boolean updateInventoryQuantity(int quantity, int itemId, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
-    quantity = quantity + DatabaseSelectHelper.getInventoryQuantity(itemId);
+    quantity = quantity + DatabaseSelectHelper.getInventoryQuantity(itemId, context);
 
-    if (Validator.validateRestockQuantity(quantity) && Validator.validateItemId(itemId)) {
+    if (Validator.validateRestockQuantity(quantity) && Validator.validateItemId(itemId, context)) {
       complete = dbA.updateInventoryQuantity(quantity, itemId);
       if (!complete) {
         System.out.println("Could not update inventory quantity in the database.");

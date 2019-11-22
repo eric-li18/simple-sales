@@ -1,5 +1,7 @@
 package com.b07.users;
 
+import android.content.Context;
+
 /**
  * Factory class to create Users based on the factory design pattern
  *
@@ -17,13 +19,13 @@ public class UserFactory {
    * @param address the user address
    * @return the User, null if the User is not created
    */
-  public static User createUser(String user, int id, String name, int age, String address) {
+  public static User createUser(String user, int id, String name, int age, String address, Context context) {
     if (user.equals(Roles.ADMIN.name())) {
       return new Admin(id, name, age, address);
     } else if (user.equals(Roles.EMPLOYEE.name())) {
       return new Employee(id, name, age, address);
     } else if (user.equals(Roles.CUSTOMER.name())) {
-      return new Customer(id, name, age, address);
+      return new Customer(id, name, age, address, context);
     } else {
       return null;
     }

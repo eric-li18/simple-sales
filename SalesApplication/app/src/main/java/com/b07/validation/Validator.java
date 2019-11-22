@@ -1,8 +1,9 @@
 package com.b07.validation;
 
+import android.content.Context;
 import java.math.BigDecimal;
 import java.util.List;
-import com.b07.database.helper.DatabaseSelectHelper;
+import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Item;
 import com.b07.inventory.ItemTypes;
 import com.b07.store.Sale;
@@ -57,9 +58,9 @@ public class Validator {
    * @param roleName the role name
    * @return true if the role name is unique, false otherwise
    */
-  public static boolean validateRoleUnique(String roleName) {
-    for (int roleId : DatabaseSelectHelper.getRoleIds()) {
-      if (roleName.equals(DatabaseSelectHelper.getRoleName(roleId))) {
+  public static boolean validateRoleUnique(String roleName, Context context) {
+    for (int roleId : DatabaseSelectHelper.getRoleIds(context)) {
+      if (roleName.equals(DatabaseSelectHelper.getRoleName(roleId, context))) {
         return false;
       }
     }
@@ -124,8 +125,8 @@ public class Validator {
    * @param userId the userId
    * @return true if the userId is an id in the User's table, false otherwise
    */
-  public static boolean validateUserId(int userId) {
-    User user = DatabaseSelectHelper.getUserDetails(userId);
+  public static boolean validateUserId(int userId, Context context) {
+    User user = DatabaseSelectHelper.getUserDetails(userId, context);
     if (user != null && user.getId() == userId) {
       return true;
     } else {
@@ -139,8 +140,8 @@ public class Validator {
    * @param roleId the roleId
    * @return true if the roleId is an id in the Role's table, false otherwise
    */
-  public static boolean validateRoleId(int roleId) {
-    List<Integer> roleIds = DatabaseSelectHelper.getRoleIds();
+  public static boolean validateRoleId(int roleId, Context context) {
+    List<Integer> roleIds = DatabaseSelectHelper.getRoleIds(context);
     return roleIds.contains(roleId);
   }
 
@@ -184,8 +185,8 @@ public class Validator {
    * @param itemId the itemId
    * @return true if the itemId is an id in the Items table, false otherwise
    */
-  public static boolean validateItemId(int itemId) {
-    Item item = DatabaseSelectHelper.getItem(itemId);
+  public static boolean validateItemId(int itemId, Context context) {
+    Item item = DatabaseSelectHelper.getItem(itemId, context);
     if (item != null && item.getId() == itemId) {
       return true;
     } else {
@@ -199,8 +200,8 @@ public class Validator {
    * @param saleId the saleId
    * @return true if the saleId is an id in the Sales table, false otherwise
    */
-  public static boolean validateSaleId(int saleId) {
-    Sale sale = DatabaseSelectHelper.getSaleById(saleId);
+  public static boolean validateSaleId(int saleId, Context context) {
+    Sale sale = DatabaseSelectHelper.getSaleById(saleId ,context);
     if (sale != null && sale.getId() == saleId) {
       return true;
     } else {

@@ -1,9 +1,10 @@
 package com.b07.store;
 
+import android.content.Context;
 import com.b07.validation.Validator;
 import java.sql.SQLException;
-import com.b07.database.helper.DatabaseInsertHelper;
-import com.b07.database.helper.DatabaseUpdateHelper;
+import com.b07.database.DatabaseInsertHelper;
+import com.b07.database.DatabaseUpdateHelper;
 import com.b07.exceptions.AuthenticationException;
 import com.b07.exceptions.UserCreationException;
 import com.b07.inventory.Inventory;
@@ -69,14 +70,14 @@ public class EmployeeInterface {
    * @param quantity the quantity
    * @return true if the operation was sucessful, false otherwise
    */
-  public boolean insertInventory(Item item, int quantity) {
+  public boolean insertInventory(Item item, int quantity, Context context) {
     if (!Validator.validateTotalLessThanMaxItems(inventory.getTotalItems() + quantity,
         inventory.getMaxItems())) {
       System.out.println("Could not insert into the inventory. Stock overflow.");
       return false;
     }
 
-    int inventoryId = DatabaseInsertHelper.insertInventory(item.getId(), quantity);
+    int inventoryId = DatabaseInsertHelper.insertInventory(item.getId(), quantity, context);
     if (inventoryId == -1) {
       return false;
     } else {
@@ -92,13 +93,13 @@ public class EmployeeInterface {
    * @param quantity the quantity of item to restock
    * @return true if the operation was successful, false otherwise
    */
-  public boolean restockInventory(Item item, int quantity) {
+  public boolean restockInventory(Item item, int quantity, Context context) {
     if (!Validator.validateTotalLessThanMaxItems(inventory.getTotalItems() + quantity,
         inventory.getMaxItems())) {
       System.out.println("Could not restock inventory. Stock overflow.");
       return false;
     }
-    boolean completed = DatabaseUpdateHelper.updateInventoryQuantity(quantity, item.getId());
+    boolean completed = DatabaseUpdateHelper.updateInventoryQuantity(quantity, item.getId(), context);
     if (completed) {
       this.inventory.updateMap(item, quantity);
       return true;
@@ -117,19 +118,19 @@ public class EmployeeInterface {
    * @return the userId of the customer
    * @throws UserCreationException on failure
    */
-  public int createCustomer(String name, int age, String address, String password)
+  public int createCustomer(String name, int age, String address, String password, Context context)
       throws UserCreationException, SQLException {
-    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password);
+    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password, context);
     if (userId == -1) {
       throw new UserCreationException();
     }
 
-    int roleId = DatabaseInsertHelper.insertRole("CUSTOMER");
+    int roleId = DatabaseInsertHelper.insertRole("CUSTOMER", context);
     if (roleId == -1) {
       throw new UserCreationException();
     }
 
-    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId);
+    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId, context);
     if (userRoleId == -1) {
       throw new UserCreationException();
     }
@@ -147,19 +148,19 @@ public class EmployeeInterface {
    * @return the userId of the employee
    * @throws UserCreationException on failure
    */
-  public int createEmployee(String name, int age, String address, String password)
+  public int createEmployee(String name, int age, String address, String password, Context context)
       throws UserCreationException {
-    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password);
+    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password, context);
     if (userId == -1) {
       throw new UserCreationException();
     }
 
-    int roleId = DatabaseInsertHelper.insertRole("EMPLOYEE");
+    int roleId = DatabaseInsertHelper.insertRole("EMPLOYEE", context);
     if (roleId == -1) {
       throw new UserCreationException();
     }
 
-    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId);
+    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId, context);
     if (userRoleId == -1) {
       throw new UserCreationException();
     }

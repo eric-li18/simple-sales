@@ -1,8 +1,9 @@
 package com.b07.store;
 
+import android.content.Context;
 import java.io.BufferedReader;
 import java.io.IOException;
-import com.b07.database.helper.DatabaseInsertHelper;
+import com.b07.database.DatabaseInsertHelper;
 import com.b07.exceptions.UserCreationException;
 import com.b07.validation.Validator;
 
@@ -15,7 +16,7 @@ public class AccountCreation {
    * @return a list of the user info with name, age, address, password stored at the 0-3 indices
    *         respectively
    */
-  public static int createAccount(BufferedReader bufferedReader, String role)
+  public static int createAccount(BufferedReader bufferedReader, String role, Context context)
       throws UserCreationException, IOException {
     if (!Validator.validateRoleName(role)) {
       System.out.println("Input a valid role name.");
@@ -73,15 +74,15 @@ public class AccountCreation {
       }
     } while (!password.equals(password2));
 
-    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password);
+    int userId = DatabaseInsertHelper.insertNewUser(name, age, address, password, context);
     if (userId == -1) {
       throw new UserCreationException();
     }
-    int roleId = DatabaseInsertHelper.insertRole(role);
+    int roleId = DatabaseInsertHelper.insertRole(role, context);
     if (roleId == -1) {
       throw new UserCreationException();
     }
-    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId);
+    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId,context);
     if (userRoleId == -1) {
       throw new UserCreationException();
     }
