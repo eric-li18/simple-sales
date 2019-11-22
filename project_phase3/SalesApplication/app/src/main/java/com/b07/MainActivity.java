@@ -33,5 +33,7 @@ public class MainActivity extends AppCompatActivity {
     for (Integer i : roleIds){
       Log.e(TAG, i.toString());
     }
+    List<Integer> users = DatabaseSelectHelper.getUsersByRole(3, this);
+    Log.e(TAG, "hi");
   }
 }

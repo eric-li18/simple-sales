@@ -319,18 +319,18 @@ public class DatabaseSelectHelper {
   }
 
   public static int getUserAccounts(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     Cursor cursor = null;
     int accId = -1;
 
     if (Validator.validateUserId(userId, context)) {
-      DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
       cursor = myDB.getUserAccounts(userId);
       while (cursor.moveToNext()) {
         accId = cursor.getInt(cursor.getColumnIndex("ID"));
       }
-      cursor.close();
-      myDB.close();
     }
+    cursor.close();
+    myDB.close();
     return accId;
   }
 
