@@ -85,7 +85,7 @@
         android:layout_weight="0.15"
         android:backgroundTint="@color/grey"
         android:importantForAutofill="no"
-        android:inputType="text" />
+        android:inputType="numberPassword" />
     </LinearLayout>
 
     <LinearLayout
@@ -171,7 +171,7 @@
 
     />
   <Button
-    android:onClick="signUp"
+    android:id="@+id/sign_up_button"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_marginStart="20dp"

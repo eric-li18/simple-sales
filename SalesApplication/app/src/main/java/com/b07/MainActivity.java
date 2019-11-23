@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.database.DatabaseSelectHelper;
+import com.b07.store.AccountCreation;
 import com.b07.store.AccountCreationActivity;
 import com.b07.store.StoreAuthenticationActivity;
 import com.b07.users.Roles;
@@ -21,15 +22,19 @@ public class MainActivity extends AppCompatActivity {
     int employeeId = DatabaseSelectHelper.getRoleIdFromName(Roles.EMPLOYEE.name(), this);
     if (adminId == -1 || employeeId == -1) {
       Intent intent = new Intent(this, AccountCreationActivity.class);
+      intent.putExtra("sign_up_display", getResources().getString(R.string.admin_sign_up));
+      intent.putExtra("role", Roles.ADMIN.name());
       startActivity(intent);
 
-//      int userId = DatabaseInsertHelper.insertNewUser("Bryan liu", 19, "idk", "abc123", this);
-//      int roleId = DatabaseInsertHelper.insertRole(Roles.ADMIN.name(), this);
-//      DatabaseInsertHelper.insertUserRole(userId, roleId, this);
+//      finish();
+//      Intent intent2 = new Intent(this, AccountCreationActivity.class);
 //
-//      userId = DatabaseInsertHelper.insertNewUser("Eric Li", 19, "idk", "abc123", this);
-//      roleId = DatabaseInsertHelper.insertRole(Roles.EMPLOYEE.name(), this);
-//      DatabaseInsertHelper.insertUserRole(userId, roleId, this);
+//      intent2.putExtra("sign_up_display", getResources().getString(R.string.employee_sign_up));
+//      intent2.putExtra("role", Roles.EMPLOYEE.name());
+//
+//      startActivity(intent2);
+
+
     } else {
       Intent intent = new Intent(this, StoreAuthenticationActivity.class);
       startActivity(intent);

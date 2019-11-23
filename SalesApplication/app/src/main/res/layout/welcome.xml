@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/almond"
+  android:orientation="vertical">
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.2"/>
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="0.1"
+    android:layout_gravity="center">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/welcome"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+    <TextView
+      android:id="@+id/welcome_name"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futuramedium"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+  </LinearLayout>
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="0.1"
+    android:layout_gravity="center">
+    <TextView
+      android:id="@+id/an_switch"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/welcome_role"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+    <TextView
+      android:id="@+id/welcome_role"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futuramedium"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="0dp"
+    android:layout_weight="0.1"
+    android:layout_gravity="center">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/welcome_user_id"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+    <TextView
+      android:id="@+id/welcome_user_id"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futuramedium"
+      android:textColor="@color/black"
+      android:textSize="20sp"
+      />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/welcome_remember"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+  </LinearLayout>
+
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.4"/>
+
+  <Button
+    android:onClick="continue_button"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.1"
+    android:layout_gravity="center"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="40dp"
+    android:background="@drawable/rounded_30dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/welcome_continue"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+</LinearLayout>

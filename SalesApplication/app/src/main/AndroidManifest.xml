@@ -19,6 +19,7 @@
 
     <activity android:name=".store.StoreAuthenticationActivity"/>
     <activity android:name=".store.AccountCreationActivity"/>
+    <activity android:name=".store.WelcomeActivity"/>
   </application>
 
 </manifest>
