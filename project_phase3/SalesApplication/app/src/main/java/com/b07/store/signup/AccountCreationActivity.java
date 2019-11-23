@@ -1,4 +1,4 @@
-package com.b07.store;
+package com.b07.store.signup;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.b07.store;
+package com.b07.store.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
+import com.b07.store.admin.AdminUIActivity;
+import com.b07.store.CustomerUIActivity;
+import com.b07.store.employee.EmployeeUIActivity;
 import com.b07.users.Roles;
 import com.b07.users.User;
 import com.b07.validation.Validator;
