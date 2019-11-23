@@ -23,6 +23,8 @@
     <activity
       android:name=".store.CustomerUIActivity"
       android:exported="true" />
+    <activity android:name=".store.AdminUIActivity"/>
+    <activity android:name=".store.EmployeeUIActivity"/>
   </application>
 
 </manifest>
