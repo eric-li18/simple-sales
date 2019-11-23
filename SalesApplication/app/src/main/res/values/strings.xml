@@ -43,6 +43,9 @@
   <string name="welcome_remember">,\u0020please remember it.</string>
   <string name="welcome_continue">Continue</string>
 
+  <!--Login page-->
+  <string name="login_error">Your userId or password was not found in the system</string>
+
 <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
   <string name="welcome_back">Welcome back!</string>
