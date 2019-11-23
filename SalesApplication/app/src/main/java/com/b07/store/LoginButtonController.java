@@ -1,6 +1,7 @@
 package com.b07.store;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,13 +40,16 @@ public class LoginButtonController implements View.OnClickListener {
       String roleName = DatabaseSelectHelper.getRoleName(roleId, appContext);
 
       if (roleName.equals(Roles.ADMIN.name())){
-        //TODO
+        Intent intent = new Intent(appContext, AdminUIActivity.class);
+        appContext.startActivity(intent);
       }
       else if(roleName.equals(Roles.EMPLOYEE.name())){
-        //TODO
+        Intent intent = new Intent(appContext, EmployeeUIActivity.class);
+        appContext.startActivity(intent);
       }
-      else if(roleName.equals(Roles.EMPLOYEE.name())){
-        //TODO
+      else if(roleName.equals(Roles.CUSTOMER.name())){
+        Intent intent = new Intent(appContext, CustomerUIActivity.class);
+        appContext.startActivity(intent);
       }
       else{
         Log.e(TAG, "Something went wrong with the authentication.");
