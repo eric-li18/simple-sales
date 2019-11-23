@@ -86,7 +86,7 @@
     android:layout_weight="0.4"/>
 
   <Button
-    android:onClick="continue_button"
+    android:id="@+id/welcome_continue_button"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="0.1"

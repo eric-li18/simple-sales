@@ -20,21 +20,17 @@ public class MainActivity extends AppCompatActivity {
   private void startUp() {
     int adminId = DatabaseSelectHelper.getRoleIdFromName(Roles.ADMIN.name(), this);
     int employeeId = DatabaseSelectHelper.getRoleIdFromName(Roles.EMPLOYEE.name(), this);
-    if (adminId == -1 || employeeId == -1) {
+    if (adminId == -1) {
       Intent intent = new Intent(this, AccountCreationActivity.class);
       intent.putExtra("sign_up_display", getResources().getString(R.string.admin_sign_up));
       intent.putExtra("role", Roles.ADMIN.name());
       startActivity(intent);
-
-//      finish();
-//      Intent intent2 = new Intent(this, AccountCreationActivity.class);
-//
-//      intent2.putExtra("sign_up_display", getResources().getString(R.string.employee_sign_up));
-//      intent2.putExtra("role", Roles.EMPLOYEE.name());
-//
-//      startActivity(intent2);
-
-
+    }
+    else if (employeeId == -1){
+      Intent intent = new Intent(this, AccountCreationActivity.class);
+      intent.putExtra("sign_up_display", getResources().getString(R.string.employee_sign_up));
+      intent.putExtra("role", Roles.EMPLOYEE.name());
+      startActivity(intent);
     } else {
       Intent intent = new Intent(this, StoreAuthenticationActivity.class);
       startActivity(intent);
