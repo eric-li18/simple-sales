@@ -28,6 +28,7 @@
   <!--AccountCreation-->
   <string name="admin_sign_up">Sign up as Admin</string>
   <string name="employee_sign_up">Sign up as Employee</string>
+  <string name="customer_sign_up">Sign up as Customer</string>
   <string name="name_eror">Ensure you have a valid name</string>
   <string name="age_error">Ensure you have a valid age</string>
   <string name="address_error">Ensure you have a valid address</string>
@@ -38,13 +39,15 @@
   <!-- Welcome page-->
   <string name="welcome">Welcome,\u0020</string>
   <string name="welcome_role">You are now an\u0020</string>
-  <string name="welcome_role_an_switch">You are now a</string>
+  <string name="welcome_role_an_switch">You are now a\u0020</string>
   <string name="welcome_user_id">Your userId is\u0020</string>
   <string name="welcome_remember">,\u0020please remember it.</string>
   <string name="welcome_continue">Continue</string>
 
   <!--Login page-->
   <string name="login_error">Your userId or password was not found in the system</string>
+
+  <!--Employee page-->
 
 <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
