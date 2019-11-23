@@ -45,7 +45,7 @@
       android:text="@string/user_id"
       android:textColor="@color/grey" />
     <EditText
-      android:id="@+id/userId"
+      android:id="@+id/login_userId"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:layout_marginLeft="17dp"
@@ -53,7 +53,7 @@
       android:layout_marginBottom="20dp"
       android:backgroundTint="@color/grey"
       android:importantForAutofill="no"
-      android:inputType="text" />
+      android:inputType="numberPassword" />
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
       android:textColor="@color/grey" />
 
     <EditText
-      android:id="@+id/password"
+      android:id="@+id/login_password"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginLeft="17dp"
@@ -73,11 +73,22 @@
       android:inputType="textPassword" />
 
   </LinearLayout>
+  <TextView
+    android:id="@+id/login_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red"
+    android:layout_gravity="center"
+    android:layout_marginTop="30dp"
+
+    />
   <Button
+    android:id="@+id/login_button"
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_marginLeft="20dp"
-    android:layout_marginTop="40dp"
+    android:layout_marginTop="10dp"
     android:layout_marginRight="20dp"
     android:layout_marginBottom="40dp"
     android:layout_weight="0.1"
