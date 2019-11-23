@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.store.admin.AdminUIActivity;
-import com.b07.store.CustomerUIActivity;
+import com.b07.store.customer.CustomerUIActivity;
 import com.b07.store.employee.EmployeeUIActivity;
 import com.b07.users.Roles;
 import com.b07.users.User;
@@ -42,19 +42,16 @@ public class LoginButtonController implements View.OnClickListener {
       int roleId = DatabaseSelectHelper.getUserRoleId(parsedUserId, appContext);
       String roleName = DatabaseSelectHelper.getRoleName(roleId, appContext);
 
-      if (roleName.equals(Roles.ADMIN.name())){
+      if (roleName.equals(Roles.ADMIN.name())) {
         Intent intent = new Intent(appContext, AdminUIActivity.class);
         appContext.startActivity(intent);
-      }
-      else if(roleName.equals(Roles.EMPLOYEE.name())){
+      } else if (roleName.equals(Roles.EMPLOYEE.name())) {
         Intent intent = new Intent(appContext, EmployeeUIActivity.class);
         appContext.startActivity(intent);
-      }
-      else if(roleName.equals(Roles.CUSTOMER.name())){
+      } else if (roleName.equals(Roles.CUSTOMER.name())) {
         Intent intent = new Intent(appContext, CustomerUIActivity.class);
         appContext.startActivity(intent);
-      }
-      else{
+      } else {
         Log.e(TAG, "Something went wrong with the authentication.");
       }
     } else {
