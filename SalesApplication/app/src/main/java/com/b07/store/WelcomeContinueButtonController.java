@@ -6,9 +6,10 @@ import android.view.View;
 import com.b07.MainActivity;
 
 public class WelcomeContinueButtonController implements View.OnClickListener {
+
   private Context appContext;
 
-  public WelcomeContinueButtonController(Context context){
+  public WelcomeContinueButtonController(Context context) {
     appContext = context;
   }
 
