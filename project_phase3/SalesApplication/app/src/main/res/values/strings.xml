@@ -24,15 +24,28 @@
   <string name="add">ADD TO CART</string>
   <string name="checkout">Checkout</string>
 
+
   <!--AccountCreation-->
+  <string name="admin_sign_up">Sign up as Admin</string>
+  <string name="employee_sign_up">Sign up as Employee</string>
   <string name="name_eror">Ensure you have a valid name</string>
   <string name="age_error">Ensure you have a valid age</string>
   <string name="address_error">Ensure you have a valid address</string>
   <string name="password_error">Ensure you have a valid password</string>
   <string name="password_mismatch">Your passwords do not match</string>
+
+
+  <!-- Welcome page-->
+  <string name="welcome">Welcome,\u0020</string>
+  <string name="welcome_role">You are now an\u0020</string>
+  <string name="welcome_role_an_switch">You are now a</string>
+  <string name="welcome_user_id">Your userId is\u0020</string>
+  <string name="welcome_remember">,\u0020please remember it.</string>
+  <string name="welcome_continue">Continue</string>
+
 <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
-  <string name="welcome">Welcome back!</string>
+  <string name="welcome_back">Welcome back!</string>
 <!--  Tien-->
   <string name="add_customer">Add a new customer</string>
   <string name="add_employee">Add a new employee</string>
