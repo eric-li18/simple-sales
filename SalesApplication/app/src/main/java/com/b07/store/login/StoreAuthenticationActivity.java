@@ -1,4 +1,4 @@
-package com.b07.store;
+package com.b07.store.login;
 
 import android.os.Bundle;
 import android.widget.Button;

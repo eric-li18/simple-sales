@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.database.DatabaseSelectHelper;
-import com.b07.store.AccountCreationActivity;
-import com.b07.store.StoreAuthenticationActivity;
+import com.b07.store.signup.AccountCreationActivity;
+import com.b07.store.login.StoreAuthenticationActivity;
 import com.b07.users.Roles;
 
 public class MainActivity extends AppCompatActivity {
