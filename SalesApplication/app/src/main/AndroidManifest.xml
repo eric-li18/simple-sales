@@ -20,11 +20,9 @@
     <activity android:name=".store.login.StoreAuthenticationActivity" />
     <activity android:name=".store.signup.AccountCreationActivity" />
     <activity android:name=".store.signup.WelcomeActivity" />
-    <activity
-      android:name=".store.customer.CustomerUIActivity"
-      android:exported="true" />
-    <activity android:name=".store.admin.AdminUIActivity"/>
-    <activity android:name=".store.employee.EmployeeUIActivity"/>
+    <activity android:name=".store.customer.CustomerUIActivity" />
+    <activity android:name=".store.admin.AdminUIActivity" />
+    <activity android:name=".store.employee.EmployeeUIActivity" />
   </application>
 
 </manifest>
