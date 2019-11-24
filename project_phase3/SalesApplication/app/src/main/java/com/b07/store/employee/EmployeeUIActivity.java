@@ -13,6 +13,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
 
     LinearLayout addCustomerButton = findViewById(R.id.employee_add_customer);
     addCustomerButton.setOnClickListener(new AddCustomerButtonController(this));
+
+    LinearLayout addEmployeeButton = findViewById(R.id.employee_add_employee);
+    addEmployeeButton.setOnClickListener(new AddEmployeeButtonController(this));
   }
 
   @Override
