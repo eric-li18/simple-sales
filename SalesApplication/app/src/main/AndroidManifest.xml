@@ -23,6 +23,7 @@
     <activity android:name=".store.customer.CustomerUIActivity" />
     <activity android:name=".store.admin.AdminUIActivity" />
     <activity android:name=".store.employee.EmployeeUIActivity" />
+    <activity android:name=".store.employee.InsertNewItemActivity"/>
   </application>
 
 </manifest>

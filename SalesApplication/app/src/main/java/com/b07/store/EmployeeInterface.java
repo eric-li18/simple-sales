@@ -2,6 +2,7 @@ package com.b07.store;
 
 import android.content.Context;
 import com.b07.validation.Validator;
+import java.io.Serializable;
 import java.sql.SQLException;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.database.DatabaseUpdateHelper;
@@ -11,7 +12,7 @@ import com.b07.inventory.Inventory;
 import com.b07.inventory.Item;
 import com.b07.users.Employee;
 
-public class EmployeeInterface {
+public class EmployeeInterface implements Serializable {
 
   private Employee currentEmployee;
   private Inventory inventory;
@@ -22,12 +23,10 @@ public class EmployeeInterface {
    * @param employee  the employee
    * @param inventory the inventory
    */
-  public EmployeeInterface(Employee employee, Inventory inventory) throws AuthenticationException {
+  public EmployeeInterface(Employee employee, Inventory inventory){
     if (employee.isAuthenticated()) {
       this.currentEmployee = employee;
       this.inventory = inventory;
-    } else {
-      throw new AuthenticationException();
     }
   }
 

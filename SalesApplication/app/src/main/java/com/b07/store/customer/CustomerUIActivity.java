@@ -51,7 +51,7 @@ public class CustomerUIActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.customer);
 
-    TextView greeting = findViewById(R.id.greeting);
+    TextView greeting = findViewById(R.id.employee_greeting);
     ImageView logout = findViewById(R.id.customer_logout);
     Intent intent = getIntent();
     String greetingText = "Hi " + intent.getStringExtra("name") + ",";

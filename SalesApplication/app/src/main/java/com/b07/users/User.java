@@ -3,13 +3,14 @@ package com.b07.users;
 import android.content.Context;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.security.PasswordHelpers;
+import java.io.Serializable;
 
 /**
  * Abstract class for user
  *
  * @author Eric
  */
-public abstract class User {
+public abstract class User implements Serializable {
 
   private int id;
   private String name;

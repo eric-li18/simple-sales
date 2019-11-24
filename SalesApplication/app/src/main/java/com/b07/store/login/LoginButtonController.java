@@ -47,6 +47,9 @@ public class LoginButtonController implements View.OnClickListener {
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.EMPLOYEE.name())) {
         Intent intent = new Intent(appContext, EmployeeUIActivity.class);
+        String name = user.getName();
+        intent.putExtra("name", name);
+        intent.putExtra("userId", parsedUserId);
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.CUSTOMER.name())) {
         Intent intent = new Intent(appContext, CustomerUIActivity.class);
