@@ -50,6 +50,8 @@ public class LoginButtonController implements View.OnClickListener {
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.CUSTOMER.name())) {
         Intent intent = new Intent(appContext, CustomerUIActivity.class);
+        String name = DatabaseSelectHelper.getUserDetails(user.getId(), appContext).getName();
+        intent.putExtra("name", name);
         appContext.startActivity(intent);
       } else {
         Log.e(TAG, "Something went wrong with the authentication.");

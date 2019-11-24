@@ -1,5 +1,5 @@
 <resources>
-<!--  Bryan-->
+  <!--  Bryan-->
   <string name="app_name">SalesApplication</string>
   <string name="sign_in">Sign in as</string>
   <string name="admin">Admin</string>
@@ -49,14 +49,18 @@
 
   <!--Employee page-->
 
-<!--  Eric-->
+  <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
   <string name="welcome_back">Welcome back!</string>
-<!--  Tien-->
+  <string name="dollar_sign">$</string>
+  <string name="total_price">Total: $</string>
+  <string name="inventory_quantity">Inventory has: </string>
+
+  <!--  Tien-->
   <string name="add_customer">Add a new customer</string>
   <string name="add_employee">Add a new employee</string>
   <string name="restock">Restock inventory</string>
   <string name="promote">Promote an employee</string>
   <string name="sales_log">View sales log</string>
-<!--  Harry-->
+  <!--  Harry-->
 </resources>
