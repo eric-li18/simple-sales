@@ -101,6 +101,8 @@
         </LinearLayout>
 
         <LinearLayout
+          android:id="@+id/employee_add_employee"
+          android:clickable="true"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:orientation="horizontal">
