@@ -2,9 +2,10 @@ package com.b07.inventory;
 
 //import com.b07.validation.Validator;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class InventoryImpl implements Inventory {
+public class InventoryImpl implements Inventory, Serializable {
 
   private HashMap<Item, Integer> itemMap;
   private int totalItems;

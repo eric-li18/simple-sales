@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/almond"
+  android:orientation="vertical">
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.2" />
+
+  <ImageView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.07"
+    android:contentDescription="@string/logo"
+    android:src="@drawable/salesapplogo" />
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="0.1" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_weight="0.5"
+    android:background="@drawable/rounded_30dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="30dp"
+      android:layout_marginBottom="30dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="@string/employee_insert_item"
+      android:textColor="@color/black"
+      android:textSize="20sp" />
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/employee_item_name"
+      android:textColor="@color/grey" />
+    <EditText
+      android:id="@+id/employee_insert_item_name"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/grey"
+      android:importantForAutofill="no"
+      android:inputType="text" />
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:fontFamily="@font/futurabook"
+          android:text="@string/employee_item_price"
+          android:textColor="@color/grey" />
+
+        <EditText
+          android:id="@+id/employee_insert_item_price"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="17dp"
+          android:layout_marginRight="17dp"
+          android:backgroundTint="@color/grey"
+          android:importantForAutofill="no"
+          android:inputType="numberDecimal" />
+      </LinearLayout>
+
+      <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="20dp"
+          android:fontFamily="@font/futurabook"
+          android:text="@string/employee_quantity"
+          android:textColor="@color/grey" />
+
+        <EditText
+          android:id="@+id/employee_insert_item_quantity"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="17dp"
+          android:layout_marginRight="17dp"
+          android:backgroundTint="@color/grey"
+          android:importantForAutofill="no"
+          android:inputType="numberPassword" />
+      </LinearLayout>
+
+    </LinearLayout>
+
+  </LinearLayout>
+  <TextView
+    android:id="@+id/employee_insert_item_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="30dp"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red" />
+
+  <Button
+    android:id="@+id/employee_insert_item_submit_button"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="40dp"
+    android:layout_weight="0.1"
+    android:background="@drawable/rounded_30dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/employee_submit"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+
+</LinearLayout>

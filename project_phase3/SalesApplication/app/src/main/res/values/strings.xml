@@ -48,6 +48,16 @@
   <string name="login_error">Your userId or password was not found in the system</string>
 
   <!--Employee page-->
+  <string name="employee_insert_item">Insert new item</string>
+  <string name="employee_add_account">Add a new account</string>
+  <string name="employee_submit">Submit</string>
+  <string name="employee_item_name">Item name</string>
+  <string name="employee_item_price">Price</string>
+  <string name="employee_quantity">Quantity</string>
+  <string name="item_name_error">Ensure you have a valid item name</string>
+  <string name="item_price_error">Ensure you have a valid item price</string>
+  <string name="item_quantity_error">Ensure you have a valid item quantity</string>
+
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
