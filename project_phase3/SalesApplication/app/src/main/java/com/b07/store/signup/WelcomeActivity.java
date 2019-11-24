@@ -19,10 +19,10 @@ public class WelcomeActivity extends AppCompatActivity {
     TextView userId = findViewById(R.id.welcome_user_id);
     TextView anSwitch = findViewById(R.id.an_switch);
 
-    Button continueButton = findViewById(R.id.welcome_continue_button);
-    continueButton.setOnClickListener(new WelcomeContinueButtonController(this));
-
     Intent intent = getIntent();
+    String access = intent.getStringExtra("access");
+    Button continueButton = findViewById(R.id.welcome_continue_button);
+    continueButton.setOnClickListener(new WelcomeContinueButtonController(this, access));
 
     String role_name = intent.getStringExtra("role");
     if (role_name.equals(Roles.CUSTOMER.name())) {
@@ -32,5 +32,10 @@ public class WelcomeActivity extends AppCompatActivity {
     name.setText(intent.getStringExtra("name"));
     userId.setText(intent.getStringExtra("userId"));
     role.setText(role_name);
+  }
+
+  @Override
+  public void onBackPressed() {
+    return;
   }
 }

@@ -23,11 +23,13 @@ public class MainActivity extends AppCompatActivity {
       Intent intent = new Intent(this, AccountCreationActivity.class);
       intent.putExtra("sign_up_display", getResources().getString(R.string.admin_sign_up));
       intent.putExtra("role", Roles.ADMIN.name());
+      intent.putExtra("access", "init");
       startActivity(intent);
     } else if (employeeId == -1) {
       Intent intent = new Intent(this, AccountCreationActivity.class);
       intent.putExtra("sign_up_display", getResources().getString(R.string.employee_sign_up));
       intent.putExtra("role", Roles.EMPLOYEE.name());
+      intent.putExtra("access", "init");
       startActivity(intent);
     } else {
       Intent intent = new Intent(this, StoreAuthenticationActivity.class);

@@ -18,4 +18,9 @@ public class StoreAuthenticationActivity extends AppCompatActivity {
     EditText userId = findViewById(R.id.login_userId);
     userId.setTransformationMethod(null);
   }
+
+  @Override
+  public void onBackPressed() {
+    return;
+  }
 }

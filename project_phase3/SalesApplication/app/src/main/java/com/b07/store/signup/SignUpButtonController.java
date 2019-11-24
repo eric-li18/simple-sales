@@ -13,10 +13,12 @@ public class SignUpButtonController implements View.OnClickListener {
 
   private Context appContext;
   private String role;
+  private String access;
 
-  public SignUpButtonController(Context context, String role) {
+  public SignUpButtonController(Context context, String role, String access) {
     appContext = context;
     this.role = role;
+    this.access = access;
   }
 
   @Override
@@ -70,7 +72,9 @@ public class SignUpButtonController implements View.OnClickListener {
       intent.putExtra("name", parseName);
       intent.putExtra("role", role);
       intent.putExtra("userId", String.valueOf(userId));
+      intent.putExtra("access", access);
       appContext.startActivity(intent);
+      ((AccountCreationActivity)appContext).finish();
     }
   }
 }

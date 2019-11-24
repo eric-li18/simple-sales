@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
+import com.b07.store.LogoutButtonController;
 
 /**
  * @author Eric
@@ -26,5 +27,10 @@ public class CustomerUIActivity extends AppCompatActivity {
     greeting.setText(intent.getStringExtra("name"));
     logout.setOnClickListener(new LogoutButtonController(this));
 
+  }
+
+  @Override
+  public void onBackPressed() {
+    return;
   }
 }

@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
+import com.b07.store.AccountCreation;
 
 
 public class AccountCreationActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class AccountCreationActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     String role = intent.getStringExtra("role");
+    String access = intent.getStringExtra("access");
 
     TextView sign_up = findViewById(R.id.sign_up);
     EditText age = findViewById(R.id.age);
@@ -24,6 +26,7 @@ public class AccountCreationActivity extends AppCompatActivity {
 
     sign_up.setText(intent.getStringExtra("sign_up_display"));
     age.setTransformationMethod(null);
-    signUpButton.setOnClickListener(new SignUpButtonController(this, role));
+    signUpButton.setOnClickListener(new SignUpButtonController(this, role, access));
   }
+
 }
