@@ -1,9 +1,11 @@
 package com.b07.store.employee;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
+import com.b07.store.LogoutButtonController;
 
 public class EmployeeUIActivity extends AppCompatActivity {
   @Override
@@ -16,6 +18,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
 
     LinearLayout addEmployeeButton = findViewById(R.id.employee_add_employee);
     addEmployeeButton.setOnClickListener(new AddEmployeeButtonController(this));
+
+    ImageView logoutButton = findViewById(R.id.employee_logout);
+    logoutButton.setOnClickListener(new LogoutButtonController(this));
   }
 
   @Override
