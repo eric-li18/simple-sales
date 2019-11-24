@@ -8,14 +8,21 @@ import com.b07.MainActivity;
 public class WelcomeContinueButtonController implements View.OnClickListener {
 
   private Context appContext;
+  private String access;
 
-  public WelcomeContinueButtonController(Context context) {
+  public WelcomeContinueButtonController(Context context, String access) {
     appContext = context;
+    this.access = access;
   }
 
   @Override
   public void onClick(View v) {
-    Intent intent = new Intent(appContext, MainActivity.class);
-    appContext.startActivity(intent);
+    if (access.equals("employeeAccess")){
+      ((WelcomeActivity)appContext).finish();
+    }
+    else {
+      Intent intent = new Intent(appContext, MainActivity.class);
+      appContext.startActivity(intent);
+    }
   }
 }

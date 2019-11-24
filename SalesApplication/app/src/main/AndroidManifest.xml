@@ -21,7 +21,7 @@
     <activity android:name=".store.signup.AccountCreationActivity" />
     <activity android:name=".store.signup.WelcomeActivity" />
     <activity
-      android:name=".store.CustomerUIActivity"
+      android:name=".store.customer.CustomerUIActivity"
       android:exported="true" />
     <activity android:name=".store.admin.AdminUIActivity"/>
     <activity android:name=".store.employee.EmployeeUIActivity"/>
