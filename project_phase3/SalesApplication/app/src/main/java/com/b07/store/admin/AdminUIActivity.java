@@ -15,4 +15,9 @@ public class AdminUIActivity extends AppCompatActivity {
     ImageView logoutButton = findViewById(R.id.admin_logout);
     logoutButton.setOnClickListener(new LogoutButtonController(this));
   }
+
+  @Override
+  public void onBackPressed() {
+    return;
+  }
 }
