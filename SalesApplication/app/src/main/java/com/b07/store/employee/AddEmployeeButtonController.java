@@ -22,6 +22,7 @@ public class AddEmployeeButtonController implements View.OnClickListener {
         appContext.getResources().getString(R.string.employee_sign_up));
     intent.putExtra("role", Roles.EMPLOYEE.name());
     intent.putExtra("access", "employeeAccess");
+    intent.putExtra("backPress", "yes");
     appContext.startActivity(intent);
   }
 }

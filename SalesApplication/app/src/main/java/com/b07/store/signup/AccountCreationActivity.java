@@ -29,4 +29,14 @@ public class AccountCreationActivity extends AppCompatActivity {
     signUpButton.setOnClickListener(new SignUpButtonController(this, role, access));
   }
 
+  @Override
+  public void onBackPressed() {
+    Intent intent = getIntent();
+    if (intent.getStringExtra("backPress").equals("no")){
+      return;
+    }
+    else{
+      super.onBackPressed();
+    }
+  }
 }

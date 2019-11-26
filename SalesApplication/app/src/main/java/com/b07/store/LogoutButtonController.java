@@ -19,6 +19,7 @@ public class LogoutButtonController implements View.OnClickListener {
     Toast toast = Toast.makeText(appContext, "Logging out...", Toast.LENGTH_SHORT);
     toast.show();
     Intent intent = new Intent(appContext, StoreAuthenticationActivity.class);
+    intent.putExtra("backPress", "no");
     appContext.startActivity(intent);
   }
 }
