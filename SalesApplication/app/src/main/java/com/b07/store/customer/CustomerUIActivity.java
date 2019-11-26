@@ -19,7 +19,6 @@ import com.b07.inventory.ItemTypes;
 import com.b07.store.LogoutButtonController;
 import com.b07.store.ShoppingCart;
 import com.b07.users.Customer;
-import com.b07.users.User;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -28,7 +27,7 @@ import java.util.List;
  */
 public class CustomerUIActivity extends AppCompatActivity {
 
-  private void renderShop(User user, ShoppingCart cart) {
+  private void renderShop(ShoppingCart cart) {
     int count = 1;
     for (ItemTypes itemType : ItemTypes.values()) {
       String itemIdName = "customer_itemname" + count;
@@ -63,26 +62,12 @@ public class CustomerUIActivity extends AppCompatActivity {
           .substring(1).toLowerCase()).replace("_", " ");
       itemTextView.setText(itemName);
 
-      if (item != null) {
-        int quantity = DatabaseSelectHelper.getInventoryQuantity(item.getId(), this);
-
-        itemLayout.setOnClickListener(
-            new ItemLayoutController(this, (ItemImpl) item, quantity, itemName, cart));
-
+      if (item != null && DatabaseSelectHelper.getInventoryQuantity(item.getId(), this) > 0) {
+        itemLayout
+            .setOnClickListener(new ItemLayoutController(this, (ItemImpl) item, itemName, cart));
       } else {
         itemFrameLayout.setVisibility(View.GONE);
       }
-//      HashMap<Item, Integer> itemMap = DatabaseSelectHelper.getInventory(this).getItemMap();
-//
-//      if (itemMap != null && itemMap.containsKey(item) && itemMap.get(item) != null) {
-//        if (itemMap.get(item).compareTo(Integer.valueOf(0)) > 0) {
-//          itemLayout.setOnClickListener(
-//              new ItemLayoutController(this, (ItemImpl) item, itemMap.get(item).intValue(),
-//                  itemName, user, cart));
-//        }
-//      } else {
-//        itemFrameLayout.setVisibility(View.GONE);
-//      }
 
       count++;
     }
@@ -109,7 +94,7 @@ public class CustomerUIActivity extends AppCompatActivity {
     greeting.setText(greetingText);
     logout.setOnClickListener(new LogoutButtonController(this));
 
-    renderShop(customer, cart);
+    renderShop(cart);
   }
 
   @Override

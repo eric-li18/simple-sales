@@ -10,15 +10,12 @@ public class ItemLayoutController implements View.OnClickListener {
 
   private Context appContext;
   private ItemImpl item;
-  private int inventoryQuantity;
   private String itemName;
   private ShoppingCart cart;
 
-  public ItemLayoutController(Context context, ItemImpl item, int inventoryQuantity,
-      String itemName, ShoppingCart cart) {
+  public ItemLayoutController(Context context, ItemImpl item, String itemName, ShoppingCart cart) {
     appContext = context;
     this.item = item;
-    this.inventoryQuantity = inventoryQuantity;
     this.itemName = itemName;
     this.cart = cart;
   }
@@ -27,7 +24,6 @@ public class ItemLayoutController implements View.OnClickListener {
   public void onClick(View v) {
     Intent intent = new Intent(appContext, AddItemActivity.class);
     intent.putExtra("item", item);
-    intent.putExtra("inventoryQuantity", inventoryQuantity);
     intent.putExtra("itemName", itemName);
     intent.putExtra("cart", cart);
     appContext.startActivity(intent);
