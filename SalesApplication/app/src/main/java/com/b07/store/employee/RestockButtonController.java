@@ -42,31 +42,32 @@ public class RestockButtonController implements View.OnClickListener {
     if (!Validator.validateEmpty(itemId.getText().toString())) {
       parsedItemId = Integer.parseInt(itemId.getText().toString());
     }
-
     if (!Validator.validateEmpty(itemQuantity.getText().toString())) {
       parsedItemQuantity = Integer.parseInt(itemQuantity.getText().toString());
     }
-
-    if (!Validator.validateItemId(parsedItemId, appContext)) {
+    if (!Validator.validateItemId(parsedItemId, appContext)
+        || DatabaseSelectHelper.getItem(parsedItemId, appContext) == null) {
       error.setText(R.string.item_id_error);
     } else if (!Validator.validateRestockQuantity(parsedItemQuantity)) {
       error.setText(R.string.item_quantity_error);
+    } else {
+      Item itemRestock = DatabaseSelectHelper.getItem(parsedItemId, appContext);
+      employeeInterface.restockInventory(itemRestock, parsedItemQuantity, appContext);
+
+      Inventory inventory = DatabaseSelectHelper.getInventory(appContext);
+      HashMap<Item, Integer> itemMap = inventory.getItemMap();
+
+      Toast toast = Toast.makeText(appContext, "Restocking item...", Toast.LENGTH_SHORT);
+      toast.show();
+
+      String inventoryText = "";
+      for (Item item : itemMap.keySet()) {
+        inventoryText +=
+            item.getId() + " - " + item.getName().replace("_", " ") + ": " + itemMap.get(item)
+                + "\n";
+      }
+      inventoryList.setText(inventoryText);
+      error.setText("");
     }
-
-    Item itemRestock = DatabaseSelectHelper.getItem(parsedItemId, appContext);
-    employeeInterface.restockInventory(itemRestock, parsedItemQuantity, appContext);
-
-    Inventory inventory = DatabaseSelectHelper.getInventory(appContext);
-    HashMap<Item, Integer> itemMap = inventory.getItemMap();
-
-    Toast toast = Toast.makeText(appContext, "Restocking item...", Toast.LENGTH_SHORT);
-    toast.show();
-
-    String inventoryText = "";
-    for (Item item : itemMap.keySet()) {
-      inventoryText +=
-          item.getId() + " - " + item.getName().replace("_", " ") + ": " + itemMap.get(item) + "\n";
-    }
-    inventoryList.setText(inventoryText);
   }
 }
