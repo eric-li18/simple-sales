@@ -1,4 +1,4 @@
-package com.b07.store;
+package com.b07.store.customer;
 
 import android.content.Context;
 import android.util.Log;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.b07.R;
 import com.b07.database.DatabaseUpdateHelper;
 import com.b07.inventory.Item;
+import com.b07.store.ShoppingCart;
 import com.b07.store.customer.AddItemActivity;
 
 public class AddToCartController implements View.OnClickListener {

@@ -36,6 +36,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
         user.getAddress(), true);
     EmployeeInterface employeeInterface = new EmployeeInterface(employee, inventory);
 
+    LinearLayout authenticateEmployee = findViewById(R.id.employee_authenticate_employee);
+    authenticateEmployee.setOnClickListener(new AuthenticateEmployeeButtonController(this));
+
     LinearLayout addCustomerButton = findViewById(R.id.employee_add_customer);
     addCustomerButton.setOnClickListener(new AddCustomerButtonController(this));
 
