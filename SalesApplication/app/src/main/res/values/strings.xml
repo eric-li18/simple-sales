@@ -66,6 +66,7 @@
   <string name="employee_item_quantity">Quantity:</string>
   <string name="item_id_error">Ensure you have a valid item id</string>
   <string name="duplicate_insert_item_error">This item is already in the inventory</string>
+  <string name="authenticate_employee">Authenticate employee</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>

@@ -8,22 +8,22 @@
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    android:orientation="horizontal">
     <TextView
       android:id="@+id/employee_greeting"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
+      android:layout_gravity="end"
       android:layout_marginStart="25dp"
       android:fontFamily="@font/futuramedium"
       android:text="@string/hi"
-      android:layout_gravity="end"
       android:textColor="@color/black"
       android:textSize="36sp" />
-  <View
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="1"/>
+    <View
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="1" />
     <ImageView
       android:id="@+id/employee_logout"
       android:layout_width="35dp"
@@ -40,10 +40,64 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:layout_marginTop="30dp"
-    android:layout_marginBottom="-25dp"
+    android:layout_marginBottom="-15dp"
     android:background="@drawable/rounded_40dp"
     android:backgroundTint="@color/white"
     android:orientation="vertical">
+
+    <LinearLayout
+      android:id="@+id/employee_authenticate_employee"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
+      android:clickable="true"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+
+        <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="7.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="7.5dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/customer_icon" />
+
+      </LinearLayout>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/authenticate_employee"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:layout_gravity="center"
+      android:layout_marginStart="35dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginEnd="45dp"
+      android:layout_marginBottom="5dp"
+      android:background="@color/light_grey"
+      android:baselineAligned="false" />
 
     <LinearLayout
       android:id="@+id/employee_add_customer"
@@ -86,7 +140,7 @@
         android:text="@string/add_customer"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -140,7 +194,7 @@
         android:text="@string/employee_add_account"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -197,7 +251,7 @@
         android:text="@string/add_employee"
         android:textAlignment="viewStart"
         android:textColor="#000000"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -251,7 +305,7 @@
         android:fontFamily="@font/futuramedium"
         android:text="@string/restock"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     </LinearLayout>
 
@@ -270,10 +324,10 @@
       android:id="@+id/employee_insert_item"
       android:layout_width="match_parent"
       android:layout_height="0dp"
+      android:layout_marginBottom="20dp"
       android:layout_weight="0.15"
       android:clickable="true"
-      android:orientation="horizontal"
-      android:layout_marginBottom="20dp">
+      android:orientation="horizontal">
 
       <LinearLayout
         android:layout_width="60dp"
@@ -305,7 +359,7 @@
         android:fontFamily="@font/futuramedium"
         android:text="@string/employee_insert_item"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
     </LinearLayout>
   </LinearLayout>
 </LinearLayout>
