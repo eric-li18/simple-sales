@@ -23,7 +23,9 @@
     <activity android:name=".store.customer.CustomerUIActivity" />
     <activity android:name=".store.admin.AdminUIActivity" />
     <activity android:name=".store.employee.EmployeeUIActivity" />
-    <activity android:name=".store.employee.InsertNewItemActivity"/>
+    <activity android:name=".store.customer.AddItemActivity" />
+    <activity android:name=".store.customer.ShoppingCartActivity" />
+    <activity android:name=".store.employee.InsertNewItemActivity" />
     <activity android:name=".store.employee.RestockInventoryActivity"/>
   </application>
 

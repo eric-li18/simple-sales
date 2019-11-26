@@ -11,6 +11,7 @@ import com.b07.database.DatabaseSelectHelper;
 import com.b07.store.admin.AdminUIActivity;
 import com.b07.store.customer.CustomerUIActivity;
 import com.b07.store.employee.EmployeeUIActivity;
+import com.b07.users.Customer;
 import com.b07.users.Roles;
 import com.b07.users.User;
 import com.b07.validation.Validator;
@@ -53,8 +54,9 @@ public class LoginButtonController implements View.OnClickListener {
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.CUSTOMER.name())) {
         Intent intent = new Intent(appContext, CustomerUIActivity.class);
-        String name = DatabaseSelectHelper.getUserDetails(user.getId(), appContext).getName();
-        intent.putExtra("name", name);
+        Customer customer = new Customer(user.getId(), user.getName(), user.getAge(),
+            user.getAddress(), true, appContext);
+        intent.putExtra("user", customer);
         appContext.startActivity(intent);
       } else {
         Log.e(TAG, "Something went wrong with the authentication.");

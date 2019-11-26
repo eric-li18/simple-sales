@@ -10,19 +10,31 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="25dp"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="25dp"
     android:fontFamily="@font/futuramedium"
     android:textColor="@color/black"
     android:textSize="30sp" />
-  <TextView
-    android:id="@+id/textView8"
+  <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    android:layout_marginTop="125dp"
-    android:fontFamily="@font/futuramedium"
-    android:text="@string/inventory_quantity"
-    android:textSize="22sp" />
+    android:orientation="horizontal">
+    <TextView
+      android:id="@+id/textView8"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="25dp"
+      android:layout_marginTop="115dp"
+      android:layout_marginRight="5dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="@string/inventory_quantity"
+      android:textSize="22sp" />
+    <TextView
+      android:id="@+id/add_item_inventoryquantity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="115dp"
+      android:textSize="22sp" />
+  </LinearLayout>
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="200dp"
@@ -40,8 +52,8 @@
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="90dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/rounded_40dp"
         android:backgroundTint="@color/yellow"
         android:text="-"
@@ -49,18 +61,19 @@
         android:textSize="40sp" />
       <TextView
         android:id="@+id/add_item_quantity"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_margin="15dp"
+        android:textAlignment="center"
         android:textSize="30sp" />
       <Button
         android:id="@+id/add_item_addquantity"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_gravity="right|center_vertical"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="65dp"
         android:background="@drawable/rounded_40dp"
         android:backgroundTint="@color/yellow"
         android:text="+"
@@ -80,7 +93,7 @@
       android:layout_marginTop="100dp"
       android:fontFamily="@font/futuramedium"
       android:text="@string/total_price"
-      android:textSize="30sp" />
+      android:textSize="28sp" />
     <TextView
       android:id="@+id/add_item_totalprice"
       android:layout_width="wrap_content"
@@ -90,11 +103,11 @@
       android:textSize="28sp" />
   </LinearLayout>
   <Button
-    android:id="@+id/button5"
+    android:id="@+id/add_item_addtocart"
     android:layout_width="350dp"
     android:layout_height="60dp"
     android:layout_gravity="center"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="5dp"
     android:background="@drawable/rounded_40dp"
     android:backgroundTint="@color/orange"
     android:fontFamily="@font/futuramedium"
