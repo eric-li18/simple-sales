@@ -1,22 +1,16 @@
 package com.b07.store.employee;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.Item;
-import com.b07.store.EmployeeInterface;
 import com.b07.users.Employee;
 import java.util.HashMap;
 
@@ -32,9 +26,10 @@ public class RestockInventoryActivity extends AppCompatActivity {
     EditText itemQuantity = findViewById(R.id.employee_restock_item_quantity);
 
     Intent intent = getIntent();
-    EmployeeInterface employeeInterface = (EmployeeInterface)intent.getSerializableExtra("employeeInterface");
+    Employee employee = (Employee) intent.getSerializableExtra("user");
+
     Button restockButton = findViewById(R.id.employee_restock_item_button);
-    restockButton.setOnClickListener(new RestockButtonController(this, employeeInterface));
+    restockButton.setOnClickListener(new RestockButtonController(this, employee));
 
     itemId.setTransformationMethod(null);
     itemQuantity.setTransformationMethod(null);

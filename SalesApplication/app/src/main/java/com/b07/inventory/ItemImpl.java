@@ -1,9 +1,8 @@
 package com.b07.inventory;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class ItemImpl implements Item, Serializable {
+public class ItemImpl implements Item {
 
   private int id;
   private String name;
@@ -21,8 +20,8 @@ public class ItemImpl implements Item, Serializable {
   /**
    * Constructor for ItemImpl with parameters
    *
-   * @param id    the itemId
-   * @param name  the item name
+   * @param id the itemId
+   * @param name the item name
    * @param price the item price
    */
   public ItemImpl(int id, String name, BigDecimal price) {

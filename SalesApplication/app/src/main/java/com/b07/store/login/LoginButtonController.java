@@ -12,6 +12,7 @@ import com.b07.store.admin.AdminUIActivity;
 import com.b07.store.customer.CustomerUIActivity;
 import com.b07.store.employee.EmployeeUIActivity;
 import com.b07.users.Customer;
+import com.b07.users.Employee;
 import com.b07.users.Roles;
 import com.b07.users.User;
 import com.b07.validation.Validator;
@@ -48,9 +49,13 @@ public class LoginButtonController implements View.OnClickListener {
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.EMPLOYEE.name())) {
         Intent intent = new Intent(appContext, EmployeeUIActivity.class);
-        String name = user.getName();
-        intent.putExtra("name", name);
-        intent.putExtra("userId", parsedUserId);
+//        String name = user.getName();
+//        intent.putExtra("name", name);
+//        intent.putExtra("userId", parsedUserId);
+
+        Employee employee = new Employee(user.getId(), user.getName(), user.getAge(),
+            user.getAddress(), true);
+        intent.putExtra("user", employee);
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.CUSTOMER.name())) {
         Intent intent = new Intent(appContext, CustomerUIActivity.class);

@@ -1,5 +1,6 @@
 package com.b07.inventory;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -7,7 +8,7 @@ import java.util.HashMap;
  *
  * @author bryanliu
  */
-public interface Inventory {
+public interface Inventory extends Serializable {
 
   /**
    * Method for returning the item map
