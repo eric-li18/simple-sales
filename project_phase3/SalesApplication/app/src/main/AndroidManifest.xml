@@ -26,7 +26,7 @@
     <activity android:name=".store.customer.AddItemActivity" />
     <activity android:name=".store.customer.ShoppingCartActivity" />
     <activity android:name=".store.employee.InsertNewItemActivity" />
-    <activity android:name=".store.employee.RestockInventoryActivity"/>
+    <activity android:name=".store.employee.RestockInventoryActivity" />
   </application>
 
 </manifest>

@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Item;
-import com.b07.store.AddToCartController;
 import com.b07.store.ShoppingCart;
 
 public class AddItemActivity extends AppCompatActivity {
@@ -22,7 +21,6 @@ public class AddItemActivity extends AppCompatActivity {
     Intent intent = getIntent();
 
     Item item = (Item) intent.getSerializableExtra("item");
-//    int inventoryQuantity = intent.getIntExtra("inventoryQuantity", -1);
     String formattedItemName = intent.getStringExtra("itemName");
     ShoppingCart cart = (ShoppingCart) intent.getSerializableExtra("cart");
     int inventoryQuantity = DatabaseSelectHelper.getInventoryQuantity(item.getId(), this);
