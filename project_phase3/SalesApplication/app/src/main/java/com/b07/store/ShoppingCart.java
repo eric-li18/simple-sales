@@ -7,12 +7,13 @@ import com.b07.database.DatabaseUpdateHelper;
 import com.b07.exceptions.AuthenticationException;
 import com.b07.inventory.Item;
 import com.b07.users.Customer;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class ShoppingCart {
+public class ShoppingCart implements Serializable {
 
   private HashMap<Item, Integer> items;
   private Customer customer;
@@ -27,8 +28,8 @@ public class ShoppingCart {
   public ShoppingCart(Customer customer) throws AuthenticationException {
     if (customer.isAuthenticated()) {
       this.customer = customer;
-      this.items = new HashMap<>();
-      this.total = BigDecimal.ZERO;
+      items = new HashMap<>();
+      total = BigDecimal.ZERO;
     } else {
       throw new AuthenticationException();
     }
@@ -37,7 +38,7 @@ public class ShoppingCart {
   /**
    * Method to add item to the cart
    *
-   * @param item     the item
+   * @param item the item
    * @param quantity the quantity of the item
    */
   public void addItem(Item item, int quantity) {
@@ -53,13 +54,13 @@ public class ShoppingCart {
     } else {
       items.put(item, quantity);
     }
-    this.total = total.add(new BigDecimal(quantity).multiply(item.getPrice()));
+    total = total.add(new BigDecimal(quantity).multiply(item.getPrice()));
   }
 
   /**
    * Method to remove item from the cart
    *
-   * @param item     the item
+   * @param item the item
    * @param quantity the quantity of the item
    */
   public void removeItem(Item item, int quantity) {
@@ -80,7 +81,7 @@ public class ShoppingCart {
         System.out
             .println("Ensure the quantity to remove is less or equal to the quantity in the cart.");
       }
-      this.total = total.subtract(new BigDecimal(quantity).multiply(item.getPrice()));
+      total = total.subtract(new BigDecimal(quantity).multiply(item.getPrice()));
     } else {
       System.out.println("The item is not in the cart.");
     }
@@ -102,7 +103,7 @@ public class ShoppingCart {
    * @return the item map
    */
   public HashMap<Item, Integer> getItemMap() {
-    return this.items;
+    return items;
   }
 
   /**
@@ -111,7 +112,7 @@ public class ShoppingCart {
    * @return the customer
    */
   public Customer getCustomer() {
-    return this.customer;
+    return customer;
   }
 
   /**
@@ -120,7 +121,7 @@ public class ShoppingCart {
    * @return the total price
    */
   public BigDecimal getTotal() {
-    return this.total;
+    return total;
   }
 
   /**
@@ -138,7 +139,7 @@ public class ShoppingCart {
    * @return true if the operation is successful, false otherwise
    */
   public boolean checkOut(Context context) {
-    if (this.customer != null) {
+    if (customer != null) {
       BigDecimal totalWithTax = total.multiply(TAXRATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
       List<Item> itemList = getItems();
       for (Item item : itemList) {
@@ -148,7 +149,7 @@ public class ShoppingCart {
           return false;
         }
       }
-      int saleId = DatabaseInsertHelper.insertSale(this.customer.getId(), totalWithTax, context);
+      int saleId = DatabaseInsertHelper.insertSale(customer.getId(), totalWithTax, context);
       if (saleId == -1) {
         return false;
       }
@@ -183,7 +184,7 @@ public class ShoppingCart {
    * Method to remove all items from the cart
    */
   public void clearCart() {
-    this.total = BigDecimal.ZERO;
+    total = BigDecimal.ZERO;
     items.clear();
   }
 }

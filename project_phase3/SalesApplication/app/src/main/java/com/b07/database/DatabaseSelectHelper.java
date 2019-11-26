@@ -328,8 +328,8 @@ public class DatabaseSelectHelper {
       while (cursor.moveToNext()) {
         accId = cursor.getInt(cursor.getColumnIndex("ID"));
       }
+      cursor.close();
     }
-    cursor.close();
     myDB.close();
     return accId;
   }
