@@ -15,6 +15,7 @@ import com.b07.users.Employee;
 import com.b07.users.User;
 
 public class EmployeeUIActivity extends AppCompatActivity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -44,6 +45,8 @@ public class EmployeeUIActivity extends AppCompatActivity {
     LinearLayout insertItemButton = findViewById(R.id.employee_insert_item);
     insertItemButton.setOnClickListener(new InsertItemButtonController(this, employeeInterface));
 
+    LinearLayout restockInventoryButton = findViewById(R.id.employee_restock_inventory);
+    restockInventoryButton.setOnClickListener(new RestockInventoryButtonController(this, employeeInterface));
 
 
   }

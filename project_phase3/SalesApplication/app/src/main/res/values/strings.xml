@@ -48,7 +48,8 @@
   <string name="login_error">Your userId or password was not found in the system</string>
 
   <!--Employee page-->
-  <string name="employee_insert_item">Insert new item</string>
+  <string name="employee_insert_item">Insert item</string>
+  <string name="employee_insert_item_des">Create a new item for the inventory</string>
   <string name="employee_add_account">Add a new account</string>
   <string name="employee_submit">Submit</string>
   <string name="employee_item_name">Item name</string>
@@ -57,7 +58,13 @@
   <string name="item_name_error">Ensure you have a valid item name</string>
   <string name="item_price_error">Ensure you have a valid item price</string>
   <string name="item_quantity_error">Ensure you have a valid item quantity</string>
-
+  <string name="employee_inventory">Inventory</string>
+  <string name="employee_select_item">Select an item to restock</string>
+  <string name="restock_item_quantity">Quantity:\u0020</string>
+  <string name="employee_restock">Restock</string>
+  <string name="employee_item_id">Item Id:</string>
+  <string name="employee_item_quantity">Quantity:</string>
+  <string name="item_id_error">Ensure you have a valid item id</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
