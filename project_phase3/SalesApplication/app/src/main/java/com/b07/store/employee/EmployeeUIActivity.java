@@ -7,12 +7,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
-import com.b07.database.DatabaseSelectHelper;
-import com.b07.inventory.Inventory;
-import com.b07.store.EmployeeInterface;
 import com.b07.store.LogoutButtonController;
 import com.b07.users.Employee;
-import com.b07.users.User;
+
 
 public class EmployeeUIActivity extends AppCompatActivity {
 
@@ -25,16 +22,10 @@ public class EmployeeUIActivity extends AppCompatActivity {
     logoutButton.setOnClickListener(new LogoutButtonController(this));
 
     Intent intent = getIntent();
-    String greeting = "Hi, " + intent.getStringExtra("name");
+    Employee employee = (Employee) intent.getSerializableExtra("user");
+    String greeting = "Hi, " + employee.getName();
     TextView greet = findViewById(R.id.employee_greeting);
     greet.setText(greeting);
-
-    Inventory inventory = DatabaseSelectHelper.getInventory(this);
-    Integer userId = intent.getIntExtra("userId", -1);
-    User user = DatabaseSelectHelper.getUserDetails(userId, this);
-    Employee employee = new Employee(user.getId(), user.getName(), user.getAge(),
-        user.getAddress(), true);
-    EmployeeInterface employeeInterface = new EmployeeInterface(employee, inventory);
 
     LinearLayout authenticateEmployee = findViewById(R.id.employee_authenticate_employee);
     authenticateEmployee.setOnClickListener(new AuthenticateEmployeeButtonController(this));
@@ -49,10 +40,11 @@ public class EmployeeUIActivity extends AppCompatActivity {
     addEmployeeButton.setOnClickListener(new AddEmployeeButtonController(this));
 
     LinearLayout insertItemButton = findViewById(R.id.employee_insert_item);
-    insertItemButton.setOnClickListener(new InsertItemButtonController(this, employeeInterface));
+    insertItemButton.setOnClickListener(new InsertItemButtonController(this, employee));
 
     LinearLayout restockInventoryButton = findViewById(R.id.employee_restock_inventory);
-    restockInventoryButton.setOnClickListener(new RestockInventoryButtonController(this, employeeInterface));
+    restockInventoryButton
+        .setOnClickListener(new RestockInventoryButtonController(this, employee));
 
 
   }

@@ -3,21 +3,22 @@ package com.b07.store.employee;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import com.b07.store.EmployeeInterface;
+import com.b07.users.Employee;
 
 public class InsertItemButtonController implements View.OnClickListener {
-  private Context appContext;
-  private EmployeeInterface employeeInterface;
 
-  public InsertItemButtonController(Context context, EmployeeInterface employeeInterface){
+  private Context appContext;
+  private Employee employee;
+
+  public InsertItemButtonController(Context context, Employee employee) {
     appContext = context;
-    this.employeeInterface = employeeInterface;
+    this.employee = employee;
   }
 
   @Override
   public void onClick(View v) {
     Intent intent = new Intent(appContext, InsertNewItemActivity.class);
-    intent.putExtra("employeeInterface", employeeInterface);
+    intent.putExtra("user", employee);
     appContext.startActivity(intent);
   }
 }

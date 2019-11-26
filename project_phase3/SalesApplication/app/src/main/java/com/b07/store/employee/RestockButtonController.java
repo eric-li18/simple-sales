@@ -2,7 +2,6 @@ package com.b07.store.employee;
 
 import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,21 +10,25 @@ import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.Item;
 import com.b07.store.EmployeeInterface;
+import com.b07.users.Employee;
 import com.b07.validation.Validator;
 import java.util.HashMap;
 
 public class RestockButtonController implements View.OnClickListener {
 
   private Context appContext;
-  private EmployeeInterface employeeInterface;
+  private Employee employee;
 
-  public RestockButtonController(Context context, EmployeeInterface employeeInterface) {
+  public RestockButtonController(Context context, Employee employee) {
     appContext = context;
-    this.employeeInterface = employeeInterface;
+    this.employee = employee;
   }
 
   @Override
   public void onClick(View v) {
+    Inventory inventory = DatabaseSelectHelper.getInventory(appContext);
+    EmployeeInterface employeeInterface = new EmployeeInterface(employee, inventory);
+
     EditText itemId = ((RestockInventoryActivity) appContext)
         .findViewById(R.id.employee_restock_item_id);
     EditText itemQuantity = ((RestockInventoryActivity) appContext)
@@ -52,22 +55,26 @@ public class RestockButtonController implements View.OnClickListener {
       error.setText(R.string.item_quantity_error);
     } else {
       Item itemRestock = DatabaseSelectHelper.getItem(parsedItemId, appContext);
-      employeeInterface.restockInventory(itemRestock, parsedItemQuantity, appContext);
+      boolean complete = employeeInterface
+          .restockInventory(itemRestock, parsedItemQuantity, appContext);
 
-      Inventory inventory = DatabaseSelectHelper.getInventory(appContext);
-      HashMap<Item, Integer> itemMap = inventory.getItemMap();
+      if (complete) {
+        HashMap<Item, Integer> itemMap = inventory.getItemMap();
 
-      Toast toast = Toast.makeText(appContext, "Restocking item...", Toast.LENGTH_SHORT);
-      toast.show();
+        Toast toast = Toast.makeText(appContext, "Restocking item...", Toast.LENGTH_SHORT);
+        toast.show();
 
-      String inventoryText = "";
-      for (Item item : itemMap.keySet()) {
-        inventoryText +=
-            item.getId() + " - " + item.getName().replace("_", " ") + ": " + itemMap.get(item)
-                + "\n";
+        String inventoryText = "";
+        for (Item item : itemMap.keySet()) {
+          inventoryText +=
+              item.getId() + " - " + item.getName().replace("_", " ") + ": " + itemMap.get(item)
+                  + "\n";
+        }
+        inventoryList.setText(inventoryText);
+        error.setText("");
+      } else {
+        error.setText(R.string.stock_overflow);
       }
-      inventoryList.setText(inventoryText);
-      error.setText("");
     }
   }
 }
