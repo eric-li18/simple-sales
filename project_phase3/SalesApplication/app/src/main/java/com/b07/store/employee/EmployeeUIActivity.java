@@ -23,7 +23,7 @@ public class EmployeeUIActivity extends AppCompatActivity {
 
     Intent intent = getIntent();
     Employee employee = (Employee) intent.getSerializableExtra("user");
-    String greeting = "Hi, " + employee.getName();
+    String greeting = "Hi, " + employee.getName().split(" ")[0];
     TextView greet = findViewById(R.id.employee_greeting);
     greet.setText(greeting);
 

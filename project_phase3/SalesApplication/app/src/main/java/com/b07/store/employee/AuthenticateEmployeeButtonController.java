@@ -15,6 +15,7 @@ public class AuthenticateEmployeeButtonController implements View.OnClickListene
   @Override
   public void onClick(View v) {
     Intent intent = new Intent(appContext, StoreAuthenticationActivity.class);
+    intent.putExtra("backPress", "yes");
     appContext.startActivity(intent);
   }
 }

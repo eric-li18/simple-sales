@@ -22,6 +22,7 @@ public class AddCustomerButtonController implements View.OnClickListener {
         appContext.getResources().getString(R.string.customer_sign_up));
     intent.putExtra("role", Roles.CUSTOMER.name());
     intent.putExtra("access", "employeeAccess");
+    intent.putExtra("backPress", "yes");
     appContext.startActivity(intent);
   }
 }

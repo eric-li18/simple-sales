@@ -1,5 +1,6 @@
 package com.b07.store.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,12 @@ public class StoreAuthenticationActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    return;
+    Intent intent = getIntent();
+    if (intent.getStringExtra("backPress").equals("no")){
+      return;
+    }
+    else{
+      super.onBackPressed();
+    }
   }
 }
