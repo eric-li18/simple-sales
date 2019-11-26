@@ -69,6 +69,9 @@
   <string name="authenticate_employee">Authenticate employee</string>
   <string name="add_account">Add account</string>
   <string name="add_account_desc">Select an account to create</string>
+  <string name="add_account_userid">User Id:</string>
+  <string name="user_id_error">Ensure you have a valid user id</string>
+  <string name="account_creation_error">Account creation was unsuccessful</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
