@@ -24,6 +24,7 @@
     <activity android:name=".store.admin.AdminUIActivity" />
     <activity android:name=".store.employee.EmployeeUIActivity" />
     <activity android:name=".store.employee.InsertNewItemActivity"/>
+    <activity android:name=".store.employee.RestockInventoryActivity"/>
   </application>
 
 </manifest>

@@ -2,19 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/almond"
+  android:background="@color/white"
   android:orientation="vertical">
-  <View
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.2" />
 
-  <ImageView
+
+  <TextView
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="0.07"
-    android:contentDescription="@string/logo"
-    android:src="@drawable/salesapplogo" />
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="30dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/employee_insert_item"
+    android:textColor="@color/black"
+    android:textSize="35sp" />
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+
+    android:layout_marginBottom="30dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/employee_insert_item_des"
+    android:textColor="@color/grey"
+    android:textSize="20sp" />
+
   <View
     android:layout_width="match_parent"
     android:layout_height="0dp"
@@ -27,26 +39,18 @@
     android:layout_marginEnd="20dp"
     android:layout_weight="0.5"
     android:background="@drawable/rounded_30dp"
+    android:backgroundTint="@color/burgundy"
     android:orientation="vertical">
 
-    <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="30dp"
-      android:layout_marginBottom="30dp"
-      android:fontFamily="@font/futuramedium"
-      android:text="@string/employee_insert_item"
-      android:textColor="@color/black"
-      android:textSize="20sp" />
 
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginStart="20dp"
+      android:layout_marginTop="30dp"
       android:fontFamily="@font/futurabook"
       android:text="@string/employee_item_name"
-      android:textColor="@color/grey" />
+      android:textColor="@color/white" />
     <EditText
       android:id="@+id/employee_insert_item_name"
       android:layout_width="fill_parent"
@@ -54,7 +58,7 @@
       android:layout_marginLeft="17dp"
       android:layout_marginRight="17dp"
       android:layout_marginBottom="20dp"
-      android:backgroundTint="@color/grey"
+      android:backgroundTint="@color/white"
       android:importantForAutofill="no"
       android:inputType="text" />
 
@@ -74,7 +78,7 @@
           android:layout_marginStart="20dp"
           android:fontFamily="@font/futurabook"
           android:text="@string/employee_item_price"
-          android:textColor="@color/grey" />
+          android:textColor="@color/white" />
 
         <EditText
           android:id="@+id/employee_insert_item_price"
@@ -82,36 +86,32 @@
           android:layout_height="wrap_content"
           android:layout_marginLeft="17dp"
           android:layout_marginRight="17dp"
-          android:backgroundTint="@color/grey"
+          android:backgroundTint="@color/white"
           android:importantForAutofill="no"
           android:inputType="numberDecimal" />
       </LinearLayout>
 
-      <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:fontFamily="@font/futurabook"
-          android:text="@string/employee_quantity"
-          android:textColor="@color/grey" />
-
-        <EditText
-          android:id="@+id/employee_insert_item_quantity"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="17dp"
-          android:layout_marginRight="17dp"
-          android:backgroundTint="@color/grey"
-          android:importantForAutofill="no"
-          android:inputType="numberPassword" />
-      </LinearLayout>
-
     </LinearLayout>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/employee_quantity"
+      android:textColor="@color/white" />
+
+    <EditText
+      android:id="@+id/employee_insert_item_quantity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:layout_marginBottom="20dp"
+      android:backgroundTint="@color/white"
+      android:importantForAutofill="no"
+      android:inputType="numberPassword" />
 
   </LinearLayout>
   <TextView
