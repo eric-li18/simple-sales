@@ -59,39 +59,31 @@
       android:layout_marginRight="17dp"
       android:layout_marginBottom="20dp"
       android:backgroundTint="@color/white"
+      android:fontFamily="@font/futurabook"
       android:importantForAutofill="no"
-      android:inputType="text" />
+      android:inputType="text"
+      android:textColor="@color/white" />
 
-    <LinearLayout
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/employee_item_price"
+      android:textColor="@color/white" />
+
+    <EditText
+      android:id="@+id/employee_insert_item_price"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="horizontal">
+      android:layout_marginLeft="17dp"
+      android:layout_marginRight="17dp"
+      android:backgroundTint="@color/white"
+      android:importantForAutofill="no"
+      android:inputType="numberDecimal"
+      android:textColor="@color/white"
+      android:fontFamily="@font/futurabook"/>
 
-      <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="20dp"
-          android:fontFamily="@font/futurabook"
-          android:text="@string/employee_item_price"
-          android:textColor="@color/white" />
-
-        <EditText
-          android:id="@+id/employee_insert_item_price"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginLeft="17dp"
-          android:layout_marginRight="17dp"
-          android:backgroundTint="@color/white"
-          android:importantForAutofill="no"
-          android:inputType="numberDecimal" />
-      </LinearLayout>
-
-    </LinearLayout>
 
     <TextView
       android:layout_width="wrap_content"
@@ -111,7 +103,9 @@
       android:layout_marginBottom="20dp"
       android:backgroundTint="@color/white"
       android:importantForAutofill="no"
-      android:inputType="numberPassword" />
+      android:inputType="numberPassword"
+      android:textColor="@color/white"
+      android:fontFamily="@font/futurabook"/>
 
   </LinearLayout>
   <TextView

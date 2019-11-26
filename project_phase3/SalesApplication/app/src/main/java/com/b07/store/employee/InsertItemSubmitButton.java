@@ -3,6 +3,7 @@ package com.b07.store.employee;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.b07.R;
@@ -12,6 +13,7 @@ import com.b07.inventory.Item;
 import com.b07.store.EmployeeInterface;
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
+import java.util.List;
 
 public class InsertItemSubmitButton implements View.OnClickListener {
 
@@ -51,6 +53,13 @@ public class InsertItemSubmitButton implements View.OnClickListener {
     } else if (!Validator.validateNewItemQuantity(parsedItemQuantity)) {
       error.setText(R.string.item_quantity_error);
     } else {
+      List<Item> inventoryItems = DatabaseSelectHelper.getAllItems(appContext);
+      for (Item inventoryItem : inventoryItems){
+        if (inventoryItem.getName().equals(parsedItemName)){
+          error.setText(R.string.duplicate_insert_item_error);
+          return;
+        }
+      }
       int itemId = DatabaseInsertHelper.insertItem(parsedItemName, parsedItemPrice, appContext);
       Item item = DatabaseSelectHelper.getItem(itemId, appContext);
       employeeInterface.insertInventory(item, parsedItemQuantity, appContext);
