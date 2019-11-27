@@ -308,7 +308,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
-            android:src="@mipmap/hockey_stick" />
+            android:src="@mipmap/protein" />
         </FrameLayout>
 
 
