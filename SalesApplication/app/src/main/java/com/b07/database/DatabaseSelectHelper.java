@@ -334,6 +334,43 @@ public class DatabaseSelectHelper {
     return accId;
   }
 
+  public static List<Integer> getAllUserAccounts(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    List<Integer> accIds = new ArrayList<>();
+
+    if (Validator.validateUserId(userId, context)) {
+      cursor = myDB.getUserAccounts(userId);
+      while (cursor.moveToNext()) {
+        accIds.add(cursor.getInt(cursor.getColumnIndex("ID")));
+      }
+      cursor.close();
+    }
+    myDB.close();
+    return accIds;
+  }
+
+  public static HashMap<Integer, List<Integer>> getAccountMap(Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    HashMap<Integer, List<Integer>> map = new HashMap<>();
+    List<Integer> accIds = new ArrayList<>();
+    int customerId = getRoleIdFromName("CUSTOMER", context);
+
+    for (int userId : getUsersByRole(customerId, context)) {
+      if (Validator.validateUserId(userId, context)) {
+        cursor = myDB.getUserAccounts(userId);
+        while (cursor.moveToNext()) {
+          accIds.add(cursor.getInt(cursor.getColumnIndex("ID")));
+        }
+        map.put(userId, accIds);
+        cursor.close();
+      }
+    }
+    myDB.close();
+    return map;
+  }
+
   public static HashMap<Item, Integer> getAccountDetails(int accountId, Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     Cursor cursor = null;
@@ -349,5 +386,20 @@ public class DatabaseSelectHelper {
     cursor.close();
     myDB.close();
     return items;
+  }
+
+  public static List<Integer> getActiveAccounts(int userId, Context context) {
+    DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    List<Integer> activeAccounts = null;
+    cursor = myDB.getUserActiveAccounts(userId);
+    while (cursor.moveToNext()) {
+      int activeStatus = cursor.getInt(cursor.getColumnIndex("active"));
+      int accId = cursor.getInt(cursor.getColumnIndex("Id"));
+      if (activeStatus == 1) {
+        activeAccounts.add(accId);
+      }
+    }
+    return activeAccounts;
   }
 }
