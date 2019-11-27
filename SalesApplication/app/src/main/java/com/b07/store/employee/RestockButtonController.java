@@ -59,6 +59,7 @@ public class RestockButtonController implements View.OnClickListener {
           .restockInventory(itemRestock, parsedItemQuantity, appContext);
 
       if (complete) {
+        inventory = DatabaseSelectHelper.getInventory(appContext);
         HashMap<Item, Integer> itemMap = inventory.getItemMap();
 
         Toast toast = Toast.makeText(appContext, "Restocking item...", Toast.LENGTH_SHORT);
