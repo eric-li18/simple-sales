@@ -41,6 +41,7 @@ public class LoginButtonController implements View.OnClickListener {
 
     User user = DatabaseSelectHelper.getUserDetails(parsedUserId, appContext);
     if (user != null && user.authenticate(parsedPassword, appContext)) {
+
       int roleId = DatabaseSelectHelper.getUserRoleId(parsedUserId, appContext);
       String roleName = DatabaseSelectHelper.getRoleName(roleId, appContext);
 
@@ -48,11 +49,8 @@ public class LoginButtonController implements View.OnClickListener {
         Intent intent = new Intent(appContext, AdminUIActivity.class);
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.EMPLOYEE.name())) {
+//        ((StoreAuthenticationActivity) appContext).finish();
         Intent intent = new Intent(appContext, EmployeeUIActivity.class);
-//        String name = user.getName();
-//        intent.putExtra("name", name);
-//        intent.putExtra("userId", parsedUserId);
-
         Employee employee = new Employee(user.getId(), user.getName(), user.getAge(),
             user.getAddress(), true);
         intent.putExtra("user", employee);
