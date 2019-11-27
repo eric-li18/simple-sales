@@ -11,6 +11,7 @@ import com.b07.database.DatabaseSelectHelper;
 import com.b07.store.admin.AdminUIActivity;
 import com.b07.store.customer.CustomerUIActivity;
 import com.b07.store.employee.EmployeeUIActivity;
+import com.b07.users.Admin;
 import com.b07.users.Customer;
 import com.b07.users.Employee;
 import com.b07.users.Roles;
@@ -47,6 +48,9 @@ public class LoginButtonController implements View.OnClickListener {
 
       if (roleName.equals(Roles.ADMIN.name())) {
         Intent intent = new Intent(appContext, AdminUIActivity.class);
+        Admin admin = new Admin(user.getId(), user.getName(), user.getAge(),
+            user.getAddress(), true);
+        intent.putExtra("user", admin);
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.EMPLOYEE.name())) {
 //        ((StoreAuthenticationActivity) appContext).finish();
