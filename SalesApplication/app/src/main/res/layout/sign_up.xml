@@ -164,12 +164,11 @@
     android:id="@+id/error"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:fontFamily="@font/futurabook"
-    android:textColor="@color/red"
     android:layout_gravity="center"
     android:layout_marginTop="30dp"
+    android:fontFamily="@font/futurabook"
 
-    />
+    android:textColor="@color/red" />
   <Button
     android:id="@+id/sign_up_button"
     android:layout_width="match_parent"
