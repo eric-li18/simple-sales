@@ -1,7 +1,6 @@
 package com.b07.database;
 
 import android.content.Context;
-
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
 
@@ -32,6 +31,21 @@ public class DatabaseInsertHelper {
     if (Validator.validateUserName(name) && Validator.validateAge(age)
         && Validator.validateAddress(address) && Validator.validatePassword(password)) {
       userId = dbA.insertNewUser(name, age, address, password);
+    } else {
+      System.out.println("Ensure the method arguments are correct for insertNewUser.");
+    }
+    dbA.close();
+    return Math.toIntExact(userId);
+  }
+
+  public static int insertNewUserHashed(String name, int age, String address, String password,
+      Context context) {
+    DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
+    long userId = -1;
+
+    if (Validator.validateUserName(name) && Validator.validateAge(age)
+        && Validator.validateAddress(address) && Validator.validatePassword(password)) {
+      userId = dbA.insertNewUserHashed(name, age, address, password);
     } else {
       System.out.println("Ensure the method arguments are correct for insertNewUser.");
     }
