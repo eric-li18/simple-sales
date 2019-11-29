@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/almond"
+  android:orientation="vertical">
+
+  <TextView
+    android:id="@+id/sales_log_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/sales_log_text"
+    android:textColor="@color/black"
+    android:textSize="36sp" />
+  <ScrollView
+    android:id="@+id/sales_log_layout"
+    android:layout_width="match_parent"
+    android:layout_height="534dp"
+    android:layout_marginLeft="7dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="7dp"
+    android:background="@drawable/rounded_20dp"
+    android:paddingBottom="25dp">
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@drawable/rounded_20dp"
+      android:orientation="vertical">
+      <LinearLayout
+        android:id="@+id/sales_log_box"
+        android:layout_width="350dp"
+        android:layout_height="170dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/rounded_30dp"
+        android:backgroundTint="@color/yellow"
+        android:clickable="true"
+        android:orientation="horizontal">
+        <LinearLayout
+          android:id="@+id/sales_log_sale_box"
+          android:layout_width="match_parent"
+          android:layout_height="130dp"
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="20dp"
+          android:orientation="vertical">
+          <LinearLayout
+            android:id="@+id/sales_log_customer_box"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+            <TextView
+              android:id="@+id/sale_id"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:layout_weight="1"
+              android:fontFamily="@font/futuramedium"
+              android:text="TextView"
+              android:textAllCaps="false"
+              android:textColor="@color/black"
+              android:textSize="22sp"
+              tools:text="#1" />
+            <TextView
+              android:id="@+id/sales_log_total"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="10dp"
+              android:layout_weight="1"
+              android:fontFamily="@font/futuramedium"
+              android:text="TextView"
+              android:textColor="@color/black"
+              android:textSize="22sp"
+              tools:text="Joe Bettridge" />
+            <TextView
+              android:id="@+id/sales_log_customer_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+              android:layout_marginRight="20dp"
+              android:layout_marginBottom="10dp"
+              android:layout_weight="1"
+              android:fontFamily="@font/futuramedium"
+              android:text="TextView"
+              android:textColor="@color/black"
+              android:textSize="22sp"
+              tools:text="$ 2000.00" />
+          </LinearLayout>
+          <LinearLayout
+            android:id="@+id/sales_log_item_box"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <TextView
+              android:id="@+id/sales_log_item"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginStart="20dp"
+              android:layout_marginEnd="15dp"
+              android:fontFamily="@font/futuramedium"
+              android:text="@string/hockey_stick"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <TextView
+              android:id="@+id/sales_log_quantity"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_weight="1"
+              android:fontFamily="@font/futuramedium"
+              android:text="Quantity: 5"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <TextView
+              android:id="@+id/sales_log_price"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:layout_marginEnd="20dp"
+              android:fontFamily="@font/futurabook"
+              android:text="@string/price"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+          </LinearLayout>
+        </LinearLayout>
+
+      </LinearLayout>
+      <!--
+      <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_30dp"
+        android:backgroundTint="@color/yellow"
+        android:orientation="vertical"></LinearLayout>
+        -->
+    </LinearLayout>
+
+  </ScrollView>
+
+  <Button
+    android:id="@+id/button5"
+    android:layout_width="350dp"
+    android:layout_height="60dp"
+    android:layout_gravity="center"
+    android:layout_marginTop="15dp"
+    android:background="@drawable/rounded_40dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/return_sale"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+</LinearLayout>
