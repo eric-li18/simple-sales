@@ -320,7 +320,7 @@ public class DatabaseSelectHelper {
 
   public static int getUserAccounts(int userId, Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
-    Cursor cursor = null;
+    Cursor cursor;
     int accId = -1;
 
     if (Validator.validateUserId(userId, context)) {
