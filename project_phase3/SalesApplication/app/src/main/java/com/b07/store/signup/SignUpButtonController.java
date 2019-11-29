@@ -67,6 +67,7 @@ public class SignUpButtonController implements View.OnClickListener {
           parsePassword, appContext);
       int roleId = DatabaseInsertHelper.insertRole(role, appContext);
       DatabaseInsertHelper.insertUserRole(userId, roleId, appContext);
+//      DatabaseInsertHelper.insertMembershipStatus(userId, false, appContext);
 
       Intent intent = new Intent(appContext, WelcomeActivity.class);
       intent.putExtra("name", parseName);

@@ -136,4 +136,16 @@ public class DatabaseUpdateHelper {
     dbA.close();
     return complete;
   }
+
+  public static boolean updateMembershipStatus(int userId, Context context){
+    DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
+    boolean complete = false;
+
+    if(true){
+      //TODO
+    }
+    dbA.close();
+    return complete;
+
+  }
 }

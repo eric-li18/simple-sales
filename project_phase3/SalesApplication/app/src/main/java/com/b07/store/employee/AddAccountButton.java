@@ -50,7 +50,6 @@ public class AddAccountButton implements View.OnClickListener {
         toast.show();
         ((AddNewAccountActivity)appContext).finish();
       }
-
     }
   }
 }

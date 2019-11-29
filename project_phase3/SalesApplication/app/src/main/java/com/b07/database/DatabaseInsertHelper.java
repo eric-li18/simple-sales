@@ -119,5 +119,11 @@ public class DatabaseInsertHelper {
     }
     return Math.toIntExact(insertId);
   }
+
+  public static int insertMembershipStatus(int userId, boolean status, Context context){
+    DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
+    //TODO
+    return -1;
+  }
 }
 
