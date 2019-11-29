@@ -36,6 +36,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
     LinearLayout addAccountButton = findViewById(R.id.employee_add_account);
     addAccountButton.setOnClickListener(new AddNewAccountButtonController(this));
 
+    LinearLayout addMembershipButton = findViewById(R.id.employee_add_membership);
+    addMembershipButton.setOnClickListener(new AddNewMembershipButtonController(this));
+
     LinearLayout addEmployeeButton = findViewById(R.id.employee_add_employee);
     addEmployeeButton.setOnClickListener(new AddEmployeeButtonController(this));
 

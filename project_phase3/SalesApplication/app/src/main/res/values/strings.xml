@@ -73,6 +73,9 @@
   <string name="user_id_error">Ensure you have a valid user id</string>
   <string name="account_creation_error">Account creation was unsuccessful</string>
   <string name="stock_overflow">Stock overflow</string>
+  <string name="new_membership">Add a new membership</string>
+  <string name="add_membership">Add membership</string>
+  <string name="add_membership_desc">Select an account for a membership</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
