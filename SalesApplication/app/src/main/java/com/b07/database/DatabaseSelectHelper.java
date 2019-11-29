@@ -417,4 +417,14 @@ public class DatabaseSelectHelper {
     }
     return inactiveAccounts;
   }
+
+  public static List<Integer> getNonMembers(Context context){
+    DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    List<Integer> nonMembers = null;
+
+    //TODO
+
+    return nonMembers;
+  }
 }
