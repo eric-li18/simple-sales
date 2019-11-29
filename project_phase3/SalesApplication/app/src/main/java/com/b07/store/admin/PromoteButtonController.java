@@ -35,21 +35,25 @@ public class PromoteButtonController implements View.OnClickListener {
     TextView message = ((PromoteEmployeeUIActivity) appContext)
         .findViewById(R.id.promote_employee_message);
 
-    Integer parsedUserId = -1;
+    int parsedUserId = -1;
     if (!Validator.validateEmpty(id.getText().toString())) {
       parsedUserId = Integer.parseInt(id.getText().toString());
     }
 
-    String TAG = "promoteActivity";
+    //String TAG = "promoteActivity";
     List<Integer> roleIds = DatabaseSelectHelper.getRoleIds(appContext);
     List<Integer> userIds = new ArrayList<>();
     for (int roleId : roleIds) {
       if (DatabaseSelectHelper.getRoleName(roleId, appContext).equals(Roles.EMPLOYEE.name())) {
         userIds = DatabaseSelectHelper.getUsersByRole(roleId, appContext);
       }
-      if (userIds.contains(parsedUserId) || parsedUserId == 0) { //TODO put this in validator?
+      if (userIds.contains(parsedUserId)) { //TODO put this in validator?
         User employee = DatabaseSelectHelper.getUserDetails(parsedUserId, appContext);
-        admin.promoteEmployee((Employee) employee, appContext);
+        try {
+          admin.promoteEmployee((Employee) employee, appContext);
+        } catch (Exception ignore) {
+
+        }
         //Admin promotedEmployee = new Admin(employee.getId(), employee.getName(), employee.getAge(), employee.getAddress());
         //employee = null;
         message.setText(R.string.successful_promotion);
