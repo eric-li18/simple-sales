@@ -47,7 +47,7 @@
       android:id="@+id/employee_authenticate_employee"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.15"
+      android:layout_weight="0.1"
       android:clickable="true"
       android:orientation="horizontal">
 
@@ -55,7 +55,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_20dp"
@@ -76,8 +76,8 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/authenticate_employee"
         android:textAlignment="viewStart"
@@ -101,7 +101,7 @@
       android:id="@+id/employee_add_customer"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.15"
+      android:layout_weight="0.1"
       android:clickable="true"
       android:orientation="horizontal">
 
@@ -109,7 +109,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_20dp"
@@ -131,8 +131,8 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/add_customer"
         android:textAlignment="viewStart"
@@ -156,7 +156,7 @@
       android:id="@+id/employee_add_account"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.15"
+      android:layout_weight="0.1"
       android:clickable="true"
       android:orientation="horizontal">
 
@@ -164,7 +164,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_20dp"
@@ -185,10 +185,64 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/employee_add_account"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <View
+      android:layout_width="match_parent"
+      android:layout_height="2dp"
+      android:layout_gravity="center"
+      android:layout_marginStart="35dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginEnd="45dp"
+      android:layout_marginBottom="5dp"
+      android:background="@color/light_grey"
+      android:baselineAligned="false" />
+
+    <LinearLayout
+      android:id="@+id/employee_add_membership"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="0.1"
+      android:clickable="true"
+      android:orientation="horizontal">
+
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+
+        <ImageView
+          android:layout_width="47dp"
+          android:layout_height="40dp"
+          android:layout_marginLeft="7.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="7.5dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/membership" />
+
+      </LinearLayout>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/new_membership"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
         android:textSize="20sp" />
@@ -210,7 +264,7 @@
       android:id="@+id/employee_add_employee"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.15"
+      android:layout_weight="0.1"
       android:clickable="true"
       android:orientation="horizontal">
 
@@ -218,7 +272,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_20dp"
@@ -242,8 +296,8 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/add_employee"
         android:textAlignment="viewStart"
@@ -267,14 +321,14 @@
       android:id="@+id/employee_restock_inventory"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_weight="0.15"
+      android:layout_weight="0.1"
       android:orientation="horizontal">
 
       <LinearLayout
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_20dp"
@@ -297,8 +351,8 @@
         android:id="@+id/add_item_itemname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/restock"
         android:textColor="@color/black"
@@ -321,8 +375,8 @@
       android:id="@+id/employee_insert_item"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:layout_marginBottom="20dp"
-      android:layout_weight="0.15"
+      android:layout_marginBottom="25dp"
+      android:layout_weight="0.1"
       android:clickable="true"
       android:orientation="horizontal">
 
@@ -330,7 +384,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_20dp"
@@ -351,8 +405,8 @@
       <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/futuramedium"
         android:text="@string/employee_insert_item"
         android:textColor="@color/black"

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="30dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/add_membership"
+    android:textColor="@color/black"
+    android:textSize="35sp" />
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/add_membership_desc"
+    android:textColor="@color/grey"
+    android:textSize="20sp" />
+
+  <TextView
+    android:id="@+id/employee_add_membership_users"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_weight="0.7"
+    android:background="@drawable/rounded_20dp"
+    android:backgroundTint="@color/burgundy"
+    android:fontFamily="@font/futurabook"
+    android:padding="20dp"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_marginStart="70dp"
+    android:layout_marginEnd="70dp"
+    android:layout_weight="0.08"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/add_account_userid"
+      android:textColor="@color/black"
+      android:fontFamily="@font/futurabook"
+      android:textSize="16sp"
+      android:layout_marginStart="60dp" />
+
+    <EditText
+      android:id="@+id/employee_add_membership_user_id"
+      android:layout_width="50dp"
+      android:layout_height="match_parent"
+      android:layout_marginEnd="10dp"
+      android:backgroundTint="@color/black"
+      android:inputType="numberPassword"
+      android:textSize="16sp"
+      android:fontFamily="@font/futurabook"
+      android:textColor="@color/black" />
+
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/employee_add_membership_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red" />
+
+  <Button
+    android:id="@+id/employee_add_membership_button"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="40dp"
+    android:layout_weight="0.1"
+    android:background="@drawable/rounded_30dp"
+    android:backgroundTint="@color/orange"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/add_membership"
+    android:textColor="@color/white"
+    android:textSize="20sp" />
+</LinearLayout>
