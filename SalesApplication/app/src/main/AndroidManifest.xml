@@ -30,6 +30,7 @@
     <activity android:name=".store.employee.AddNewAccountActivity" />
     <activity android:name=".store.admin.SalesLogUIActivity" />
     <activity android:name=".store.admin.PromoteEmployeeUIActivity" />
+    <activity android:name=".store.admin.AdminLoginUIActivity" />
   </application>
 
 </manifest>

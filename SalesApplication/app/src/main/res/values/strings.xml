@@ -95,5 +95,6 @@
   <string name="promote_button">Promote</string>
   <string name="successful_promotion">The promotion was successful.</string>
   <string name="unsuccessful_promotion">Please enter a valid employee id.</string>
+  <string name="view_accounts">Accounts</string>
   <!--  Harry-->
 </resources>
