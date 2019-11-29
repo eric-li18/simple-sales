@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
-import com.b07.store.admin.AdminUIActivity;
+import com.b07.store.admin.AdminLoginUIActivity;
 import com.b07.store.customer.CustomerUIActivity;
 import com.b07.store.employee.EmployeeUIActivity;
 import com.b07.users.Admin;
@@ -47,7 +47,7 @@ public class LoginButtonController implements View.OnClickListener {
       String roleName = DatabaseSelectHelper.getRoleName(roleId, appContext);
 
       if (roleName.equals(Roles.ADMIN.name())) {
-        Intent intent = new Intent(appContext, AdminUIActivity.class);
+        Intent intent = new Intent(appContext, AdminLoginUIActivity.class);
         Admin admin = new Admin(user.getId(), user.getName(), user.getAge(),
             user.getAddress(), true);
         intent.putExtra("user", admin);
