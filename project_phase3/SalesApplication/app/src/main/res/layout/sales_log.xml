@@ -16,15 +16,23 @@
     android:text="@string/sales_log_text"
     android:textColor="@color/black"
     android:textSize="36sp" />
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:fontFamily="@font/futuramedium"
+    android:text="@string/view_or_return"
+    android:textColor="@color/grey"
+    android:textSize="20sp" />
   <ScrollView
     android:id="@+id/sales_log_layout"
     android:layout_width="match_parent"
-    android:layout_height="534dp"
-    android:layout_marginLeft="7dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="20dp"
     android:layout_marginTop="20dp"
-    android:layout_marginRight="7dp"
-    android:background="@drawable/rounded_20dp"
-    android:paddingBottom="25dp">
+    android:layout_marginEnd="20dp"
+    android:layout_weight="0.7"
+    android:background="@drawable/rounded_20dp">
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -148,12 +156,57 @@
 
   </ScrollView>
 
-  <Button
-    android:id="@+id/button5"
-    android:layout_width="350dp"
-    android:layout_height="60dp"
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
     android:layout_gravity="center"
-    android:layout_marginTop="15dp"
+    android:layout_marginStart="70dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="70dp"
+    android:layout_weight="0.08"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="60dp"
+      android:fontFamily="@font/futurabook"
+      android:text="@string/sale_id"
+      android:textColor="@color/black"
+      android:textSize="16sp" />
+
+    <EditText
+      android:id="@+id/sale_id_input"
+      android:layout_width="50dp"
+      android:layout_height="match_parent"
+      android:layout_marginEnd="10dp"
+      android:backgroundTint="@color/black"
+      android:fontFamily="@font/futurabook"
+      android:inputType="numberPassword"
+      android:textColor="@color/black"
+      android:textSize="16sp" />
+
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/sales_id_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red" />
+
+  <Button
+    android:id="@+id/return_button"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_gravity="center"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="40dp"
+    android:layout_weight="0.1"
     android:background="@drawable/rounded_40dp"
     android:backgroundTint="@color/orange"
     android:fontFamily="@font/futuramedium"
