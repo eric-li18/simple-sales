@@ -1,5 +1,6 @@
 package com.b07.store.customer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.b07.exceptions.AuthenticationException;
 import com.b07.inventory.Item;
 import com.b07.inventory.ItemImpl;
 import com.b07.inventory.ItemTypes;
+import com.b07.inventory.MemberItemTypes;
 import com.b07.store.LogoutButtonController;
 import com.b07.store.ShoppingCart;
 import com.b07.users.Customer;
@@ -73,6 +75,57 @@ public class CustomerUIActivity extends AppCompatActivity {
     }
   }
 
+  private void renderExclusive(ShoppingCart cart, Context context, int userId) {
+    int count = 6;
+    for (MemberItemTypes memberItemType : MemberItemTypes.values()) {
+      String itemIdName = "customer_itemname" + count;
+      String priceIdName = "customer_itemprice" + count;
+      String frameIdName = "customer_frame" + count;
+      String itemLayoutIdName = "customer_item" + count;
+
+      int itemId = getResources().getIdentifier(itemIdName, "id", getPackageName());
+      int priceId = getResources().getIdentifier(priceIdName, "id", getPackageName());
+      int frameId = getResources().getIdentifier(frameIdName, "id", getPackageName());
+      int itemLayoutId = getResources().getIdentifier(itemLayoutIdName, "id", getPackageName());
+
+      FrameLayout frameLayout = findViewById(frameId);
+      LinearLayout itemLayout = findViewById(itemLayoutId);
+      TextView itemTextView = findViewById(itemId);
+      TextView priceTextView = findViewById(priceId);
+
+      List<Item> allItems = DatabaseSelectHelper.getAllItems(this);
+      BigDecimal price = BigDecimal.ZERO;
+
+      Item item = null;
+      for (Item i : allItems) {
+        if (i.getName().equals(memberItemType.name())) {
+          item = i;
+          price = i.getPrice();
+          break;
+        }
+      }
+
+      priceTextView.setText(price.toString());
+
+      String itemName = (memberItemType.name().substring(0, 1).toUpperCase() + memberItemType
+          .name()
+          .substring(1).toLowerCase()).replace("_", " ");
+      itemTextView.setText(itemName);
+
+      List<Integer> members = DatabaseSelectHelper.getMembers(context);
+
+      if (item != null && DatabaseSelectHelper.getInventoryQuantity(item.getId(), this) > 0
+          && members.contains(userId)) {
+        itemLayout
+            .setOnClickListener(new ItemLayoutController(this, (ItemImpl) item, itemName, cart));
+      } else {
+        frameLayout.setVisibility(View.GONE);
+      }
+
+      count++;
+    }
+  }
+
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -99,6 +152,7 @@ public class CustomerUIActivity extends AppCompatActivity {
     cartButton.setOnClickListener(new CartButtonController(this, cart));
 
     renderShop(cart);
+    renderExclusive(cart, this, customer.getId());
   }
 
   @Override
