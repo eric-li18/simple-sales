@@ -10,18 +10,18 @@
     android:id="@+id/admin_logout"
     android:layout_width="35dp"
     android:layout_height="35dp"
-    android:layout_marginEnd="15dp"
+    android:layout_gravity="end"
     android:layout_marginTop="15dp"
+    android:layout_marginEnd="15dp"
     android:clickable="true"
-    app:srcCompat="@drawable/logout"
-    android:layout_gravity="end" />
+    app:srcCompat="@drawable/logout" />
 
   <TextView
     android:id="@+id/admin_greeting"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="25dp"
-    android:layout_marginTop="100dp"
+    android:layout_marginTop="25dp"
     android:fontFamily="@font/futuramedium"
     android:text="@string/welcome_back"
     android:textAlignment="center"
@@ -30,169 +30,264 @@
 
   <LinearLayout
     android:layout_width="390dp"
-    android:layout_height="380dp"
+    android:layout_height="570dp"
     android:layout_gravity="bottom"
     android:layout_marginLeft="10dp"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="25dp"
     android:background="@drawable/rounded_30dp"
     android:backgroundTint="@color/white"
     android:baselineAligned="false"
     android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
+      android:id="@+id/admin_sales_log"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="25dp"
-      android:background="@drawable/rounded_40dp"
-      android:backgroundTintMode="add">
+      android:layout_height="100dp"
+      android:layout_marginTop="10dp"
+      android:clickable="true"
+      android:orientation="horizontal">
 
       <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_40dp"
-        android:backgroundTint="@color/white"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
         android:orientation="vertical">
 
-        <LinearLayout
-          android:id="@+id/admin_sales_log"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal">
-
-          <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_20dp"
-            android:backgroundTint="#ff8140"
-            android:orientation="vertical">
-
-            <ImageView
-              android:id="@+id/imageView3"
-              android:layout_width="47dp"
-              android:layout_height="40dp"
-              android:layout_marginLeft="7.5dp"
-              android:layout_marginTop="7.5dp"
-              android:layout_marginRight="7.5dp"
-              android:layout_marginBottom="7.5dp"
-              app:srcCompat="@drawable/saleslog" />
-
-          </LinearLayout>
-
-          <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/futuramedium"
-            android:text="@string/sales_log"
-            android:textAlignment="viewStart"
-            android:textColor="#000000"
-            android:textSize="25sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-          android:layout_width="330dp"
-          android:layout_height="2dp"
-          android:layout_marginLeft="30dp"
-          android:layout_marginTop="5dp"
-          android:layout_marginRight="30dp"
-          android:layout_marginBottom="5dp"
-          android:background="#cccccc"
-          android:orientation="vertical"></LinearLayout>
-
-        <LinearLayout
-          android:id="@+id/admin_account_list"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal"
-          android:visibility="visible">
-          <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_20dp"
-            android:backgroundTint="#ff8140"
-            android:orientation="vertical">
-            <ImageView
-              android:id="@+id/imageView5"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="7.5dp"
-              android:layout_marginTop="7.5dp"
-              android:layout_marginRight="10dp"
-              android:layout_marginBottom="7.5dp"
-              app:srcCompat="@drawable/clipboard" />
-          </LinearLayout>
-          <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/futuramedium"
-            android:text="@string/account_list"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-        </LinearLayout>
-        <LinearLayout
-          android:layout_width="330dp"
-          android:layout_height="2dp"
-          android:layout_marginLeft="30dp"
-          android:layout_marginTop="5dp"
-          android:layout_marginRight="30dp"
-          android:layout_marginBottom="5dp"
-          android:background="#cccccc"
-          android:orientation="vertical"></LinearLayout>
-        <LinearLayout
-          android:id="@+id/admin_promote_employee"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:orientation="horizontal"
-          android:visibility="visible">
-
-          <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/rounded_20dp"
-            android:backgroundTint="#ff8140"
-            android:orientation="vertical">
-
-            <ImageView
-              android:id="@+id/imageView4"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="7.5dp"
-              android:layout_marginTop="7.5dp"
-              android:layout_marginRight="10dp"
-              android:layout_marginBottom="7.5dp"
-              app:srcCompat="@drawable/promote" />
-          </LinearLayout>
-
-          <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/futuramedium"
-            android:text="@string/promote"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        </LinearLayout>
+        <ImageView
+          android:id="@+id/imageView3"
+          android:layout_width="47dp"
+          android:layout_height="40dp"
+          android:layout_marginLeft="7.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="7.5dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/saleslog" />
 
       </LinearLayout>
-    </ScrollView>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/sales_log"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="330dp"
+      android:layout_height="2dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="5dp"
+      android:background="#cccccc"
+      android:orientation="vertical"></LinearLayout>
+    <LinearLayout
+      android:id="@+id/admin_account_list"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:clickable="true"
+      android:orientation="horizontal"
+      android:visibility="visible">
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+        <ImageView
+          android:id="@+id/imageView5"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="7.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="10dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/clipboard" />
+      </LinearLayout>
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/account_list"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="330dp"
+      android:layout_height="2dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="5dp"
+      android:background="#cccccc"
+      android:orientation="vertical"></LinearLayout>
+    <LinearLayout
+      android:id="@+id/admin_promote_employee"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:clickable="true"
+      android:orientation="horizontal"
+      android:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+
+        <ImageView
+          android:id="@+id/imageView4"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="7.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="10dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/promote" />
+      </LinearLayout>
+
+      <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/promote"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="330dp"
+      android:layout_height="2dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="5dp"
+      android:background="#cccccc"
+      android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/admin_export_data"
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:clickable="true"
+      android:orientation="horizontal"
+      android:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+        <ImageView
+          android:id="@+id/imageView7"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/export_icon" />
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/export_data"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="330dp"
+      android:layout_height="2dp"
+      android:layout_marginLeft="30dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginRight="30dp"
+      android:layout_marginBottom="5dp"
+      android:background="#cccccc"
+      android:orientation="vertical">
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="100dp"
+      android:clickable="true"
+      android:orientation="horizontal"
+      android:visibility="visible">
+
+      <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_20dp"
+        android:backgroundTint="#ff8140"
+        android:orientation="vertical">
+
+        <ImageView
+          android:id="@+id/imageView6"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="8.5dp"
+          android:layout_marginTop="7.5dp"
+          android:layout_marginRight="8dp"
+          android:layout_marginBottom="7.5dp"
+          app:srcCompat="@drawable/import_icon" />
+
+      </LinearLayout>
+
+      <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/futuramedium"
+        android:text="@string/import_data"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+    </LinearLayout>
+
   </LinearLayout>
-</LinearLayout>
+</ScrollView></LinearLayout></LinearLayout>
