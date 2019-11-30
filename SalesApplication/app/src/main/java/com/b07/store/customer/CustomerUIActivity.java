@@ -32,11 +32,19 @@ public class CustomerUIActivity extends AppCompatActivity {
     for (ItemTypes itemType : ItemTypes.values()) {
       String itemIdName = "customer_itemname" + count;
       String priceIdName = "customer_itemprice" + count;
+      String frameIdName = "customer_frame" + count;
+      String itemLayoutIdName = "customer_item" + count;
+
       int itemId = getResources().getIdentifier(itemIdName, "id", getPackageName());
       int priceId = getResources().getIdentifier(priceIdName, "id", getPackageName());
+      int frameId = getResources().getIdentifier(frameIdName, "id", getPackageName());
+      int itemLayoutId = getResources().getIdentifier(itemLayoutIdName, "id", getPackageName());
 
+      FrameLayout frameLayout = findViewById(frameId);
+      LinearLayout itemLayout = findViewById(itemLayoutId);
       TextView itemTextView = findViewById(itemId);
       TextView priceTextView = findViewById(priceId);
+
       List<Item> allItems = DatabaseSelectHelper.getAllItems(this);
       BigDecimal price = BigDecimal.ZERO;
 
@@ -50,14 +58,6 @@ public class CustomerUIActivity extends AppCompatActivity {
       }
       priceTextView.setText(price.toString());
 
-      String itemFrameId = "customer_frame" + count;
-      int frameId = getResources().getIdentifier(itemFrameId, "id", getPackageName());
-      FrameLayout itemFrameLayout = findViewById(frameId);
-
-      String itemLayoutName = "customer_item" + count;
-      int customerItemId = getResources().getIdentifier(itemLayoutName, "id", getPackageName());
-      LinearLayout itemLayout = findViewById(customerItemId);
-
       String itemName = (itemType.name().substring(0, 1).toUpperCase() + itemType.name()
           .substring(1).toLowerCase()).replace("_", " ");
       itemTextView.setText(itemName);
@@ -66,7 +66,7 @@ public class CustomerUIActivity extends AppCompatActivity {
         itemLayout
             .setOnClickListener(new ItemLayoutController(this, (ItemImpl) item, itemName, cart));
       } else {
-        itemFrameLayout.setVisibility(View.GONE);
+        frameLayout.setVisibility(View.GONE);
       }
 
       count++;
@@ -80,6 +80,8 @@ public class CustomerUIActivity extends AppCompatActivity {
 
     TextView greeting = findViewById(R.id.employee_greeting);
     ImageView logout = findViewById(R.id.customer_logout);
+    ImageView cartButton = findViewById(R.id.customer_cart);
+
     Intent intent = getIntent();
     Customer customer = (Customer) intent.getSerializableExtra("user");
     String greetingText = "Hi " + customer.getName() + ",";
@@ -88,11 +90,13 @@ public class CustomerUIActivity extends AppCompatActivity {
     try {
       cart = new ShoppingCart(customer);
     } catch (AuthenticationException ignored) {
-      Log.e("AUTHENTICATION EXCEPTION CustomerUIActivity.java", "new ShoppingCart(customer)");
+      Log.e("Authentication Exception in CustomerUIActivity.java",
+          "FROM: new ShoppingCart(customer)");
     }
 
     greeting.setText(greetingText);
     logout.setOnClickListener(new LogoutButtonController(this));
+    cartButton.setOnClickListener(new CartButtonController(this, cart));
 
     renderShop(cart);
   }
@@ -100,5 +104,17 @@ public class CustomerUIActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     return;
+  }
+
+  @Override
+  protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == 1 && resultCode == RESULT_OK) {
+      ShoppingCart cart = (ShoppingCart) data.getSerializableExtra("cart");
+      Log.e("UPDATED SHOPPINGCART", cart.getItemMap().toString());
+      ImageView cartButton = findViewById(R.id.customer_cart);
+      cartButton.setOnClickListener(new CartButtonController(this, cart));
+      renderShop(cart);
+    }
   }
 }

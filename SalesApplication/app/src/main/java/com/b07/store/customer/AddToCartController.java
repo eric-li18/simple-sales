@@ -1,12 +1,18 @@
 package com.b07.store.customer;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import com.b07.R;
 import com.b07.inventory.Item;
 import com.b07.store.ShoppingCart;
 
+/**
+ * @author Eric
+ */
 public class AddToCartController implements View.OnClickListener {
 
   private Context appContext;
@@ -26,6 +32,10 @@ public class AddToCartController implements View.OnClickListener {
     int quantityWanted = Integer.parseInt(quantityWantedView.getText().toString());
 
     cart.addItem(item, quantityWanted);
+
+    Intent i = new Intent();
+    i.putExtra("cart", cart);
+    ((AddItemActivity) appContext).setResult(RESULT_OK, i);
     ((AddItemActivity) appContext).finish();
 
     //    TextView quantityWantedView = ((AddItemActivity) appContext)

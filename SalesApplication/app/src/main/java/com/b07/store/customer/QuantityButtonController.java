@@ -7,6 +7,9 @@ import android.widget.TextView;
 import com.b07.R;
 import java.math.BigDecimal;
 
+/**
+ * @author Eric
+ */
 public class QuantityButtonController implements View.OnClickListener {
 
   private Context appContext;

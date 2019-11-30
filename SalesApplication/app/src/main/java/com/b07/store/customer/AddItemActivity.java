@@ -11,6 +11,9 @@ import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Item;
 import com.b07.store.ShoppingCart;
 
+/**
+ * @author Eric
+ */
 public class AddItemActivity extends AppCompatActivity {
 
   @Override
@@ -27,11 +30,13 @@ public class AddItemActivity extends AppCompatActivity {
 
     TextView itemView = findViewById(R.id.add_item_itemname);
     TextView inventoryQuantityView = findViewById(R.id.add_item_inventoryquantity);
+    TextView quantityWantedView = findViewById(R.id.add_item_quantity);
+    TextView subTotal = findViewById(R.id.add_item_totalprice);
     Button addQuantity = findViewById(R.id.add_item_addquantity);
     Button subtractQuantity = findViewById(R.id.add_item_subtractquantity);
-    TextView quantityWantedView = findViewById(R.id.add_item_quantity);
     Button addToCart = findViewById(R.id.add_item_addtocart);
 
+    subTotal.setText(String.valueOf(0));
     itemView.setText(formattedItemName);
     inventoryQuantityView.setText(String.valueOf(inventoryQuantity));
 
