@@ -209,15 +209,15 @@ public class Validator {
     }
   }
 
-  /**
-   * Method to validate the quantity for sale
-   *
-   * @param quantity the quantity
-   * @return true if the quantity is greater than 0, false otherwise
-   */
-  public static boolean validateSaleQuantity(int quantity) {
-    return quantity > 0;
-  }
+//  /**
+//   * Method to validate the quantity for sale
+//   *
+//   * @param quantity the quantity
+//   * @return true if the quantity is greater than 0, false otherwise
+//   */
+//  public static boolean validateSaleQuantity(int quantity) {
+//    return quantity > 0;
+//  }
 
   /**
    * Method to validate max items in the inventory

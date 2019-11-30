@@ -102,8 +102,7 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long itemizedId = -1;
 
-    if (Validator.validateItemId(itemId, context) && Validator.validateSaleId(saleId, context)
-        && Validator.validateSaleQuantity(quantity)) {
+    if (Validator.validateItemId(itemId, context) && Validator.validateSaleId(saleId, context)) {
       itemizedId = dbA.insertItemizedSale(saleId, itemId, quantity);
     } else {
       System.out.println("Ensure the method arguments are correct for insertItemizedSale.");
@@ -126,7 +125,7 @@ public class DatabaseInsertHelper {
   public static int insertAccountLine(int accountId, int itemId, int quantity, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long insertId = -1;
-    if (Validator.validateItemId(itemId, context) && Validator.validateSaleQuantity(quantity)) {
+    if (Validator.validateItemId(itemId, context)) {
       insertId = dbA.insertAccountLine(accountId, itemId, quantity);
     } else {
       System.out.println("Ensure the arguments are correct for insert account line");
@@ -134,14 +133,13 @@ public class DatabaseInsertHelper {
     return Math.toIntExact(insertId);
   }
 
-  public static int insertMembershipStatus(int userId, int status, Context context){
+  public static int insertMembershipStatus(int userId, int status, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long membershipId = -1;
 
-    if (Validator.validateUserId(userId, context) && Validator.validateStatus(status)){
+    if (Validator.validateUserId(userId, context) && Validator.validateStatus(status)) {
       membershipId = dbA.insertMembership(userId, status);
-    }
-    else{
+    } else {
       System.out.println("Ensure the arguments are correct for insert membership status");
     }
 

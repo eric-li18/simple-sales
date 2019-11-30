@@ -81,6 +81,8 @@
   <!--Admin-->
   <string name="view_or_return">View sales or make a return</string>
   <string name="sale_id">Sale Id:</string>
+  <string name="sale_id_error">Ensure you have a valid sale id</string>
+  <string name="return_unsucessful">The return was unsuccessful</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
