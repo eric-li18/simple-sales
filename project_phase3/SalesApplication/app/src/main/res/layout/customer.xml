@@ -316,7 +316,7 @@
           android:id="@+id/customer_frame5"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:layout_marginBottom="100dp">
+        >
           <LinearLayout
             android:id="@+id/customer_item5"
             android:layout_width="match_parent"
@@ -367,6 +367,120 @@
             android:layout_marginStart="30dp"
             android:src="@mipmap/protein" />
         </FrameLayout>
+
+        <FrameLayout
+          android:id="@+id/customer_frame6"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+          <LinearLayout
+            android:id="@+id/customer_item6"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/border"
+            android:clickable="true"
+            android:orientation="horizontal">
+            <LinearLayout
+              android:layout_width="135dp"
+              android:layout_height="match_parent"
+              android:layout_marginStart="100dp"
+              android:orientation="vertical">
+              <TextView
+                android:id="@+id/customer_itemname6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/futurabook"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            </LinearLayout>
+            <TextView
+              android:id="@+id/customer_dollar_sign6"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:fontFamily="@font/futuramedium"
+              android:text="@string/dollar_sign"
+              android:textColor="@color/black"
+              android:textSize="25sp" />
+            <TextView
+              android:id="@+id/customer_itemprice6"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginEnd="10dp"
+              android:layout_weight="0.65"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="25sp" />
+          </LinearLayout>
+          <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:src="@mipmap/sausage" />
+        </FrameLayout>
+
+
+        <FrameLayout
+          android:id="@+id/customer_frame7"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="100dp">
+          <LinearLayout
+            android:id="@+id/customer_item7"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/border"
+            android:clickable="true"
+            android:orientation="horizontal">
+            <LinearLayout
+              android:layout_width="135dp"
+              android:layout_height="match_parent"
+              android:layout_marginStart="100dp"
+              android:orientation="vertical">
+              <TextView
+                android:id="@+id/customer_itemname7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/futurabook"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+            </LinearLayout>
+            <TextView
+              android:id="@+id/customer_dollar_sign7"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:fontFamily="@font/futuramedium"
+              android:text="@string/dollar_sign"
+              android:textColor="@color/black"
+              android:textSize="25sp" />
+            <TextView
+              android:id="@+id/customer_itemprice7"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginEnd="10dp"
+              android:layout_weight="0.65"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="25sp" />
+          </LinearLayout>
+          <ImageView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:src="@mipmap/potato" />
+        </FrameLayout>
+
+
       </LinearLayout>
     </ScrollView>
   </LinearLayout>
