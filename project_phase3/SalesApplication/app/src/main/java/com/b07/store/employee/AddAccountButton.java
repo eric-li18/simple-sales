@@ -4,6 +4,7 @@ import android.content.Context;
 import android.provider.ContactsContract.Data;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.b07.R;
@@ -25,7 +26,7 @@ public class AddAccountButton implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
-    TextView userId = ((AddNewAccountActivity) appContext)
+   EditText userId = ((AddNewAccountActivity) appContext)
         .findViewById(R.id.employee_add_account_user_id);
 
     TextView error = ((AddNewAccountActivity) appContext).findViewById(R.id.employee_add_account_error);
