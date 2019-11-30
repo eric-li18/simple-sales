@@ -1,6 +1,7 @@
 package com.b07.store.admin;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -47,7 +48,10 @@ public class SalesLogUIActivity extends AppCompatActivity {
         addSale(layout, sale);
       }
     }
-    //TODO returns
+
+    //no touchy
+    Button returnButton = findViewById(R.id.return_button);
+    returnButton.setOnClickListener(new ReturnButtonController(this, sales));
 
   }
 
