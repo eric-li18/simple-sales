@@ -243,4 +243,8 @@ public class Validator {
   public static boolean validateEmpty(String string){
     return string.trim().equals("");
   }
+
+  public static boolean validateStatus(int status){
+    return status == 1  || status == 0;
+  }
 }

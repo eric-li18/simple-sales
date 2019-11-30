@@ -134,10 +134,18 @@ public class DatabaseInsertHelper {
     return Math.toIntExact(insertId);
   }
 
-  public static int insertMembershipStatus(int userId, boolean status, Context context){
+  public static int insertMembershipStatus(int userId, int status, Context context){
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
-    //TODO
-    return -1;
+    long membershipId = -1;
+
+    if (Validator.validateUserId(userId, context) && Validator.validateStatus(status)){
+      membershipId = dbA.insertMembership(userId, status);
+    }
+    else{
+      System.out.println("Ensure the arguments are correct for insert membership status");
+    }
+
+    return Math.toIntExact(membershipId);
   }
 }
 

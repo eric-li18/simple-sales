@@ -76,6 +76,7 @@
   <string name="new_membership">Add a new membership</string>
   <string name="add_membership">Add membership</string>
   <string name="add_membership_desc">Select an account for a membership</string>
+  <string name="membership_error">Membership status update was unsuccessful</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>

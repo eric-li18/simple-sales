@@ -21,17 +21,17 @@ public class AddNewMembershipActivity extends AppCompatActivity {
     EditText userIdInput = findViewById(R.id.employee_add_membership_user_id);
     userIdInput.setTransformationMethod(null);
 
-//    List<Integer> nonMembers = DatabaseSelectHelper.getNonMembers(this);
-//
-//    String nonMembersList = "";
-//    User user;
-//    for (int userId : nonMembers) {
-//      user = DatabaseSelectHelper.getUserDetails(userId, this);
-//      nonMembersList += user.getId() + " - " + user.getName() + "\n";
-//    }
-//
-//    Button addMembershipButton = findViewById(R.id.employee_add_membership_button);
-//    addMembershipButton.setOnClickListener(new AddMembershipButtonController(this, nonMembers));
-//    nonMembersView.setText(nonMembersList);
+    List<Integer> nonMembers = DatabaseSelectHelper.getNonMembers(this);
+
+    String nonMembersList = "";
+    User user;
+    for (int userId : nonMembers) {
+      user = DatabaseSelectHelper.getUserDetails(userId, this);
+      nonMembersList += user.getId() + " - " + user.getName() + "\n";
+    }
+
+    Button addMembershipButton = findViewById(R.id.employee_add_membership_button);
+    addMembershipButton.setOnClickListener(new AddMembershipButtonController(this, nonMembers));
+    nonMembersView.setText(nonMembersList);
   }
 }

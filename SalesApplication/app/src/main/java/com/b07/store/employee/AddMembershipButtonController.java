@@ -35,20 +35,15 @@ public class AddMembershipButtonController implements View.OnClickListener {
     if (!Validator.validateUserId(parsedUserId, appContext) || !nonMembers.contains(parsedUserId)) {
       error.setText(R.string.user_id_error);
     } else {
+      boolean complete = DatabaseUpdateHelper.updateMembershipStatus(parsedUserId, 1, appContext);
 
-      boolean complete = DatabaseUpdateHelper.updateMembershipStatus(parsedUserId, appContext);
-
-      if (complete){
+      if (complete) {
         Toast toast = Toast.makeText(appContext, "Adding membership...", Toast.LENGTH_SHORT);
         toast.show();
         ((AddNewMembershipActivity) appContext).finish();
+      } else {
+        error.setText(R.string.membership_error);
       }
-      else{
-        error.setText("error");
-      }
-
-
-
     }
   }
 }
