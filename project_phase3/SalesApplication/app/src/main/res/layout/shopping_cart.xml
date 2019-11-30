@@ -29,77 +29,376 @@
       android:background="@drawable/rounded_20dp"
       android:orientation="vertical">
       <LinearLayout
+        android:id="@+id/cart_item1"
         android:layout_width="350dp"
         android:layout_height="75dp"
+        android:layout_gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
-        android:layout_gravity="center"
         android:background="@drawable/rounded_30dp"
         android:backgroundTint="@color/yellow"
         android:clickable="true"
         android:orientation="horizontal">
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:layout_marginStart="20dp"
-          android:layout_marginEnd="15dp"
-          android:fontFamily="@font/futuramedium"
-          android:text="@string/hockey_stick"
-          android:textColor="@color/black"
-          android:textSize="20sp" />
-        <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_gravity="center"
-          android:fontFamily="@font/futurabook"
-          android:text="@string/price"
-          android:textColor="@color/black"
-          android:textSize="20sp" />
+        <LinearLayout
+          android:layout_width="275dp"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+              android:id="@+id/cart_itemname1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginEnd="5dp"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/item_quantity" />
+              <TextView
+                android:id="@+id/cart_itemquantity1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif" />
+            </LinearLayout>
+          </LinearLayout>
+          <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+          <TextView
+            android:id="@+id/cart_itemprice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.65"
+            android:fontFamily="@font/futurabook"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
 
         <ImageButton
-          android:id="@+id/imageButton"
+          android:id="@+id/cart_removebutton1"
           android:layout_width="45dp"
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
-          android:layout_marginLeft="80dp"
+          android:layout_marginLeft="5dp"
           android:backgroundTint="@color/yellow"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
       <LinearLayout
+        android:id="@+id/cart_item2"
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow"
-        android:orientation="vertical"></LinearLayout>
+        android:backgroundTint="@color/yellow">
+        <LinearLayout
+          android:layout_width="275dp"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+              android:id="@+id/cart_itemname2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginEnd="5dp"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/item_quantity" />
+              <TextView
+                android:id="@+id/cart_itemquantity2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif" />
+            </LinearLayout>
+          </LinearLayout>
+          <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+          <TextView
+            android:id="@+id/cart_itemprice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.65"
+            android:fontFamily="@font/futurabook"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+        <ImageButton
+          android:id="@+id/cart_removebutton2"
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="5dp"
+          android:backgroundTint="@color/yellow"
+          android:scaleType="fitCenter"
+          app:srcCompat="@drawable/x" />
+      </LinearLayout>
       <LinearLayout
+        android:id="@+id/cart_item3"
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow"
-        android:orientation="vertical"></LinearLayout>
+        android:backgroundTint="@color/yellow">
+        <LinearLayout
+          android:layout_width="275dp"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+              android:id="@+id/cart_itemname3"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginEnd="5dp"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/item_quantity" />
+              <TextView
+                android:id="@+id/cart_itemquantity3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif" />
+            </LinearLayout>
+          </LinearLayout>
+          <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+          <TextView
+            android:id="@+id/cart_itemprice3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.65"
+            android:fontFamily="@font/futurabook"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+        <ImageButton
+          android:id="@+id/cart_removebutton3"
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="5dp"
+          android:backgroundTint="@color/yellow"
+          android:scaleType="fitCenter"
+          app:srcCompat="@drawable/x" />
+      </LinearLayout>
       <LinearLayout
+        android:id="@+id/cart_item4"
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow"
-        android:orientation="vertical"></LinearLayout>
+        android:backgroundTint="@color/yellow">
+        <LinearLayout
+          android:layout_width="275dp"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+              android:id="@+id/cart_itemname4"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginEnd="5dp"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/item_quantity" />
+              <TextView
+                android:id="@+id/cart_itemquantity4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif" />
+            </LinearLayout>
+          </LinearLayout>
+          <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+          <TextView
+            android:id="@+id/cart_itemprice4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.65"
+            android:fontFamily="@font/futurabook"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+        <ImageButton
+          android:id="@+id/cart_removebutton4"
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="5dp"
+          android:backgroundTint="@color/yellow"
+          android:scaleType="fitCenter"
+          app:srcCompat="@drawable/x" />
+      </LinearLayout>
       <LinearLayout
+        android:id="@+id/cart_item5"
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow"
-        android:orientation="vertical"></LinearLayout>
+        android:backgroundTint="@color/yellow">
+        <LinearLayout
+          android:layout_width="275dp"
+          android:layout_height="match_parent"
+          android:orientation="horizontal">
+          <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+              android:id="@+id/cart_itemname5"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginStart="20dp"
+              android:layout_marginTop="15dp"
+              android:layout_marginEnd="5dp"
+              android:fontFamily="@font/futuramedium"
+              android:textColor="@color/black"
+              android:textSize="20sp" />
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+              <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/item_quantity" />
+              <TextView
+                android:id="@+id/cart_itemquantity5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif" />
+            </LinearLayout>
+          </LinearLayout>
+          <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+          <TextView
+            android:id="@+id/cart_itemprice5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.65"
+            android:fontFamily="@font/futurabook"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        </LinearLayout>
+        <ImageButton
+          android:id="@+id/cart_removebutton5"
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:layout_gravity="center_vertical"
+          android:layout_marginLeft="5dp"
+          android:backgroundTint="@color/yellow"
+          android:scaleType="fitCenter"
+          app:srcCompat="@drawable/x" />
+      </LinearLayout>
     </LinearLayout>
   </ScrollView>
   <LinearLayout
@@ -114,16 +413,16 @@
       android:fontFamily="@font/futurabook"
       android:textSize="20sp" />
     <TextView
+      android:id="@+id/cart_totalprice"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/price"
-      android:textSize="20sp"
+      android:layout_marginStart="2dp"
       android:fontFamily="@font/futurabook"
-      android:layout_marginStart="2dp" />
+      android:textSize="20sp" />
   </LinearLayout>
 
   <Button
-    android:id="@+id/button5"
+    android:id="@+id/cart_checkoutbutton"
     android:layout_width="350dp"
     android:layout_height="60dp"
     android:layout_gravity="center"

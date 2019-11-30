@@ -90,17 +90,17 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginLeft="50dp"
-      android:layout_marginTop="100dp"
+      android:layout_marginTop="105dp"
       android:fontFamily="@font/futuramedium"
       android:text="@string/total_price"
-      android:textSize="28sp" />
+      android:textSize="24sp" />
     <TextView
       android:id="@+id/add_item_totalprice"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="100dp"
+      android:layout_marginTop="105dp"
       android:fontFamily="@font/futuramedium"
-      android:textSize="28sp" />
+      android:textSize="24sp" />
   </LinearLayout>
   <Button
     android:id="@+id/add_item_addtocart"

@@ -28,7 +28,7 @@ public class AdminUIActivity extends AppCompatActivity {
     greet.setText(greeting);
 
     LinearLayout viewSalesLogButton = findViewById(R.id.admin_sales_log);
-    viewSalesLogButton.setOnClickListener(new ViewSalesLogButtonController(this));
+//    viewSalesLogButton.setOnClickListener(new ViewSalesLogButtonController(this));
 
     LinearLayout viewAccountListButton = findViewById(R.id.admin_account_list);
     //viewAccountListButton.setOnClickListener(new ViewAccountListButtonController(this));

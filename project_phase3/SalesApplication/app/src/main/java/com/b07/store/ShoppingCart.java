@@ -70,18 +70,18 @@ public class ShoppingCart implements Serializable {
         item = i;
       }
     }
-
     if (items.containsKey(item) && quantity > 0) {
       int remainingItems = items.get(item) - quantity;
       if (remainingItems == 0) {
         items.remove(item);
+        total = total.subtract(new BigDecimal(quantity).multiply(item.getPrice()));
       } else if (remainingItems > 0) {
         items.put(item, remainingItems);
+        total = total.subtract(new BigDecimal(quantity).multiply(item.getPrice()));
       } else {
         System.out
             .println("Ensure the quantity to remove is less or equal to the quantity in the cart.");
       }
-      total = total.subtract(new BigDecimal(quantity).multiply(item.getPrice()));
     } else {
       System.out.println("The item is not in the cart.");
     }

@@ -20,7 +20,7 @@
   <string name="items">Available Items</string>
   <string name="hi">Hi, Mo</string>
   <string name="restore">Restore your last cart</string>
-  <string name="total">Total: </string>
+  <string name="total">Total: $ </string>
   <string name="add">ADD TO CART</string>
   <string name="checkout">Checkout</string>
 
@@ -88,6 +88,7 @@
   <string name="dollar_sign">$</string>
   <string name="total_price">Subtotal: $</string>
   <string name="inventory_quantity">Inventory has:</string>
+  <string name="item_quantity">Qty: </string>
 
   <!--  Tien-->
   <string name="add_customer">Add a new customer</string>
