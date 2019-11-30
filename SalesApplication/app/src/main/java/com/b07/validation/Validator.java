@@ -1,6 +1,7 @@
 package com.b07.validation;
 
 import android.content.Context;
+import com.b07.inventory.MemberItemTypes;
 import java.math.BigDecimal;
 import java.util.List;
 import com.b07.database.DatabaseSelectHelper;
@@ -156,6 +157,11 @@ public class Validator {
     if (itemName != null && itemName.length() < 64) {
       for (ItemTypes i : ItemTypes.values()) {
         if (i.name().equals(itemName)) {
+          return true;
+        }
+      }
+      for (MemberItemTypes i : MemberItemTypes.values()){
+        if (i.name().equals(itemName)){
           return true;
         }
       }
