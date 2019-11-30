@@ -100,4 +100,6 @@
   <string name="unsuccessful_promotion">Please enter a valid employee id.</string>
   <string name="view_accounts">Accounts</string>
   <!--  Harry-->
+  <string name="export_data">Export database</string>
+  <string name="import_data">Import database</string>
 </resources>
