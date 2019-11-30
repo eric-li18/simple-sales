@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import com.b07.R;
 import com.b07.database.DatabaseInsertHelper;
+import com.b07.users.Roles;
 import com.b07.validation.Validator;
 
 public class SignUpButtonController implements View.OnClickListener {
@@ -33,12 +34,12 @@ public class SignUpButtonController implements View.OnClickListener {
     EditText password2 = ((AccountCreationActivity) appContext)
         .findViewById(R.id.reenter_password);
 
-    TextView error = ((AccountCreationActivity)appContext).findViewById(R.id.error);
+    TextView error = ((AccountCreationActivity) appContext).findViewById(R.id.error);
 
     String parseName = name.getText().toString().trim();
     Integer parseAge = -1;
-    if(!Validator.validateEmpty(age.getText().toString())){
-          parseAge = Integer.parseInt(age.getText().toString());
+    if (!Validator.validateEmpty(age.getText().toString())) {
+      parseAge = Integer.parseInt(age.getText().toString());
     }
     String parseAddress = address.getText().toString().trim();
     String parsePassword = password.getText().toString();
@@ -67,7 +68,10 @@ public class SignUpButtonController implements View.OnClickListener {
           parsePassword, appContext);
       int roleId = DatabaseInsertHelper.insertRole(role, appContext);
       DatabaseInsertHelper.insertUserRole(userId, roleId, appContext);
-//      DatabaseInsertHelper.insertMembershipStatus(userId, false, appContext);
+
+      if (role.equals(Roles.CUSTOMER.name())) {
+        DatabaseInsertHelper.insertMembershipStatus(userId, 0, appContext);
+      }
 
       Intent intent = new Intent(appContext, WelcomeActivity.class);
       intent.putExtra("name", parseName);
@@ -75,7 +79,7 @@ public class SignUpButtonController implements View.OnClickListener {
       intent.putExtra("userId", String.valueOf(userId));
       intent.putExtra("access", access);
       appContext.startActivity(intent);
-      ((AccountCreationActivity)appContext).finish();
+      ((AccountCreationActivity) appContext).finish();
     }
   }
 }

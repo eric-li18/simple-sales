@@ -137,12 +137,12 @@ public class DatabaseUpdateHelper {
     return complete;
   }
 
-  public static boolean updateMembershipStatus(int userId, Context context){
+  public static boolean updateMembershipStatus(int userId, int status, Context context){
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if(true){
-      //TODO
+    if(Validator.validateUserId(userId, context) && Validator.validateStatus(status)){
+      complete = dbA.updateMembershipStatus(userId, status);
     }
     dbA.close();
     return complete;

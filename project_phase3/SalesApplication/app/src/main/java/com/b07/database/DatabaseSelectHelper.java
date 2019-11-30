@@ -418,13 +418,27 @@ public class DatabaseSelectHelper {
     return inactiveAccounts;
   }
 
-  public static List<Integer> getNonMembers(Context context){
+  public static List<Integer> getNonMembers(Context context) {
     DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
     Cursor cursor = null;
-    List<Integer> nonMembers = null;
-
-    //TODO
-
+    List<Integer> nonMembers = new ArrayList<>();
+    cursor = myDb.getNonMembers();
+    while (cursor.moveToNext()) {
+      int userId = cursor.getInt(cursor.getColumnIndex("USERID"));
+      nonMembers.add(userId);
+    }
     return nonMembers;
+  }
+
+  public static List<Integer> getMembers(Context context) {
+    DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    List<Integer> members = new ArrayList<>();
+    cursor = myDb.getMembers();
+    while (cursor.moveToNext()) {
+      int userId = cursor.getInt(cursor.getColumnIndex("USERID"));
+      members.add(userId);
+    }
+    return members;
   }
 }

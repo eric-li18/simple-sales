@@ -93,6 +93,14 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
         + "PRIMARY KEY(ACCTID, ITEMID))";
 
     sqLiteDatabase.execSQL(sql);
+
+    sql = "CREATE TABLE MEMBERSHIP "
+        + "(ID INTEGER PRIMARY KEY NOT NULL, "
+        + "USERID INTEGER NOT NULL, "
+        + "STATUS INTEGER NOT NULL, "
+        + "FOREIGN KEY(USERID) REFERENCES USER(ID))";
+    sqLiteDatabase.execSQL(sql);
+
   }
 
   @Override
@@ -213,6 +221,18 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     contentValues.put("ADDRESS", address);
 
     long id = sqLiteDatabase.insert("USERS", null, contentValues);
+    sqLiteDatabase.close();
+
+    return id;
+  }
+
+  protected long insertMembership(int userId, int status) {
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("USERID", userId);
+    contentValues.put("STATUS", status);
+
+    long id = sqLiteDatabase.insert("MEMBERSHIP", null, contentValues);
     sqLiteDatabase.close();
 
     return id;
@@ -381,6 +401,20 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     return cursor;
   }
 
+  protected Cursor getMembers() {
+    SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    Cursor cursor = sqLiteDatabase
+        .rawQuery("SELECT * FROM MEMBERSHIP WHERE STATUS = ?", new String[]{String.valueOf(1)});
+    return cursor;
+  }
+
+  protected Cursor getNonMembers() {
+    SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    Cursor cursor = sqLiteDatabase
+        .rawQuery("SELECT * FROM MEMBERSHIP WHERE STATUS = ?", new String[]{String.valueOf(0)});
+    return cursor;
+  }
+
   //UPDATE METHODS
 
   protected boolean updateRoleName(String name, int id) {
@@ -473,4 +507,14 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     return result;
   }
 
+  protected boolean updateMembershipStatus(int userId, int status) {
+    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("STATUS", status);
+    boolean result = sqLiteDatabase
+        .update("MEMBERSHIP", contentValues, "USERID = ?",
+            new String[]{String.valueOf(userId)}) > 0;
+    sqLiteDatabase.close();
+    return result;
+  }
 }
