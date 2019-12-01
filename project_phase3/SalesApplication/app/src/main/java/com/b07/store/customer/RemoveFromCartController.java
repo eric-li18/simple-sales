@@ -1,6 +1,9 @@
 package com.b07.store.customer;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,27 +42,24 @@ public class RemoveFromCartController implements View.OnClickListener {
     if (itemMap.get(item).compareTo(1) >= 1) {
       cart.removeItem(item, 1);
 
-      TextView totalPrice = ((ShoppingCartActivity) appContext).findViewById(R.id.cart_totalprice);
       TextView subtotalPrice = ((ShoppingCartActivity) appContext).findViewById(priceId);
       TextView itemQuantity = ((ShoppingCartActivity) appContext).findViewById(quantityId);
       BigDecimal tempPrice = item.getPrice().multiply(new BigDecimal(cart.getItemMap().get(item)));
-      BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());
-      total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
 
       itemQuantity.setText(cart.getItemMap().get(item).toString());
       subtotalPrice.setText(tempPrice.toString());
-      totalPrice.setText(total.toString());
     } else {
       cart.removeItem(item, 1);
-
-      TextView totalPrice = ((ShoppingCartActivity) appContext).findViewById(R.id.cart_totalprice);
       LinearLayout emptyItemLayout = ((ShoppingCartActivity) appContext)
           .findViewById(emptyItemLayoutId);
-      BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());
-      total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-      totalPrice.setText(total.toString());
-
       emptyItemLayout.setVisibility(View.GONE);
     }
+    TextView totalPrice = ((ShoppingCartActivity) appContext).findViewById(R.id.cart_totalprice);
+    BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());
+    total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    totalPrice.setText(total.toString());
+    Intent customerIntent = new Intent();
+    customerIntent.putExtra("cart", cart);
+    ((ShoppingCartActivity) appContext).setResult(RESULT_OK, customerIntent);
   }
 }

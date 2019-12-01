@@ -162,7 +162,11 @@ public class CustomerUIActivity extends AppCompatActivity {
   @Override
   protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
     super.onActivityResult(requestCode, resultCode, data);
-    if (requestCode == 1 && resultCode == RESULT_OK) {
+    int ADD_TO_CART_REQUEST = 1;
+    int VIEW_CART_REQUEST = 2;
+    
+    if ((requestCode == ADD_TO_CART_REQUEST || requestCode == VIEW_CART_REQUEST)
+        && resultCode == RESULT_OK) {
       ShoppingCart cart = (ShoppingCart) data.getSerializableExtra("cart");
       Log.e("UPDATED SHOPPINGCART", cart.getItemMap().toString());
       ImageView cartButton = findViewById(R.id.customer_cart);
