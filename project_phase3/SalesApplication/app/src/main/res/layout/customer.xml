@@ -68,18 +68,19 @@
 
   <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="615dp"
+    android:layout_height="575dp"
     android:layout_gravity="bottom"
     android:layout_marginTop="25dp"
     android:background="@drawable/rounded_30dp"
     android:backgroundTint="@color/white"
     android:baselineAligned="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="50dp">
     <ScrollView
       android:layout_width="match_parent"
-      android:layout_height="570dp"
+      android:layout_height="500dp"
       android:layout_marginTop="25dp"
-      android:background="@drawable/rounded_30dp">
+      android:backgroundTint="@color/white">
       <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,7 +146,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_marginStart="30dp"
-            android:src="@mipmap/fishing_rod"/>
+            android:src="@mipmap/fishing_rod" />
         </FrameLayout>
         <FrameLayout
           android:id="@+id/customer_frame2"
@@ -315,8 +316,7 @@
         <FrameLayout
           android:id="@+id/customer_frame5"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-        >
+          android:layout_height="match_parent">
           <LinearLayout
             android:id="@+id/customer_item5"
             android:layout_width="match_parent"
@@ -427,8 +427,7 @@
         <FrameLayout
           android:id="@+id/customer_frame7"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_marginBottom="100dp">
+          android:layout_height="match_parent">
           <LinearLayout
             android:id="@+id/customer_item7"
             android:layout_width="match_parent"

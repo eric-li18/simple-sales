@@ -3,7 +3,8 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/almond"
+  android:background="@color/white"
+  android:backgroundTint="@color/almond"
   android:orientation="vertical">
 
   <TextView
@@ -22,12 +23,14 @@
     android:layout_marginTop="20dp"
     android:layout_marginRight="7dp"
     android:background="@drawable/rounded_20dp"
+    android:backgroundTint="@color/white"
     android:paddingTop="15dp"
     android:paddingBottom="15dp">
     <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:background="@drawable/rounded_20dp"
+      android:backgroundTint="@color/white"
       android:orientation="vertical">
       <LinearLayout
         android:id="@+id/cart_item1"
@@ -37,18 +40,16 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow"
-        android:clickable="true"
+        android:background="@drawable/border"
+        android:clickable="false"
         android:orientation="horizontal">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname1"
@@ -62,7 +63,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -104,7 +105,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -113,17 +114,17 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname2"
@@ -136,7 +137,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -177,7 +178,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -186,17 +187,17 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname3"
@@ -209,7 +210,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -250,7 +251,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -259,17 +260,17 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname4"
@@ -282,7 +283,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -323,7 +324,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -332,17 +333,17 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname5"
@@ -355,7 +356,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -396,7 +397,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -405,17 +406,17 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:layout_marginRight="30dp"
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname6"
@@ -428,7 +429,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -467,7 +468,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -476,18 +477,18 @@
         android:layout_width="350dp"
         android:layout_height="75dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="60dp"
-        android:background="@drawable/rounded_30dp"
-        android:backgroundTint="@color/yellow">
+        android:background="@drawable/border">
         <LinearLayout
           android:layout_width="275dp"
           android:layout_height="match_parent"
           android:orientation="horizontal">
           <LinearLayout
-            android:layout_width="65dp"
+            android:layout_width="185dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical">
             <TextView
               android:id="@+id/cart_itemname7"
@@ -500,7 +501,7 @@
               android:textColor="@color/black"
               android:textSize="20sp" />
             <LinearLayout
-              android:layout_width="match_parent"
+              android:layout_width="185dp"
               android:layout_height="match_parent"
               android:orientation="horizontal">
               <TextView
@@ -539,7 +540,7 @@
           android:layout_height="45dp"
           android:layout_gravity="center_vertical"
           android:layout_marginLeft="5dp"
-          android:backgroundTint="@color/yellow"
+          android:backgroundTint="@color/white"
           android:scaleType="fitCenter"
           app:srcCompat="@drawable/x" />
       </LinearLayout>
@@ -553,8 +554,8 @@
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@string/total"
       android:fontFamily="@font/futurabook"
+      android:text="@string/total"
       android:textSize="20sp" />
     <TextView
       android:id="@+id/cart_totalprice"
