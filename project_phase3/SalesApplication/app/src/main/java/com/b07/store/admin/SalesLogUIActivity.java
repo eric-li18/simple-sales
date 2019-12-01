@@ -63,8 +63,8 @@ public class SalesLogUIActivity extends AppCompatActivity {
     //no touchy
     EditText saleIdInput = findViewById(R.id.sale_id_input);
     saleIdInput.setTransformationMethod(null);
-    int saleId1 = DatabaseInsertHelper.insertSale(3, new BigDecimal(9.99), this);
-    int itemizedSaleId = DatabaseInsertHelper.insertItemizedSale(saleId1, 1, 5, this);
+//    int saleId1 = DatabaseInsertHelper.insertSale(3, new BigDecimal(9.99), this);
+//    int itemizedSaleId = DatabaseInsertHelper.insertItemizedSale(saleId1, 1, 5, this);
 
     Button returnButton = findViewById(R.id.return_button);
     returnButton.setOnClickListener(new ReturnButtonController(this, sales));

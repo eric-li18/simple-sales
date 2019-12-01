@@ -32,7 +32,8 @@
     <activity
       android:name=".store.admin.SalesLogUIActivity"
       android:windowSoftInputMode="adjustPan" />
-    <activity android:name=".store.admin.PromoteEmployeeUIActivity" />
+    <activity android:name=".store.admin.PromoteEmployeeUIActivity"
+      android:windowSoftInputMode="adjustPan"/>
     <activity android:name=".store.admin.AdminLoginUIActivity" />
     <activity android:name=".store.admin.AccountListUIActivity" />
   </application>
