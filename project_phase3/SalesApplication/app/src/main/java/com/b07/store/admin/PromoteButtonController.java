@@ -34,6 +34,8 @@ public class PromoteButtonController implements View.OnClickListener {
         .findViewById(R.id.admin_employee_id_input);
     TextView message = ((PromoteEmployeeUIActivity) appContext)
         .findViewById(R.id.promote_employee_message);
+    TextView employeeView = ((PromoteEmployeeUIActivity) appContext)
+        .findViewById(R.id.employee_list);
 
     int parsedUserId = -1;
     if (!Validator.validateEmpty(id.getText().toString())) {
@@ -45,6 +47,7 @@ public class PromoteButtonController implements View.OnClickListener {
     List<Integer> userIds = new ArrayList<>();
     for (int roleId : roleIds) {
       if (DatabaseSelectHelper.getRoleName(roleId, appContext).equals(Roles.EMPLOYEE.name())) {
+        int employeeRoleId = roleId;
         userIds = DatabaseSelectHelper.getUsersByRole(roleId, appContext);
       }
       if (userIds.contains(parsedUserId)) { //TODO put this in validator?
@@ -56,6 +59,22 @@ public class PromoteButtonController implements View.OnClickListener {
         }
         //Admin promotedEmployee = new Admin(employee.getId(), employee.getName(), employee.getAge(), employee.getAddress());
         //employee = null;
+        int employeeRoleId = DatabaseSelectHelper
+            .getRoleIdFromName(Roles.EMPLOYEE.name(), appContext);
+        List<Integer> employees = DatabaseSelectHelper.getUsersByRole(employeeRoleId, appContext);
+
+        StringBuilder employeeList = new StringBuilder();
+        User user;
+
+        for (int userId : employees) {
+          user = DatabaseSelectHelper.getUserDetails(userId, appContext);
+          employeeList.append(user.getId());
+          employeeList.append(" - ");
+          employeeList.append(user.getName());
+          employeeList.append("\n");
+        }
+
+        employeeView.setText(employeeList);
         message.setText(R.string.successful_promotion);
       } else {
         message.setText(R.string.unsuccessful_promotion);
