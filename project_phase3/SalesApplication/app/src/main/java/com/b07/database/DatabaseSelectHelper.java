@@ -391,13 +391,15 @@ public class DatabaseSelectHelper {
   public static List<Integer> getActiveAccounts(int userId, Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     Cursor cursor = null;
-    List<Integer> activeAccounts = null;
+    List<Integer> activeAccounts = new ArrayList<>();
     cursor = myDB.getUserActiveAccounts(userId);
-    while (cursor.moveToNext()) {
-      int activeStatus = cursor.getInt(cursor.getColumnIndex("active"));
-      int accId = cursor.getInt(cursor.getColumnIndex("Id"));
-      if (activeStatus == 1) {
-        activeAccounts.add(accId);
+    if (cursor.getCount() > 0) {
+      while (cursor.moveToNext()) {
+        int activeStatus = cursor.getInt(cursor.getColumnIndex("ACTIVE"));
+        int accId = cursor.getInt(cursor.getColumnIndex("ID"));
+        if (activeStatus == 1) {
+          activeAccounts.add(accId);
+        }
       }
     }
     return activeAccounts;
@@ -406,7 +408,7 @@ public class DatabaseSelectHelper {
   public static List<Integer> getInactiveAccounts(int userId, Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
     Cursor cursor = null;
-    List<Integer> inactiveAccounts = null;
+    List<Integer> inactiveAccounts = new ArrayList<>();
     cursor = myDB.getUserInactiveAccounts(userId);
     while (cursor.moveToNext()) {
       int activeStatus = cursor.getInt(cursor.getColumnIndex("active"));
