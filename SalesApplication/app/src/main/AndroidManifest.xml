@@ -28,11 +28,13 @@
     <activity android:name=".store.employee.InsertNewItemActivity" />
     <activity android:name=".store.employee.RestockInventoryActivity" />
     <activity android:name=".store.employee.AddNewAccountActivity" />
-    <activity android:name=".store.employee.AddNewMembershipActivity"/>
-    <activity android:name=".store.admin.SalesLogUIActivity"
-      android:windowSoftInputMode="adjustPan"/>
+    <activity android:name=".store.employee.AddNewMembershipActivity" />
+    <activity
+      android:name=".store.admin.SalesLogUIActivity"
+      android:windowSoftInputMode="adjustPan" />
     <activity android:name=".store.admin.PromoteEmployeeUIActivity" />
     <activity android:name=".store.admin.AdminLoginUIActivity" />
+    <activity android:name=".store.admin.AccountListUIActivity" />
   </application>
 
 </manifest>

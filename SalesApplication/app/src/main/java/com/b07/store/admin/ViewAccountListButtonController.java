@@ -1,6 +1,7 @@
 package com.b07.store.admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 public class ViewAccountListButtonController implements View.OnClickListener {
@@ -13,6 +14,7 @@ public class ViewAccountListButtonController implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
-
+    Intent intent = new Intent(appContext, AccountListUIActivity.class);
+    appContext.startActivity(intent);
   }
 }
