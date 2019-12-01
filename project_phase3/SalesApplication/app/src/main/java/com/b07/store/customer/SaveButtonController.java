@@ -27,6 +27,11 @@ public class SaveButtonController implements View.OnClickListener {
     int userId = shoppingCart.getCustomer().getId();
     int accId = DatabaseSelectHelper.getUserAccounts(userId, appContext);
 
+    if(shoppingCart.getItemMap().isEmpty()){
+      error.setText(R.string.empty_error);
+      return;
+    }
+
     if (!DatabaseSelectHelper.getAccountDetails(accId, appContext).equals(new HashMap<>())) {
       error.setText(R.string.save_error);
     } else if (accId != -1) {
