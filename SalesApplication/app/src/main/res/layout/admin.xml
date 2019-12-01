@@ -5,44 +5,53 @@
   android:layout_height="match_parent"
   android:background="@color/almond"
   android:orientation="vertical">
-
-  <ImageView
-    android:id="@+id/admin_logout"
-    android:layout_width="35dp"
-    android:layout_height="35dp"
-    android:layout_gravity="end"
-    android:layout_marginTop="15dp"
-    android:layout_marginEnd="15dp"
-    android:clickable="true"
-    app:srcCompat="@drawable/logout" />
-
-  <TextView
-    android:id="@+id/admin_greeting"
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="25dp"
-    android:layout_marginTop="25dp"
-    android:fontFamily="@font/futuramedium"
-    android:text="@string/welcome_back"
-    android:textAlignment="center"
-    android:textColor="@color/black"
-    android:textSize="36sp" />
+    android:orientation="horizontal"
+    android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp">
+
+    <TextView
+      android:id="@+id/admin_greeting"
+      android:layout_width="0dp"
+      android:layout_weight="0.9"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end"
+      android:layout_marginStart="25dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="Hi, Mohammad"
+      android:textColor="@color/black"
+      android:textSize="36sp" />
+    <ImageView
+      android:id="@+id/admin_logout"
+      android:layout_width="35dp"
+      android:layout_height="35dp"
+      android:layout_gravity="end"
+      android:layout_marginTop="20dp"
+      android:layout_marginEnd="30dp"
+      android:clickable="true"
+      app:srcCompat="@drawable/logout" />
+
+  </LinearLayout>
+
+
 
   <LinearLayout
-    android:layout_width="390dp"
-    android:layout_height="570dp"
-    android:layout_gravity="bottom"
-    android:layout_marginLeft="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="-10dp"
     android:layout_marginTop="25dp"
     android:background="@drawable/rounded_30dp"
     android:backgroundTint="@color/white"
-    android:baselineAligned="false"
+
     android:orientation="vertical">
 
     <LinearLayout
       android:id="@+id/admin_sales_log"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
       android:layout_marginTop="10dp"
       android:clickable="true"
       android:orientation="horizontal">
@@ -94,7 +103,8 @@
     <LinearLayout
       android:id="@+id/admin_account_list"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
       android:clickable="true"
       android:orientation="horizontal"
       android:visibility="visible">
@@ -141,7 +151,8 @@
     <LinearLayout
       android:id="@+id/admin_promote_employee"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
       android:clickable="true"
       android:orientation="horizontal"
       android:visibility="visible">
@@ -195,7 +206,8 @@
     <LinearLayout
       android:id="@+id/admin_export_data"
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
       android:clickable="true"
       android:orientation="horizontal"
       android:visibility="visible">
@@ -248,7 +260,9 @@
 
     <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="100dp"
+      android:layout_height="0dp"
+      android:layout_weight="0.15"
+      android:layout_marginBottom="30dp"
       android:clickable="true"
       android:orientation="horizontal"
       android:visibility="visible">
