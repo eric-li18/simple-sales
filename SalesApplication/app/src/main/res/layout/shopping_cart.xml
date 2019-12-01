@@ -7,15 +7,52 @@
   android:backgroundTint="@color/almond"
   android:orientation="vertical">
 
-  <TextView
-    android:layout_width="wrap_content"
+  <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="20dp"
-    android:layout_marginTop="20dp"
-    android:fontFamily="@font/futuramedium"
-    android:text="Your Cart"
-    android:textColor="@color/black"
-    android:textSize="36sp" />
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp">
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="20dp"
+      android:fontFamily="@font/futuramedium"
+      android:text="Your Cart"
+      android:textColor="@color/black"
+      android:textSize="36sp" />
+
+    <Button
+      android:id="@+id/cart_save_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/save_cart"
+      android:fontFamily="@font/futuramedium"
+      android:background="@drawable/rounded_20dp"
+      android:backgroundTint="@color/yellow"
+      android:textColor="@color/white"
+      android:minHeight="30dp"
+      android:minWidth="80dp"
+      android:layout_gravity="center"
+      android:layout_marginStart="40dp"
+      />
+
+    <Button
+      android:id="@+id/cart_restore_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/restore_cart"
+      android:fontFamily="@font/futuramedium"
+      android:background="@drawable/rounded_20dp"
+      android:backgroundTint="@color/yellow"
+      android:textColor="@color/white"
+      android:minHeight="30dp"
+      android:minWidth="80dp"
+      android:layout_gravity="center"
+      android:layout_marginStart="15dp"
+      android:layout_marginEnd="15dp"/>
+
+  </LinearLayout>
+
   <ScrollView
     android:layout_width="match_parent"
     android:layout_height="420dp"
@@ -565,6 +602,14 @@
       android:fontFamily="@font/futurabook"
       android:textSize="20sp" />
   </LinearLayout>
+
+  <TextView
+    android:id="@+id/cart_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fontFamily="@font/futurabook"
+    android:textColor="@color/red" />
 
   <Button
     android:id="@+id/cart_checkoutbutton"

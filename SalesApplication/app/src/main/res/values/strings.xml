@@ -84,6 +84,12 @@
   <string name="sale_id_error">Ensure you have a valid sale id</string>
   <string name="return_unsucessful">The return was unsuccessful</string>
 
+  <!--Customer-->
+  <string name="save_cart">Save</string>
+  <string name="restore_cart">Restore</string>
+  <string name="save_error">You have already saved before</string>
+  <string name="account_error">You need to link an account to save or restore</string>
+
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>
   <string name="welcome_back">Welcome back!</string>
