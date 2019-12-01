@@ -89,7 +89,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     saveButton.setOnClickListener(new SaveButtonController(this, cart));
 
     Button restoreButton = findViewById(R.id.cart_restore_button);
-    restoreButton.setOnClickListener(new RestoreButtonController(this));
+    restoreButton.setOnClickListener(new RestoreButtonController(this, cart));
 
     TextView totalPrice = findViewById(R.id.cart_totalprice);
     BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());

@@ -87,8 +87,11 @@
   <!--Customer-->
   <string name="save_cart">Save</string>
   <string name="restore_cart">Restore</string>
+  <string name="empty_error">You cannot save an empty cart</string>
   <string name="save_error">You have already saved before</string>
   <string name="account_error">You need to link an account to save or restore</string>
+  <string name="restore_error">You have already restored before</string>
+  <string name="no_save">You have not saved a cart on this account yet</string>
 
   <!--  Eric-->
   <string name="pickup">Pick up where you left off</string>

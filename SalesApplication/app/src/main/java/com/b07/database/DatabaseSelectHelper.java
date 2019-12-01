@@ -379,8 +379,8 @@ public class DatabaseSelectHelper {
     cursor = myDB.getAccountDetails(accountId);
     items = new HashMap<>();
     while (cursor.moveToNext()) {
-      int itemId = cursor.getInt(cursor.getColumnIndex("itemId"));
-      int quantity = cursor.getInt(cursor.getColumnIndex("quantity"));
+      int itemId = cursor.getInt(cursor.getColumnIndex("ITEMID"));
+      int quantity = cursor.getInt(cursor.getColumnIndex("QUANTITY"));
       items.put(DatabaseSelectHelper.getItem(itemId, context), quantity);
     }
     cursor.close();
