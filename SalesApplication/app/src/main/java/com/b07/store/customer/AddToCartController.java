@@ -31,11 +31,13 @@ public class AddToCartController implements View.OnClickListener {
         .findViewById(R.id.add_item_quantity);
     int quantityWanted = Integer.parseInt(quantityWantedView.getText().toString());
 
-    cart.addItem(item, quantityWanted);
+    if (quantityWanted > 0) {
+      cart.addItem(item, quantityWanted);
 
-    Intent i = new Intent();
-    i.putExtra("cart", cart);
-    ((AddItemActivity) appContext).setResult(RESULT_OK, i);
+      Intent i = new Intent();
+      i.putExtra("cart", cart);
+      ((AddItemActivity) appContext).setResult(RESULT_OK, i);
+    }
     ((AddItemActivity) appContext).finish();
 
     //    TextView quantityWantedView = ((AddItemActivity) appContext)

@@ -108,8 +108,7 @@ public class CustomerUIActivity extends AppCompatActivity {
       priceTextView.setText(price.toString());
 
       String itemName = (memberItemType.name().substring(0, 1).toUpperCase() + memberItemType
-          .name()
-          .substring(1).toLowerCase()).replace("_", " ");
+          .name().substring(1).toLowerCase()).replace("_", " ");
       itemTextView.setText(itemName);
 
       List<Integer> members = DatabaseSelectHelper.getMembers(context);

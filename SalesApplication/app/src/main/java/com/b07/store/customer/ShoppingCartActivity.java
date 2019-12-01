@@ -86,5 +86,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
     total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
     totalPrice.setText(total.toString());
     renderCart(cart);
+
   }
 }
