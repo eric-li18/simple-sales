@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
 import com.b07.inventory.Item;
 import com.b07.inventory.ItemTypes;
+import com.b07.inventory.MemberItemTypes;
 import com.b07.store.ShoppingCart;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -29,19 +30,22 @@ public class ShoppingCartActivity extends AppCompatActivity {
       String priceIdName = "cart_itemprice" + count;
       String removeButtonIdName = "cart_removebutton" + count;
       String quantityIdName = "cart_itemquantity" + count;
+      String emptyItemLayoutIdName = "cart_item" + count;
 
       int itemNameId = getResources().getIdentifier(itemNameIdName, "id", getPackageName());
       int priceId = getResources().getIdentifier(priceIdName, "id", getPackageName());
       int removeButtonId = getResources().getIdentifier(removeButtonIdName, "id", getPackageName());
       int quantityId = getResources().getIdentifier(quantityIdName, "id", getPackageName());
+      int emptyItemLayoutId = getResources()
+          .getIdentifier(emptyItemLayoutIdName, "id", getPackageName());
 
       TextView itemTextView = findViewById(itemNameId);
       TextView priceTextView = findViewById(priceId);
-      ImageButton removeButton = findViewById(removeButtonId);
       TextView quantityTextView = findViewById(quantityId);
+      ImageButton removeButton = findViewById(removeButtonId);
 
-      BigDecimal pricePerItem = item.getPrice();
       Integer amountPerItem = itemMap.get(item);
+      BigDecimal pricePerItem = item.getPrice();
       BigDecimal price = pricePerItem.multiply(new BigDecimal(amountPerItem.toString()));
       String formattedItemName = (item.getName().substring(0, 1).toUpperCase() + item.getName()
           .substring(1).toLowerCase()).replace("_", " ");
@@ -51,13 +55,14 @@ public class ShoppingCartActivity extends AppCompatActivity {
       quantityTextView.setText(amountPerItem.toString());
 
       removeButton
-          .setOnClickListener(new RemoveFromCartController(this, cart, item, priceId, quantityId));
+          .setOnClickListener(new RemoveFromCartController(this, cart, item, priceId, quantityId,
+              emptyItemLayoutId));
 
       count++;
     }
 
-    if (count != ItemTypes.values().length + 1) {
-      while (count != ItemTypes.values().length + 1) {
+    if (count != ItemTypes.values().length + MemberItemTypes.values().length + 1) {
+      while (count != ItemTypes.values().length + MemberItemTypes.values().length + 1) {
         String emptyItemLayoutId = "cart_item" + count;
         int emptyItemLayoutIdName = getResources()
             .getIdentifier(emptyItemLayoutId, "id", getPackageName());
