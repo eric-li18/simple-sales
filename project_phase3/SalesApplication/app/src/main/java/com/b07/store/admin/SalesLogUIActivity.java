@@ -3,8 +3,6 @@ package com.b07.store.admin;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
@@ -43,14 +41,24 @@ public class SalesLogUIActivity extends AppCompatActivity {
     }
     */
 
-    ScrollView layout = findViewById(R.id.sales_log_layout);
+    TextView salesView = findViewById(R.id.sales_log_layout);
     SalesLog salesLog = DatabaseSelectHelper.getSales(this);
     List<Sale> sales = salesLog.getLog();
+    StringBuilder sales_list = new StringBuilder();
     if (sales != null) {
       for (Sale sale : sales) {
-        addSale(layout, sale);
+        sales_list.append("Customer: ").append(sale.getUser().getName()).append("\n");
+        sales_list.append("Purchase Number: ").append(sale.getId()).append("\n");
+        sales_list.append("Total Purchase Price: ").append(sale.getTotalPrice()).append("\n");
+        sales_list.append("Itemized Breakdown: ").append("\n");
+        HashMap<Item, Integer> itemMap = sale.getItemMap();
+        for (Item item : itemMap.keySet()) {
+          sales_list.append(item.getName()).append(": ").append(itemMap.get(item)).append("\n");
+        }
+        sales_list.append("----------------------------------------");
       }
     }
+    salesView.setText(sales_list);
 
     //no touchy
     EditText saleIdInput = findViewById(R.id.sale_id_input);
@@ -63,7 +71,7 @@ public class SalesLogUIActivity extends AppCompatActivity {
 
   }
 
-  private void addSale(ScrollView sales_log_layout, Sale sale) {
+  /*private void addSale(ScrollView sales_log_layout, Sale sale) {
 
     LinearLayout saleCustomerLayout = findViewById(R.id.sales_log_customer_box);
     TextView saleId = findViewById(R.id.sale_id);
@@ -103,7 +111,7 @@ public class SalesLogUIActivity extends AppCompatActivity {
     sales_log_layout.addView(saleLayout);
     sales_log_layout.setLayoutParams(saleLogParams);
   }
-
+*/
   @Override
   public void onBackPressed() {
     finish();

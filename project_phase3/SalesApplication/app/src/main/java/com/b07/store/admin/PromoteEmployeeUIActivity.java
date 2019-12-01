@@ -47,6 +47,28 @@ public class PromoteEmployeeUIActivity extends AppCompatActivity {
   }
 
   @Override
+  public void onResume() {
+    super.onResume();
+    TextView employeeView = findViewById(R.id.employee_list);
+
+    int roleId = DatabaseSelectHelper.getRoleIdFromName(Roles.EMPLOYEE.name(), this);
+    List<Integer> employees = DatabaseSelectHelper.getUsersByRole(roleId, this);
+
+    StringBuilder employeeList = new StringBuilder("");
+    User user;
+
+    for (int userId : employees) {
+      user = DatabaseSelectHelper.getUserDetails(userId, this);
+      employeeList.append(user.getId());
+      employeeList.append(" - ");
+      employeeList.append(user.getName());
+      employeeList.append("\n");
+    }
+
+    employeeView.setText(employeeList);
+  }
+
+  @Override
   public void onBackPressed() {
     finish();
   }
