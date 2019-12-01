@@ -3,6 +3,7 @@ package com.b07.store.customer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -81,6 +82,12 @@ public class ShoppingCartActivity extends AppCompatActivity {
     TextView totalPrice = findViewById(R.id.cart_totalprice);
     Intent intent = getIntent();
     ShoppingCart cart = (ShoppingCart) intent.getSerializableExtra("cart");
+
+    Button saveButton = findViewById(R.id.cart_save_button);
+    saveButton.setOnClickListener(new SaveButtonController(this, cart));
+
+    Button restoreButton = findViewById(R.id.cart_restore_button);
+    restoreButton.setOnClickListener(new RestoreButtonController(this));
 
     BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());
     total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
