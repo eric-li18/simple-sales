@@ -26,7 +26,7 @@
     android:backgroundTint="@color/burgundy"
     android:padding="20dp">
     <TextView
-      android:id="@+id/admin_account_list"
+      android:id="@+id/admin_account_list_box"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:fontFamily="@font/futurabook"
