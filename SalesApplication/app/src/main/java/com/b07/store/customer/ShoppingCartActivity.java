@@ -79,9 +79,11 @@ public class ShoppingCartActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.shopping_cart);
 
-    TextView totalPrice = findViewById(R.id.cart_totalprice);
     Intent intent = getIntent();
     ShoppingCart cart = (ShoppingCart) intent.getSerializableExtra("cart");
+
+    Button checkoutButton = findViewById(R.id.cart_checkoutbutton);
+    checkoutButton.setOnClickListener(new CheckOutButtonController(this, cart));
 
     Button saveButton = findViewById(R.id.cart_save_button);
     saveButton.setOnClickListener(new SaveButtonController(this, cart));
@@ -89,10 +91,10 @@ public class ShoppingCartActivity extends AppCompatActivity {
     Button restoreButton = findViewById(R.id.cart_restore_button);
     restoreButton.setOnClickListener(new RestoreButtonController(this));
 
+    TextView totalPrice = findViewById(R.id.cart_totalprice);
     BigDecimal total = cart.getTotal().multiply(cart.getTaxRate());
     total = total.setScale(2, BigDecimal.ROUND_HALF_EVEN);
     totalPrice.setText(total.toString());
     renderCart(cart);
-
   }
 }

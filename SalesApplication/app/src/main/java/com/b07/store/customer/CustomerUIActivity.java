@@ -164,7 +164,7 @@ public class CustomerUIActivity extends AppCompatActivity {
     super.onActivityResult(requestCode, resultCode, data);
     int ADD_TO_CART_REQUEST = 1;
     int VIEW_CART_REQUEST = 2;
-    
+
     if ((requestCode == ADD_TO_CART_REQUEST || requestCode == VIEW_CART_REQUEST)
         && resultCode == RESULT_OK) {
       ShoppingCart cart = (ShoppingCart) data.getSerializableExtra("cart");
@@ -172,6 +172,7 @@ public class CustomerUIActivity extends AppCompatActivity {
       ImageView cartButton = findViewById(R.id.customer_cart);
       cartButton.setOnClickListener(new CartButtonController(this, cart));
       renderShop(cart);
+      renderExclusive(cart, this, cart.getCustomer().getId());
     }
   }
 }
