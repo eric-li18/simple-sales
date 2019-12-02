@@ -1,10 +1,6 @@
 package com.b07.store;
 
 import android.content.Context;
-import android.util.Log;
-import com.b07.validation.Validator;
-import java.io.Serializable;
-import java.sql.SQLException;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.database.DatabaseUpdateHelper;
 import com.b07.exceptions.AuthenticationException;
@@ -12,6 +8,9 @@ import com.b07.exceptions.UserCreationException;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.Item;
 import com.b07.users.Employee;
+import com.b07.validation.Validator;
+import java.io.Serializable;
+import java.sql.SQLException;
 
 public class EmployeeInterface implements Serializable {
 
