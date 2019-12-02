@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
       startActivity(intent);
     } else {
       Intent intent = new Intent(this, StoreAuthenticationActivity.class);
+      intent.putExtra("backPress", "no");
       startActivity(intent);
     }
   }

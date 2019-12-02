@@ -21,7 +21,7 @@ public class EmployeeLoginButtonController implements View.OnClickListener {
   public void onClick(View v) {
     Intent intent = new Intent(appContext, EmployeeUIActivity.class);
     Employee employee = new Employee(admin.getId(), admin.getName(), admin.getAge(),
-        admin.getAddress());
+        admin.getAddress(), true);
     intent.putExtra("user", employee);
     appContext.startActivity(intent);
   }
