@@ -19,6 +19,7 @@ public class ShoppingCart implements Serializable {
   private Customer customer;
   private BigDecimal total;
   private static final BigDecimal TAXRATE = new BigDecimal(1.13);
+  private boolean restoredCart = false;
 
   /**
    * Constructor for ShoppingCart
@@ -186,5 +187,13 @@ public class ShoppingCart implements Serializable {
   public void clearCart() {
     total = BigDecimal.ZERO;
     items.clear();
+  }
+
+  public void setRestoredCart(boolean restoredCart) {
+    this.restoredCart = restoredCart;
+  }
+
+  public boolean getRestoredCart(){
+    return restoredCart;
   }
 }

@@ -11,7 +11,9 @@ import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Item;
 import com.b07.store.ShoppingCart;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class RestoreButtonController implements View.OnClickListener {
 
@@ -30,7 +32,12 @@ public class RestoreButtonController implements View.OnClickListener {
     TextView error = ((ShoppingCartActivity) appContext).findViewById(R.id.cart_error);
 
     int userId = shoppingCart.getCustomer().getId();
-    int accId = DatabaseSelectHelper.getUserAccounts(userId, appContext);
+    List<Integer> accIds = DatabaseSelectHelper.getActiveAccounts(userId, appContext);
+
+    int accId = -1;
+    if (!accIds.isEmpty()) {
+      accId = Collections.max(accIds);
+    }
     if (accId != -1) {
       shoppingCart.clearCart();
       HashMap<Item, Integer> resItems = DatabaseSelectHelper.getAccountDetails(accId, appContext);
@@ -46,6 +53,7 @@ public class RestoreButtonController implements View.OnClickListener {
       Toast toast = Toast.makeText(appContext, "Restoring cart...", Toast.LENGTH_SHORT);
       toast.show();
 
+      shoppingCart.setRestoredCart(true);
       Intent i = new Intent();
       i.putExtra("cart", shoppingCart);
       ((ShoppingCartActivity) appContext).setResult(RESULT_OK, i);

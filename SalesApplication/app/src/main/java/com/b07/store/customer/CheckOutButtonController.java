@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import com.b07.database.DatabaseSelectHelper;
+import com.b07.database.DatabaseUpdateHelper;
 import com.b07.inventory.Item;
 import com.b07.store.ShoppingCart;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author Eric
@@ -42,6 +45,11 @@ public class CheckOutButtonController implements View.OnClickListener {
 
       if (purchasable) {
         if (cart.checkOut(appContext)) {
+          if(cart.getRestoredCart()){
+            int userId = cart.getCustomer().getId();
+            List<Integer> accIds = DatabaseSelectHelper.getActiveAccounts(userId, appContext);
+            DatabaseUpdateHelper.updateAccountStatus(Collections.max(accIds), false, appContext);
+          }
           Toast.makeText(appContext, "Thank you for shopping with us!", Toast.LENGTH_SHORT).show();
           Intent intent = new Intent(appContext, CustomerUIActivity.class);
           ((ShoppingCartActivity) appContext).finish();

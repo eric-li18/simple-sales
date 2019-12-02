@@ -58,7 +58,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
     String backPress = intent.getStringExtra("backPress");
     if (backPress.equals("yes")) {
       super.onBackPressed();
-    } else {
+      this.finish();
+    }
+    else{
       return;
     }
   }
