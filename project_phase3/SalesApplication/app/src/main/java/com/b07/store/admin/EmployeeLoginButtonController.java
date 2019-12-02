@@ -23,6 +23,7 @@ public class EmployeeLoginButtonController implements View.OnClickListener {
     Employee employee = new Employee(admin.getId(), admin.getName(), admin.getAge(),
         admin.getAddress(), true);
     intent.putExtra("user", employee);
+    intent.putExtra("backPress", "yes");
     appContext.startActivity(intent);
   }
 }
