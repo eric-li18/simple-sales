@@ -44,6 +44,7 @@ public class AdminUIActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    finish();
+    super.onBackPressed();
+    this.finish();
   }
 }
