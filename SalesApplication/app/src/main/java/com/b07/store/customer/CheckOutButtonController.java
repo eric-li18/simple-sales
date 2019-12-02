@@ -39,12 +39,14 @@ public class CheckOutButtonController implements View.OnClickListener {
       }
     }
 
-    if (purchasable && cart.checkOut(appContext)) {
-      Toast.makeText(appContext, "Thank you for shopping with us!", Toast.LENGTH_SHORT).show();
-      Intent intent = new Intent(appContext, CustomerUIActivity.class);
-      ((ShoppingCartActivity) appContext).finish();
-      intent.putExtra("user", cart.getCustomer());
-      appContext.startActivity(intent);
+    if (purchasable) {
+      if (cart.checkOut(appContext)) {
+        Toast.makeText(appContext, "Thank you for shopping with us!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(appContext, CustomerUIActivity.class);
+        ((ShoppingCartActivity) appContext).finish();
+        intent.putExtra("user", cart.getCustomer());
+        appContext.startActivity(intent);
+      }
     } else {
       String formattedItemName = (problemItem.getName().substring(0, 1).toUpperCase() + problemItem
           .getName().substring(1).toLowerCase()).replace("_", " ");

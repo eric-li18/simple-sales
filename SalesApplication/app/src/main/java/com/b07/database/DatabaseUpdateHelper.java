@@ -39,7 +39,7 @@ public class DatabaseUpdateHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if (Validator.validateUserId(userId,context) && Validator.validateAge(age)) {
+    if (Validator.validateUserId(userId, context) && Validator.validateAge(age)) {
       complete = dbA.updateUserAge(age, userId);
       if (!complete) {
         System.out.println("Could not update user age in the database.");
@@ -110,7 +110,7 @@ public class DatabaseUpdateHelper {
     boolean complete = false;
     quantity = quantity + DatabaseSelectHelper.getInventoryQuantity(itemId, context);
 
-    if (Validator.validateRestockQuantity(quantity) && Validator.validateItemId(itemId, context)) {
+    if (Validator.validateItemId(itemId, context)) {
       complete = dbA.updateInventoryQuantity(quantity, itemId);
       if (!complete) {
         System.out.println("Could not update inventory quantity in the database.");
@@ -120,16 +120,16 @@ public class DatabaseUpdateHelper {
     return complete;
   }
 
-  public static boolean updateAccountStatus(int accountId, boolean active, Context context){
+  public static boolean updateAccountStatus(int accountId, boolean active, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
     /**
      * Needs sanitization
      */
-    if(true){
+    if (true) {
       complete = dbA.updateAccountStatus(accountId, active);
-      if (!complete){
+      if (!complete) {
         System.out.println("Could not update inventory quantity in the database.");
       }
     }
@@ -137,11 +137,11 @@ public class DatabaseUpdateHelper {
     return complete;
   }
 
-  public static boolean updateMembershipStatus(int userId, int status, Context context){
+  public static boolean updateMembershipStatus(int userId, int status, Context context) {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     boolean complete = false;
 
-    if(Validator.validateUserId(userId, context) && Validator.validateStatus(status)){
+    if (Validator.validateUserId(userId, context) && Validator.validateStatus(status)) {
       complete = dbA.updateMembershipStatus(userId, status);
     }
     dbA.close();
