@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.view.View;
 
 public class AddNewMembershipButtonController implements View.OnClickListener {
+
   private Context appContext;
 
-  public AddNewMembershipButtonController(Context context){
+  public AddNewMembershipButtonController(Context context) {
     appContext = context;
   }
 

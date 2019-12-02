@@ -3,7 +3,6 @@ package com.b07.store.customer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -142,8 +141,6 @@ public class CustomerUIActivity extends AppCompatActivity {
     try {
       cart = new ShoppingCart(customer);
     } catch (AuthenticationException ignored) {
-      Log.e("Authentication Exception in CustomerUIActivity.java",
-          "FROM: new ShoppingCart(customer)");
     }
 
     greeting.setText(greetingText);
@@ -168,7 +165,6 @@ public class CustomerUIActivity extends AppCompatActivity {
     if ((requestCode == ADD_TO_CART_REQUEST || requestCode == VIEW_CART_REQUEST)
         && resultCode == RESULT_OK) {
       ShoppingCart cart = (ShoppingCart) data.getSerializableExtra("cart");
-      Log.e("UPDATED SHOPPINGCART", cart.getItemMap().toString());
       ImageView cartButton = findViewById(R.id.customer_cart);
       cartButton.setOnClickListener(new CartButtonController(this, cart));
       renderShop(cart);

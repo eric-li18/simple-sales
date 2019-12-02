@@ -114,7 +114,6 @@ public class SeralizeImpl implements Serializable, Seralize {
   public void setCarts(Context appContext) {
     for (int customerId : accounts.keySet()) {
       List<Integer> accountList = accounts.get(customerId);
-//      for (int accId : accounts.get(customerId)) {
       if (accountList != null) {
         for (int accId : accountList) {
           HashMap<Item, Integer> items = DatabaseSelectHelper.getAccountDetails(accId, appContext);
@@ -242,7 +241,6 @@ public class SeralizeImpl implements Serializable, Seralize {
       }
 
     } catch (DatabaseInsertException | NullPointerException e) {
-//      System.out.println("Import not successful, reverting to the previous version");
       Toast.makeText(appContext, "Import not successful, reverting to the previous version",
           Toast.LENGTH_SHORT).show();
       export.deseralizeDatabase(appContext);

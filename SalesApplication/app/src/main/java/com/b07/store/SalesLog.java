@@ -20,8 +20,6 @@ public interface SalesLog extends Serializable {
 
   /**
    * Method for updating the sales log
-   *
-   * @param sale
    */
   public void updateLog(Sale sale);
 

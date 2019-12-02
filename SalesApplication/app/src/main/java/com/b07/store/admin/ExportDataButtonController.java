@@ -23,16 +23,13 @@ public class ExportDataButtonController implements View.OnClickListener {
     String ExFileName = "database_copy.ser";
     export.seralizeDatabase(appContext);
     try {
-//      FileOutputStream file = new FileOutputStream(ExFileName);
       FileOutputStream file = appContext.openFileOutput(ExFileName, appContext.MODE_PRIVATE);
       ObjectOutputStream out = new ObjectOutputStream(file);
       out.writeObject(export);
       out.close();
       file.close();
-//      System.out.println("Object has been exported");
       Toast.makeText(appContext, "Database export successful", Toast.LENGTH_SHORT).show();
     } catch (IOException e) {
-//      System.out.println("Export not successful");
       Toast.makeText(appContext, "Database export unsuccessful", Toast.LENGTH_SHORT).show();
     }
   }

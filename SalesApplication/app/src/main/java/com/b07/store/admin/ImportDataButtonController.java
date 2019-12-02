@@ -36,10 +36,8 @@ public class ImportDataButtonController extends AppCompatActivity implements Vie
       file.close();
 
       Toast.makeText(appContext, "Database import successful", Toast.LENGTH_SHORT).show();
-//      System.out.println("Import successful");
     } catch (IOException | ClassNotFoundException e) {
       Toast.makeText(appContext, "Database import unsuccessful", Toast.LENGTH_SHORT).show();
-//      System.out.println("Import not successful, reverting to previous version");
       back = true;
       e.printStackTrace();
     }

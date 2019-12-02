@@ -17,10 +17,9 @@ public class WelcomeContinueButtonController implements View.OnClickListener {
 
   @Override
   public void onClick(View v) {
-    if (access.equals("employeeAccess")){
-      ((WelcomeActivity)appContext).finish();
-    }
-    else {
+    if (access.equals("employeeAccess")) {
+      ((WelcomeActivity) appContext).finish();
+    } else {
       Intent intent = new Intent(appContext, MainActivity.class);
       appContext.startActivity(intent);
     }

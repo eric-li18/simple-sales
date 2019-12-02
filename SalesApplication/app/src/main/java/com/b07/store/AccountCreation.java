@@ -1,11 +1,11 @@
 package com.b07.store;
 
 import android.content.Context;
-import java.io.BufferedReader;
-import java.io.IOException;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.exceptions.UserCreationException;
 import com.b07.validation.Validator;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 public class AccountCreation {
 
@@ -14,7 +14,7 @@ public class AccountCreation {
    *
    * @param bufferedReader the scanner used to parse the input
    * @return a list of the user info with name, age, address, password stored at the 0-3 indices
-   *         respectively
+   * respectively
    */
   public static int createAccount(BufferedReader bufferedReader, String role, Context context)
       throws UserCreationException, IOException {
@@ -82,7 +82,7 @@ public class AccountCreation {
     if (roleId == -1) {
       throw new UserCreationException();
     }
-    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId,context);
+    int userRoleId = DatabaseInsertHelper.insertUserRole(userId, roleId, context);
     if (userRoleId == -1) {
       throw new UserCreationException();
     }

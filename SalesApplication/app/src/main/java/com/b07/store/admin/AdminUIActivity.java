@@ -23,7 +23,6 @@ public class AdminUIActivity extends AppCompatActivity {
     Intent intent = getIntent();
     Admin admin = (Admin) intent.getSerializableExtra("user");
     String greeting = "Hi, " + admin.getName().split(" ")[0];
-    //String greeting = "Hi, " + intent.getStringExtra("name");
     TextView greet = findViewById(R.id.admin_greeting);
     greet.setText(greeting);
 

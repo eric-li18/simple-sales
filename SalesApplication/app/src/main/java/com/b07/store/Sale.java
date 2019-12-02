@@ -71,7 +71,7 @@ public interface Sale {
   /**
    * Method for updating the item map
    *
-   * @param item     the item
+   * @param item the item
    * @param quantity the quantity of the item
    */
   public void updateMap(Item item, Integer quantity);

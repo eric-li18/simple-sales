@@ -82,7 +82,7 @@
       android:importantForAutofill="no"
       android:inputType="numberDecimal"
       android:textColor="@color/white"
-      android:fontFamily="@font/futurabook"/>
+      android:fontFamily="@font/futurabook" />
 
 
     <TextView
@@ -105,7 +105,7 @@
       android:importantForAutofill="no"
       android:inputType="numberPassword"
       android:textColor="@color/white"
-      android:fontFamily="@font/futurabook"/>
+      android:fontFamily="@font/futurabook" />
 
   </LinearLayout>
   <TextView

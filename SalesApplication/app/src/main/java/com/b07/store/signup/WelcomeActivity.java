@@ -9,6 +9,7 @@ import com.b07.R;
 import com.b07.users.Roles;
 
 public class WelcomeActivity extends AppCompatActivity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

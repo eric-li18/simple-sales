@@ -7,10 +7,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
-import com.b07.store.AccountCreation;
 
 
 public class AccountCreationActivity extends AppCompatActivity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -32,10 +32,9 @@ public class AccountCreationActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     Intent intent = getIntent();
-    if (intent.getStringExtra("backPress").equals("no")){
+    if (intent.getStringExtra("backPress").equals("no")) {
       return;
-    }
-    else{
+    } else {
       super.onBackPressed();
     }
   }

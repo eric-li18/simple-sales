@@ -56,10 +56,9 @@ public class EmployeeUIActivity extends AppCompatActivity {
   public void onBackPressed() {
     Intent intent = getIntent();
     String backPress = intent.getStringExtra("backPress");
-    if(backPress.equals("yes")){
+    if (backPress.equals("yes")) {
       super.onBackPressed();
-    }
-    else{
+    } else {
       return;
     }
   }
