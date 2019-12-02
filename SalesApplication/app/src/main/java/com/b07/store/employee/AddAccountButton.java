@@ -37,9 +37,6 @@ public class AddAccountButton implements View.OnClickListener {
     if (!Validator.validateUserId(parsedUserId, appContext) || !customers.contains(parsedUserId)) {
       error.setText(R.string.user_id_error);
     } else {
-
-      DatabaseSelectHelper.getUserAccounts(parsedUserId, appContext);
-
       int accId = DatabaseInsertHelper.insertAccount(parsedUserId, true, appContext);
       if (accId == -1) {
         error.setText(R.string.account_creation_error);
