@@ -1,15 +1,18 @@
 package com.b07.store.admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
 import com.b07.store.Seralize;
 import com.b07.store.SeralizeImpl;
+import com.b07.store.login.StoreAuthenticationActivity;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-public class ImportDataButtonController implements View.OnClickListener {
+public class ImportDataButtonController extends AppCompatActivity implements View.OnClickListener {
 
   private Context appContext;
 
@@ -45,5 +48,10 @@ public class ImportDataButtonController implements View.OnClickListener {
     } else if (back) {
       backUp.deseralizeDatabase(appContext);
     }
+    Toast toast = Toast.makeText(appContext, "Logging out...", Toast.LENGTH_SHORT);
+    toast.show();
+    Intent intent = new Intent(appContext, StoreAuthenticationActivity.class);
+    intent.putExtra("backPress", "no");
+    appContext.startActivity(intent);
   }
 }
