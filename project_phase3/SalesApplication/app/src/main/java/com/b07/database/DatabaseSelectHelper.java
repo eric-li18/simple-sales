@@ -2,6 +2,7 @@ package com.b07.database;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import com.b07.inventory.Inventory;
 import com.b07.inventory.InventoryImpl;
 import com.b07.inventory.Item;
@@ -95,6 +96,7 @@ public class DatabaseSelectHelper {
       String name = cursor.getString(cursor.getColumnIndex("NAME"));
       int age = cursor.getInt(cursor.getColumnIndex("AGE"));
       String address = cursor.getString(cursor.getColumnIndex("ADDRESS"));
+      System.out.println(userId + name + age + address);
 
       int roleId = DatabaseSelectHelper.getUserRoleId(userId, context);
       String roleName = DatabaseSelectHelper.getRoleName(roleId, context);
@@ -390,12 +392,12 @@ public class DatabaseSelectHelper {
 
   public static List<Integer> getActiveAccounts(int userId, Context context) {
     DatabaseDriverAndroid myDB = new DatabaseDriverAndroid(context);
-    Cursor cursor = null;
     List<Integer> activeAccounts = new ArrayList<>();
-    cursor = myDB.getUserActiveAccounts(userId);
+    Cursor cursor = myDB.getUserActiveAccounts(userId);
     if (cursor.getCount() > 0) {
       while (cursor.moveToNext()) {
         int activeStatus = cursor.getInt(cursor.getColumnIndex("ACTIVE"));
+        System.out.println(activeStatus);
         int accId = cursor.getInt(cursor.getColumnIndex("ID"));
         if (activeStatus == 1) {
           activeAccounts.add(accId);
@@ -454,5 +456,15 @@ public class DatabaseSelectHelper {
       returns.add(saleId);
     }
     return returns;
+  }
+
+  public static SQLiteDatabase getDatabase(Context context) {
+    DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
+    return myDb.getWritableDatabase();
+  }
+
+  public static int getDatabaseVersion(Context context) {
+    DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
+    return myDb.getDatabaseVersion();
   }
 }

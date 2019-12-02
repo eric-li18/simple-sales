@@ -44,33 +44,12 @@
       app:srcCompat="@drawable/logout" />
   </LinearLayout>
 
-  <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <ImageView
-      android:layout_width="35dp"
-      android:layout_height="35dp"
-      android:layout_marginStart="25dp"
-      android:layout_marginTop="8dp"
-      android:clickable="true"
-      android:src="@drawable/arrow" />
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="10dp"
-      android:layout_marginTop="10dp"
-      android:fontFamily="@font/futurabook"
-      android:text="@string/restore"
-      android:textSize="20sp" />
-  </LinearLayout>
-
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="575dp"
     android:layout_gravity="bottom"
-    android:layout_marginTop="25dp"
+    android:layout_marginTop="68dp"
     android:background="@drawable/rounded_30dp"
     android:backgroundTint="@color/white"
     android:baselineAligned="false"

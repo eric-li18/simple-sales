@@ -36,6 +36,11 @@ public class AdminUIActivity extends AppCompatActivity {
     LinearLayout promoteEmployeeButton = findViewById(R.id.admin_promote_employee);
     promoteEmployeeButton.setOnClickListener(new PromoteEmployeeButtonController(this, admin));
 
+    LinearLayout exportDataButton = findViewById(R.id.admin_export_data);
+    exportDataButton.setOnClickListener(new ExportDataButtonController(this));
+
+    LinearLayout importDataButton = findViewById(R.id.admin_import_data);
+    importDataButton.setOnClickListener(new ImportDataButtonController(this));
   }
 
   @Override
