@@ -5,11 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 import com.b07.R;
 import com.b07.database.DatabaseSelectHelper;
-import com.b07.inventory.Item;
 import com.b07.users.Roles;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ActiveAccountButtonController implements View.OnClickListener {
 
@@ -35,8 +32,8 @@ public class ActiveAccountButtonController implements View.OnClickListener {
           for (int activeAccount : activeAccounts) {
             account_list.append("AccountId").append(": ").append(activeAccount).append("\n");
           }
+          account_list.append("\n");
         }
-        account_list.append("\n");
       }
       accountView.setText(account_list);
     }
