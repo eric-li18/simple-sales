@@ -57,9 +57,6 @@ public class DatabaseInsertHelper {
     DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
     long userRoleId = -1;
 
-    if (roleId == DatabaseSelectHelper.getRoleIdFromName("CUSTOMER", context)) {
-      DatabaseInsertHelper.insertMembershipStatus(userId, 0, context);
-    }
     userRoleId = dbA.insertUserRole(userId, roleId);
     dbA.close();
     return Math.toIntExact(userRoleId);
