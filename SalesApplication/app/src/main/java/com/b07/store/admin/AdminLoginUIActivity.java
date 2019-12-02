@@ -23,6 +23,6 @@ public class AdminLoginUIActivity extends AppCompatActivity {
 
   @Override
   public void onBackPressed() {
-    return;
+    finish();
   }
 }
