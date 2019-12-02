@@ -83,6 +83,22 @@
   <string name="sale_id">Sale Id:</string>
   <string name="sale_id_error">Ensure you have a valid sale id</string>
   <string name="return_unsucessful">The return was unsuccessful</string>
+  <string name="unsuccessful_promotion">Please enter a valid employee id.</string>
+  <string name="view_accounts">Accounts</string>
+  <string name="active">Active</string>
+  <string name="inactive">Inactive</string>
+  <string name="add_customer">Add a new customer</string>
+  <string name="add_employee">Add a new employee</string>
+  <string name="restock">Restock inventory</string>
+  <string name="promote">Promote an employee</string>
+  <string name="sales_log">View sales log</string>
+  <string name="account_list">View account list</string>
+  <string name="sales_log_text">Sales Log</string>
+  <string name="return_sale">Make a return</string>
+  <string name="select_an_employee">Select an employee to promote</string>
+  <string name="employee_id">Employee Id</string>
+  <string name="promote_button">Promote</string>
+  <string name="successful_promotion">The promotion was successful.</string>
 
   <!--Customer-->
   <string name="save_cart">Save</string>
@@ -101,21 +117,7 @@
   <string name="inventory_quantity">Inventory has:</string>
   <string name="item_quantity">Qty: </string>
 
-  <!--  Tien-->
-  <string name="add_customer">Add a new customer</string>
-  <string name="add_employee">Add a new employee</string>
-  <string name="restock">Restock inventory</string>
-  <string name="promote">Promote an employee</string>
-  <string name="sales_log">View sales log</string>
-  <string name="account_list">View account list</string>
-  <string name="sales_log_text">Sales Log</string>
-  <string name="return_sale">Make a return</string>
-  <string name="select_an_employee">Select an employee to promote</string>
-  <string name="employee_id">Employee Id</string>
-  <string name="promote_button">Promote</string>
-  <string name="successful_promotion">The promotion was successful.</string>
-  <string name="unsuccessful_promotion">Please enter a valid employee id.</string>
-  <string name="view_accounts">Accounts</string>
+
   <!--  Harry-->
   <string name="export_data">Export database</string>
   <string name="import_data">Import database</string>

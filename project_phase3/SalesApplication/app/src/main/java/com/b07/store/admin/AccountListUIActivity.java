@@ -1,15 +1,9 @@
 package com.b07.store.admin;
 
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
-import com.b07.database.DatabaseSelectHelper;
-import com.b07.inventory.Item;
-import com.b07.users.Roles;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class AccountListUIActivity extends AppCompatActivity {
 
@@ -18,6 +12,11 @@ public class AccountListUIActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.admin_account_list);
 
+    Button active = findViewById(R.id.admin_active_accounts);
+    active.setOnClickListener(new ActiveAccountButtonController(this));
+    Button inactive = findViewById(R.id.admin_inactive_accounts);
+    inactive.setOnClickListener(new InactiveAccountButtonController(this));
+    /*
     TextView accountView = findViewById(R.id.admin_account_list_box);
     int customerRoleId = DatabaseSelectHelper
         .getRoleIdFromName(Roles.CUSTOMER.name(), this);
@@ -56,7 +55,7 @@ public class AccountListUIActivity extends AppCompatActivity {
         account_list.append("----------------------------------------");
       }
     }
-    accountView.setText(account_list);
+    accountView.setText(account_list);*/
 
   }
 
