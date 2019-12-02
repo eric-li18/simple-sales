@@ -31,20 +31,12 @@ public class ActiveAccountButtonController implements View.OnClickListener {
       for (int userId : customers) {
         List<Integer> activeAccounts = DatabaseSelectHelper.getActiveAccounts(userId, appContext);
         if (!activeAccounts.isEmpty()) {
-          account_list.append("UserId ").append(userId).append(": \n")
-              .append("Active accounts: \n");
+          account_list.append("UserId ").append(userId).append(": \n");
           for (int activeAccount : activeAccounts) {
-            HashMap<Item, Integer> account = DatabaseSelectHelper
-                .getAccountDetails(activeAccount, appContext);
-            account_list.append("AccountID ").append(activeAccount).append(": \n");
-            for (Map.Entry<Item, Integer> pair : account.entrySet()) {
-              account_list.append(pair.getKey().getName()).append(": ");
-              account_list.append(pair.getValue()).append("\n");
-            }
-            account_list.append("--------------------------------------------\n");
+            account_list.append("AccountId").append(": ").append(activeAccount).append("\n");
           }
         }
-        account_list.append("====================\n");
+        account_list.append("\n");
       }
       accountView.setText(account_list);
     }
