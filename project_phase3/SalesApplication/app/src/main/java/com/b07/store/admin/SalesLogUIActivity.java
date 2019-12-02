@@ -37,7 +37,14 @@ public class SalesLogUIActivity extends AppCompatActivity {
         sales_list.append("----------------------------------------\n");
       }
     }
-    sales_list.append("Total: ").append(salesLog.getTotalSales().doubleValue());
+
+    HashMap<Item, Integer> totalItemMap = salesLog.getTotalItemMap();
+    for (Item item : totalItemMap.keySet()) {
+      sales_list.append(item.getName() + " Sold: " + totalItemMap.get(item) + "\n");
+    }
+
+
+    sales_list.append("TOTAL: ").append(salesLog.getTotalSales().doubleValue());
     salesView.setText(sales_list);
 
     EditText saleIdInput = findViewById(R.id.sale_id_input);

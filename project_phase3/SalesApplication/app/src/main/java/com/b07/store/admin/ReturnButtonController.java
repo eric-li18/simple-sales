@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.b07.R;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.database.DatabaseSelectHelper;
@@ -74,7 +75,8 @@ public class ReturnButtonController implements View.OnClickListener {
           return;
         }
       }
-      error.setText(R.string.return_successful);
+      Toast toast = Toast.makeText(appContext, "Sale returned successfully...", Toast.LENGTH_SHORT);
+      toast.show();
       refreshLog();
     } else {
       error.setText(R.string.sale_id_error);
