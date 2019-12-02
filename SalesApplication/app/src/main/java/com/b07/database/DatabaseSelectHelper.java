@@ -413,8 +413,8 @@ public class DatabaseSelectHelper {
     List<Integer> inactiveAccounts = new ArrayList<>();
     cursor = myDB.getUserInactiveAccounts(userId);
     while (cursor.moveToNext()) {
-      int activeStatus = cursor.getInt(cursor.getColumnIndex("active"));
-      int accId = cursor.getInt(cursor.getColumnIndex("Id"));
+      int activeStatus = cursor.getInt(cursor.getColumnIndex("ACTIVE"));
+      int accId = cursor.getInt(cursor.getColumnIndex("ID"));
       if (activeStatus == 0) {
         inactiveAccounts.add(accId);
       }

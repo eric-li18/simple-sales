@@ -29,24 +29,18 @@ public class InactiveAccountButtonController implements View.OnClickListener {
     StringBuilder account_list = new StringBuilder();
     if (customers != null) {
       for (int userId : customers) {
-        account_list.append("UserId ").append(userId).append(": \n");
         List<Integer> inactiveAccounts = DatabaseSelectHelper
             .getInactiveAccounts(userId, appContext);
         if (!inactiveAccounts.isEmpty()) {
-          account_list.append("UserId ").append(userId).append(": \n")
-              .append("Inactive accounts: \n");
+          account_list.append("UserId ").append(userId).append(": \n");
+
           for (int inactiveAccount : inactiveAccounts) {
-            HashMap<Item, Integer> account = DatabaseSelectHelper
-                .getAccountDetails(inactiveAccount, appContext);
-            account_list.append("AccountID ").append(inactiveAccount).append(": \n");
-            for (Map.Entry<Item, Integer> pair : account.entrySet()) {
-              account_list.append(pair.getKey().getName()).append(": ");
-              account_list.append(pair.getValue()).append("\n");
-            }
-            account_list.append("--------------------------------------------\n");
+
+            account_list.append("AccountID").append(": ").append(inactiveAccount).append("\n");
+
           }
+          account_list.append("\n");
         }
-        account_list.append("====================\n");
       }
       accountView.setText(account_list);
     }
