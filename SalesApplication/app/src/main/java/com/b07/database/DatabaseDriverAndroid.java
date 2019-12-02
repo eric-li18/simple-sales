@@ -73,7 +73,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
         + "ITEMID INTEGER NOT NULL,"
         + "QUANTITY INTEGER NOT NULL,"
         + "FOREIGN KEY(SALEID) REFERENCES SALES(ID),"
-        + "FOREIGN KEY(ITEMID) REFERENCES ITEMS(ID)"
+        + "FOREIGN KEY(ITEMID) REFERENCES ITEMS(ID),"
         + "PRIMARY KEY(SALEID, ITEMID))";
     sqLiteDatabase.execSQL(sql);
 
@@ -119,6 +119,8 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS ITEMIZEDSALES");
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS ACCOUNT");
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS ACCOUNTSUMMARY");
+    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS MEMBERSHIP");
+    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS RETURN");
 
     onCreate(sqLiteDatabase);
   }
@@ -432,9 +434,11 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
 
   protected Cursor getReturns() {
     SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-    Cursor cursor = sqLiteDatabase
-        .rawQuery("SELECT * FROM RETURN WHERE SALESID = ?", new String[]{String.valueOf(0)});
-    return cursor;
+    return sqLiteDatabase.rawQuery("SELECT * FROM RETURN", null);
+  }
+
+  protected int getDatabaseVersion() {
+    return DATABASE_VERSION;
   }
   //UPDATE METHODS
 

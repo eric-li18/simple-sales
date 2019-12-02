@@ -1,6 +1,9 @@
 package com.b07.store;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
+import com.b07.database.DatabaseDriverAndroid;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.exceptions.DatabaseInsertException;
@@ -28,6 +31,8 @@ public class SeralizeImpl implements Serializable, Seralize {
   private HashMap<Integer, List<Integer>> accounts;
   private List<Integer> activeAccounts;
   private HashMap<Integer, HashMap<Item, Integer>> carts;
+  private List<Integer> memberShip;
+  private List<Integer> returns;
 
   public SeralizeImpl() {
     roles = new HashMap<>();
@@ -40,7 +45,10 @@ public class SeralizeImpl implements Serializable, Seralize {
     inventory = new InventoryImpl();
     salesLog = new SalesLogImpl();
     accounts = new HashMap<>();
+    activeAccounts = new ArrayList<>();
     carts = new HashMap<>();
+    memberShip = new ArrayList<>();
+    returns = new ArrayList<>();
   }
 
   @Override
@@ -49,7 +57,6 @@ public class SeralizeImpl implements Serializable, Seralize {
     for (int id : roleIds) {
       String name = DatabaseSelectHelper.getRoleName(id, appContext);
       roles.put(id, name);
-
     }
   }
 
@@ -88,24 +95,43 @@ public class SeralizeImpl implements Serializable, Seralize {
     salesLog = DatabaseSelectHelper.getSales(appContext);
   }
 
+  @Override
   public void setAccounts(Context appContext) {
     accounts = DatabaseSelectHelper.getAccountMap(appContext);
   }
 
+  @Override
   public void setActiveAccounts(Context appContext) {
     for (int customerId : customer) {
-      activeAccounts.addAll(DatabaseSelectHelper.getActiveAccounts(customerId, appContext));
+      List<Integer> active = DatabaseSelectHelper.getActiveAccounts(customerId, appContext);
+      if (!active.equals(new ArrayList<>())) {
+        activeAccounts.addAll(DatabaseSelectHelper.getActiveAccounts(customerId, appContext));
+      }
     }
   }
 
   @Override
   public void setCarts(Context appContext) {
     for (int customerId : accounts.keySet()) {
-      for (int accId : accounts.get(customerId)) {
-        HashMap<Item, Integer> items = DatabaseSelectHelper.getAccountDetails(accId, appContext);
-        carts.put(accId, items);
+      List<Integer> accountList = accounts.get(customerId);
+//      for (int accId : accounts.get(customerId)) {
+      if (accountList != null) {
+        for (int accId : accountList) {
+          HashMap<Item, Integer> items = DatabaseSelectHelper.getAccountDetails(accId, appContext);
+          carts.put(accId, items);
+        }
       }
     }
+  }
+
+  @Override
+  public void setMemberShip(Context appContext) {
+    memberShip = DatabaseSelectHelper.getMembers(appContext);
+  }
+
+  @Override
+  public void setReturns(Context appContext) {
+    returns = DatabaseSelectHelper.getReturns(appContext);
   }
 
   @Override
@@ -120,12 +146,19 @@ public class SeralizeImpl implements Serializable, Seralize {
     setAccounts(appContext);
     setActiveAccounts(appContext);
     setCarts(appContext);
+    setMemberShip(appContext);
+    setReturns(appContext);
   }
 
   @Override
   public void deseralizeDatabase(Context appContext) {
     Seralize export = new SeralizeImpl();
     export.seralizeDatabase(appContext);
+
+    SQLiteDatabase database = DatabaseSelectHelper.getDatabase(appContext);
+    int oldVersion = DatabaseSelectHelper.getDatabaseVersion(appContext);
+    DatabaseDriverAndroid databaseDriver = new DatabaseDriverAndroid(appContext);
+    databaseDriver.onUpgrade(database, oldVersion, oldVersion + 1);
 
     try {
       for (int id : roles.keySet()) {
@@ -195,8 +228,23 @@ public class SeralizeImpl implements Serializable, Seralize {
           DatabaseInsertHelper.insertAccountLine(accId, item.getId(), quantity, appContext);
         }
       }
+
+      for (int customerId : customer) {
+        if (memberShip.contains(customerId)) {
+          DatabaseInsertHelper.insertMembershipStatus(customerId, 1, appContext);
+        } else {
+          DatabaseInsertHelper.insertMembershipStatus(customerId, 0, appContext);
+        }
+      }
+
+      for (int saleId : returns) {
+        DatabaseInsertHelper.insertReturn(saleId, appContext);
+      }
+
     } catch (DatabaseInsertException | NullPointerException e) {
-      System.out.println("Import not successful, reverting to the previous version");
+//      System.out.println("Import not successful, reverting to the previous version");
+      Toast.makeText(appContext, "Import not successful, reverting to the previous version",
+          Toast.LENGTH_SHORT).show();
       export.deseralizeDatabase(appContext);
     }
   }

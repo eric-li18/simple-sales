@@ -20,6 +20,14 @@ public interface Seralize {
 
   public void setCarts(Context appContext);
 
+  public void setAccounts(Context appContext);
+
+  public void setActiveAccounts(Context appContext);
+
+  public void setMemberShip(Context appContext);
+
+  public void setReturns(Context appContext);
+
   public void seralizeDatabase(Context appContext);
 
   public void deseralizeDatabase(Context appContext);
