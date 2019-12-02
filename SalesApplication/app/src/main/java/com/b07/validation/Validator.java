@@ -245,6 +245,6 @@ public class Validator {
   }
 
   public static boolean validateUniqueReturn(int saleId, Context context) {
-    return DatabaseSelectHelper.getReturns(context).contains(saleId);
+    return !DatabaseSelectHelper.getReturns(context).contains(saleId);
   }
 }

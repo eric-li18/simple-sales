@@ -99,6 +99,7 @@
   <string name="employee_id">Employee Id</string>
   <string name="promote_button">Promote</string>
   <string name="successful_promotion">The promotion was successful.</string>
+  <string name="return_successful">"The return was successful"</string>
 
   <!--Customer-->
   <string name="save_cart">Save</string>

@@ -10,6 +10,7 @@ import com.b07.database.DatabaseSelectHelper;
 import com.b07.database.DatabaseUpdateHelper;
 import com.b07.inventory.Item;
 import com.b07.store.Sale;
+import com.b07.store.SalesLog;
 import com.b07.validation.Validator;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -72,8 +73,31 @@ public class ReturnButtonController implements View.OnClickListener {
           return;
         }
       }
+      error.setText(R.string.return_successful);
+      refreshLog();
     } else {
       error.setText(R.string.sale_id_error);
     }
+  }
+
+  private void refreshLog() {
+    TextView salesView = ((SalesLogUIActivity) appContext).findViewById(R.id.sales_log_layout);
+    SalesLog salesLog = DatabaseSelectHelper.getSales(appContext);
+    List<Sale> sales = salesLog.getLog();
+    StringBuilder sales_list = new StringBuilder();
+    if (sales != null) {
+      for (Sale sale : sales) {
+        sales_list.append("Customer: ").append(sale.getUser().getName()).append("\n");
+        sales_list.append("Purchase Number: ").append(sale.getId()).append("\n");
+        sales_list.append("Total Purchase Price: ").append(sale.getTotalPrice()).append("\n");
+        sales_list.append("Itemized Breakdown: ").append("\n");
+        HashMap<Item, Integer> itemMap = sale.getItemMap();
+        for (Item item : itemMap.keySet()) {
+          sales_list.append(item.getName()).append(": ").append(itemMap.get(item)).append("\n");
+        }
+        sales_list.append("----------------------------------------");
+      }
+    }
+    salesView.setText(sales_list);
   }
 }
