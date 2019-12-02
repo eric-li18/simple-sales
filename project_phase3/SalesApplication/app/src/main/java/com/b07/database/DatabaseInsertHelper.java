@@ -145,5 +145,20 @@ public class DatabaseInsertHelper {
 
     return Math.toIntExact(membershipId);
   }
+
+  public static int insertReturn(int saleId, Context context) {
+    DatabaseDriverAndroid dbA = new DatabaseDriverAndroid(context);
+    long returnId = -1;
+
+    if (Validator.validateSaleId(saleId, context)) {
+      returnId = dbA.insertReturn(saleId);
+    } else {
+      System.out.println("Ensure the arguments are correct for insert return");
+    }
+
+    return Math.toIntExact(returnId);
+  }
+
+
 }
 

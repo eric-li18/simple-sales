@@ -1,15 +1,15 @@
 package com.b07.validation;
 
 import android.content.Context;
-import com.b07.inventory.MemberItemTypes;
-import java.math.BigDecimal;
-import java.util.List;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.inventory.Item;
 import com.b07.inventory.ItemTypes;
+import com.b07.inventory.MemberItemTypes;
 import com.b07.store.Sale;
 import com.b07.users.Roles;
 import com.b07.users.User;
+import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author Eric
@@ -160,8 +160,8 @@ public class Validator {
           return true;
         }
       }
-      for (MemberItemTypes i : MemberItemTypes.values()){
-        if (i.name().equals(itemName)){
+      for (MemberItemTypes i : MemberItemTypes.values()) {
+        if (i.name().equals(itemName)) {
           return true;
         }
       }
@@ -207,7 +207,7 @@ public class Validator {
    * @return true if the saleId is an id in the Sales table, false otherwise
    */
   public static boolean validateSaleId(int saleId, Context context) {
-    Sale sale = DatabaseSelectHelper.getSaleById(saleId ,context);
+    Sale sale = DatabaseSelectHelper.getSaleById(saleId, context);
     if (sale != null && sale.getId() == saleId) {
       return true;
     } else {
@@ -239,18 +239,22 @@ public class Validator {
    * Method to validate that the total items is less than max items in the inventory
    *
    * @param totalItems the total amount of items
-   * @param maxItems   the max amount of items
+   * @param maxItems the max amount of items
    * @return true if totalItems is less than or equal to maxItems, false otherwise
    */
   public static boolean validateTotalLessThanMaxItems(int totalItems, int maxItems) {
     return totalItems <= maxItems;
   }
 
-  public static boolean validateEmpty(String string){
+  public static boolean validateEmpty(String string) {
     return string.trim().equals("");
   }
 
-  public static boolean validateStatus(int status){
-    return status == 1  || status == 0;
+  public static boolean validateStatus(int status) {
+    return status == 1 || status == 0;
+  }
+
+  public static boolean validateUniqueReturn(int saleId, Context context) {
+    return DatabaseSelectHelper.getReturns(context).contains(saleId);
   }
 }

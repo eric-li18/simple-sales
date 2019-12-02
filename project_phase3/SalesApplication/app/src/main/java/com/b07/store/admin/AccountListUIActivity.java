@@ -43,7 +43,7 @@ public class AccountListUIActivity extends AppCompatActivity {
 
         if (!inactiveAccounts.isEmpty()) {
           account_list.append("Inactive accounts: \n");
-          for (int inactiveAccount : inactiveAccounts) {//inactive accounts
+          for (int inactiveAccount : inactiveAccounts) {
             HashMap<Item, Integer> account = DatabaseSelectHelper
                 .getAccountDetails(inactiveAccount, this);
             account_list.append("AccountID ").append(inactiveAccount).append(": \n");
@@ -56,9 +56,7 @@ public class AccountListUIActivity extends AppCompatActivity {
         account_list.append("----------------------------------------");
       }
     }
-    if (account_list != null) {
-      accountView.setText(account_list);
-    }
+    accountView.setText(account_list);
 
   }
 
