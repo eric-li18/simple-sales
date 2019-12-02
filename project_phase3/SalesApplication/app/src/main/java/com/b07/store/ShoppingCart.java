@@ -1,7 +1,6 @@
 package com.b07.store;
 
 import android.content.Context;
-import android.util.Log;
 import com.b07.database.DatabaseInsertHelper;
 import com.b07.database.DatabaseSelectHelper;
 import com.b07.database.DatabaseUpdateHelper;
@@ -140,7 +139,6 @@ public class ShoppingCart implements Serializable {
    * @return true if the operation is successful, false otherwise
    */
   public boolean checkOut(Context context) {
-    System.out.println(getItemMap());
     if (customer != null) {
       BigDecimal totalWithTax = total.multiply(TAXRATE).setScale(2, BigDecimal.ROUND_HALF_EVEN);
       List<Item> itemList = getItems();
@@ -148,13 +146,11 @@ public class ShoppingCart implements Serializable {
         int quantity = DatabaseSelectHelper.getInventoryQuantity(item.getId(), context);
         int remainingStock = quantity - items.get(item);
         if (remainingStock < 0) {
-          Log.e("checkout", "1");
           return false;
         }
       }
       int saleId = DatabaseInsertHelper.insertSale(customer.getId(), totalWithTax, context);
       if (saleId == -1) {
-        Log.e("checkout", "2");
         return false;
       }
 
@@ -162,7 +158,6 @@ public class ShoppingCart implements Serializable {
         int itemizedSaleId =
             DatabaseInsertHelper.insertItemizedSale(saleId, item.getId(), items.get(item), context);
         if (itemizedSaleId == -1) {
-          Log.e("checkout", "3");
           return false;
         }
         boolean complete =
@@ -171,11 +166,9 @@ public class ShoppingCart implements Serializable {
           for (Item revert : itemList) {
             DatabaseUpdateHelper.updateInventoryQuantity(+items.get(item), item.getId(), context);
             if (revert.getId() == item.getId()) {
-              Log.e("checkout", "4");
               return false;
             }
           }
-          Log.e("checkout", "5");
           return false;
         }
       }
@@ -183,7 +176,6 @@ public class ShoppingCart implements Serializable {
       clearCart();
       return true;
     } else {
-      Log.e("checkout", "6");
       return false;
     }
   }
