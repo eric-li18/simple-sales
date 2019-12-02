@@ -67,6 +67,7 @@ public class ReturnButtonController implements View.OnClickListener {
             DatabaseUpdateHelper
                 .updateInventoryQuantity(itemMap.get(item), item.getId(), appContext);
         DatabaseInsertHelper.insertReturn(parsedSaleId, appContext);
+        DatabaseInsertHelper.insertReturn(salesLog.size() + 1, appContext);
 
         if (!complete) {
           error.setText(R.string.return_unsucessful);
