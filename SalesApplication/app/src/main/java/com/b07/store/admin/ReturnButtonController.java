@@ -16,10 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ReturnButtonController implements View.OnClickListener {
+
   private Context appContext;
   private List<Sale> salesLog;
 
-  public ReturnButtonController(Context context, List<Sale> salesLog){
+  public ReturnButtonController(Context context, List<Sale> salesLog) {
     appContext = context;
     this.salesLog = salesLog;
   }
@@ -37,7 +38,8 @@ public class ReturnButtonController implements View.OnClickListener {
       parsedSaleId = Integer.parseInt(saleId.getText().toString().trim());
     }
 
-    if(Validator.validateSaleId(parsedSaleId, appContext)){
+    if (Validator.validateSaleId(parsedSaleId, appContext) && Validator
+        .validateUniqueReturn(parsedSaleId, appContext)) {
       Sale sale = DatabaseSelectHelper.getSaleById(parsedSaleId, appContext);
       Sale itemizedSale = DatabaseSelectHelper.getItemizedSaleById(parsedSaleId, appContext);
 
@@ -47,27 +49,30 @@ public class ReturnButtonController implements View.OnClickListener {
 
       int returnSaleId = DatabaseInsertHelper.insertSale(userId, totalPrice.negate(), appContext);
 
-      if(returnSaleId == -1){
+      if (returnSaleId == -1) {
         error.setText(R.string.return_unsucessful);
         return;
       }
 
-      for (Item item : itemMap.keySet()){
-        int itemizedReturnSaleId = DatabaseInsertHelper.insertItemizedSale(returnSaleId, item.getId(), -itemMap.get(item), appContext);
-        if (itemizedReturnSaleId == -1){
+      for (Item item : itemMap.keySet()) {
+        int itemizedReturnSaleId = DatabaseInsertHelper
+            .insertItemizedSale(returnSaleId, item.getId(), -itemMap.get(item), appContext);
+        if (itemizedReturnSaleId == -1) {
           error.setText(R.string.return_unsucessful);
           return;
         }
 
         boolean complete =
-            DatabaseUpdateHelper.updateInventoryQuantity(itemMap.get(item), item.getId(), appContext);
-        if (!complete){
+            DatabaseUpdateHelper
+                .updateInventoryQuantity(itemMap.get(item), item.getId(), appContext);
+        DatabaseInsertHelper.insertReturn(parsedSaleId, appContext);
+
+        if (!complete) {
           error.setText(R.string.return_unsucessful);
           return;
         }
       }
-    }
-    else{
+    } else {
       error.setText(R.string.sale_id_error);
     }
   }

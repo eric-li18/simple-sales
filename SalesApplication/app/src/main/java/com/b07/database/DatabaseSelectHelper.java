@@ -443,4 +443,16 @@ public class DatabaseSelectHelper {
     }
     return members;
   }
+
+  public static List<Integer> getReturns(Context context) {
+    DatabaseDriverAndroid myDb = new DatabaseDriverAndroid(context);
+    Cursor cursor = null;
+    List<Integer> returns = new ArrayList<>();
+    cursor = myDb.getReturns();
+    while (cursor.moveToNext()) {
+      int saleId = cursor.getInt(cursor.getColumnIndex("SALEID"));
+      returns.add(saleId);
+    }
+    return returns;
+  }
 }

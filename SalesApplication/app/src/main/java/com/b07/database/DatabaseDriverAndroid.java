@@ -101,6 +101,10 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
         + "FOREIGN KEY(USERID) REFERENCES USER(ID))";
     sqLiteDatabase.execSQL(sql);
 
+    sql = "CREATE TABLE RETURN "
+        + "(SALEID INTEGER PRIMARY KEY NOT NULL, "
+        + "FOREIGN KEY(SALEID) REFERENCES SALES(ID))";
+    sqLiteDatabase.execSQL(sql);
   }
 
   @Override
@@ -121,7 +125,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
 
   //INSERTS
   protected long insertRole(String role) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", role);
     long id = sqLiteDatabase.insert("ROLES", null, contentValues);
@@ -142,7 +146,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertUserRole(int userId, int roleId) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("USERID", userId);
     contentValues.put("ROLEID", roleId);
@@ -152,7 +156,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertItem(String name, BigDecimal price) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", name);
     contentValues.put("PRICE", price.toPlainString());
@@ -162,7 +166,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertInventory(int itemId, int quantity) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("ITEMID", itemId);
     contentValues.put("QUANTITY", quantity);
@@ -172,7 +176,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertSale(int userId, BigDecimal totalPrice) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("USERID", userId);
     contentValues.put("TOTALPRICE", totalPrice.toPlainString());
@@ -182,7 +186,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertItemizedSale(int saleId, int itemId, int quantity) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("SALEID", saleId);
     contentValues.put("ITEMID", itemId);
@@ -193,7 +197,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertAccount(int userId, boolean active) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("USERID", userId);
     contentValues.put("ACTIVE", active ? 1 : 0);
@@ -203,7 +207,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected long insertAccountLine(int accountId, int itemId, int quantity) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("ACCTID", accountId);
     contentValues.put("ITEMID", itemId);
@@ -214,7 +218,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   private long insertUser(String name, int age, String address) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", name);
     contentValues.put("AGE", age);
@@ -226,8 +230,19 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     return id;
   }
 
+  protected long insertReturn(int saleId) {
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put("SALEID", saleId);
+
+    long id = sqLiteDatabase.insert("RETURN", null, contentValues);
+    sqLiteDatabase.close();
+
+    return id;
+  }
+
   protected long insertMembership(int userId, int status) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("USERID", userId);
     contentValues.put("STATUS", status);
@@ -239,7 +254,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   private void insertPassword(String password, int userId) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
 
     password = PasswordHelpers.passwordHash(password);
@@ -250,7 +265,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   private void insertHashedPassword(String password, int userId) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
 
     contentValues.put("USERID", userId);
@@ -415,10 +430,16 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
     return cursor;
   }
 
+  protected Cursor getReturns() {
+    SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+    Cursor cursor = sqLiteDatabase
+        .rawQuery("SELECT * FROM RETURN WHERE SALESID = ?", new String[]{String.valueOf(0)});
+    return cursor;
+  }
   //UPDATE METHODS
 
   protected boolean updateRoleName(String name, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", name);
     boolean result = sqLiteDatabase.update("ROLES", contentValues, "ID = ?",
@@ -428,7 +449,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateUserName(String name, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", name);
     boolean result = sqLiteDatabase.update("USERS", contentValues, "ID = ?",
@@ -438,7 +459,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateUserAge(int age, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("AGE", age);
     boolean result = sqLiteDatabase.update("USERS", contentValues, "ID = ?",
@@ -448,7 +469,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateUserAddress(String address, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("ADDRESS", address);
     boolean result = sqLiteDatabase.update("USERS", contentValues, "ID = ?",
@@ -458,7 +479,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateUserRole(int roleId, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("ROLEID", roleId);
     boolean result = sqLiteDatabase.update("USERROLE", contentValues, "USERID = ?",
@@ -468,7 +489,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateItemName(String name, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("NAME", name);
     boolean result = sqLiteDatabase.update("ITEMS", contentValues, "ID = ?",
@@ -478,7 +499,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateItemPrice(BigDecimal price, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("PRICE", price.toPlainString());
     boolean result = sqLiteDatabase.update("ITEMS", contentValues, "ID = ?",
@@ -488,7 +509,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateInventoryQuantity(int quantity, int id) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("QUANTITY", quantity);
     boolean result = sqLiteDatabase.update("INVENTORY", contentValues, "ITEMID = ?",
@@ -498,7 +519,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateAccountStatus(int accountId, boolean active) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("ACTIVE", active ? 1 : 0);
     boolean result = sqLiteDatabase.update("ACCOUNT", contentValues, "ID=?",
@@ -508,7 +529,7 @@ public class DatabaseDriverAndroid extends SQLiteOpenHelper {
   }
 
   protected boolean updateMembershipStatus(int userId, int status) {
-    SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+    SQLiteDatabase sqLiteDatabase = getWritableDatabase();
     ContentValues contentValues = new ContentValues();
     contentValues.put("STATUS", status);
     boolean result = sqLiteDatabase
