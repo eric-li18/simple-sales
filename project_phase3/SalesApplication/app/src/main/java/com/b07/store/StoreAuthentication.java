@@ -13,11 +13,12 @@ public class StoreAuthentication {
    * Method to give an authentication interface for all the users
    *
    * @param bufferedReader the BufferedReader
-   * @param role           the role to authenticate
+   * @param role the role to authenticate
    * @return the userId if authenticated, -1 if not authenticated
    * @throws IOException if there is an exception thrown by bufferedReader
    */
-  public static int authenticationInterface(BufferedReader bufferedReader, String role, Context context)
+  public static int authenticationInterface(BufferedReader bufferedReader, String role,
+      Context context)
       throws IOException {
     User user;
     boolean authenticated;

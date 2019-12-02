@@ -5,9 +5,10 @@ import android.content.Intent;
 import android.view.View;
 
 public class AddNewAccountButtonController implements View.OnClickListener {
+
   private Context appContext;
 
-  public AddNewAccountButtonController(Context context){
+  public AddNewAccountButtonController(Context context) {
     appContext = context;
   }
 

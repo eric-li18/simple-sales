@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.b07.R;
 
 public class StoreAuthenticationActivity extends AppCompatActivity {
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -23,10 +24,9 @@ public class StoreAuthenticationActivity extends AppCompatActivity {
   @Override
   public void onBackPressed() {
     Intent intent = getIntent();
-    if (intent.getStringExtra("backPress").equals("no")){
+    if (intent.getStringExtra("backPress").equals("no")) {
       return;
-    }
-    else{
+    } else {
       super.onBackPressed();
     }
   }

@@ -27,7 +27,7 @@ public interface Inventory extends Serializable {
   /**
    * Method for updating the item map
    *
-   * @param item  the item
+   * @param item the item
    * @param value the amount of the item
    */
   public void updateMap(Item item, Integer value);

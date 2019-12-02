@@ -2,7 +2,6 @@ package com.b07.store.login;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -53,7 +52,6 @@ public class LoginButtonController implements View.OnClickListener {
         intent.putExtra("user", admin);
         appContext.startActivity(intent);
       } else if (roleName.equals(Roles.EMPLOYEE.name())) {
-//        ((StoreAuthenticationActivity) appContext).finish();
         Intent intent = new Intent(appContext, EmployeeUIActivity.class);
         Employee employee = new Employee(user.getId(), user.getName(), user.getAge(),
             user.getAddress(), true);
@@ -66,8 +64,6 @@ public class LoginButtonController implements View.OnClickListener {
             user.getAddress(), true, appContext);
         intent.putExtra("user", customer);
         appContext.startActivity(intent);
-      } else {
-        Log.e(TAG, "Something went wrong with the authentication.");
       }
     } else {
       error.setText(R.string.login_error);
