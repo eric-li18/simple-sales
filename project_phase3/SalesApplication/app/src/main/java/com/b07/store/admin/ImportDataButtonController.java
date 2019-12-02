@@ -1,7 +1,6 @@
 package com.b07.store.admin;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 import com.b07.store.Seralize;
@@ -46,10 +45,5 @@ public class ImportDataButtonController implements View.OnClickListener {
     } else if (back) {
       backUp.deseralizeDatabase(appContext);
     }
-    Toast toast = Toast.makeText(appContext, "Logging out...", Toast.LENGTH_SHORT);
-    toast.show();
-    Intent intent = new Intent(appContext, AdminUIActivity.class);
-    intent.putExtra("backPress", "no");
-    appContext.startActivity(intent);
   }
 }
