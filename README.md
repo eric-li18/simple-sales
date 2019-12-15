@@ -1,4 +1,4 @@
-# Generic Shopping Application
+# Sales Application Clone
 
 A group project for _CSCB07: Software Design_
 
