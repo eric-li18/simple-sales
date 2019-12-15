@@ -26,9 +26,9 @@ We organized our work using a scrum board created in [Trello](https://trello.com
 __Scrum Master:__ [Bryan Liu](https://github.com/liubryann)
 
 ## UML and Use Case Diagrams
-![UML](./Assignment/FinalProjectUMLphase2.pdf "UML")
+![UML](../Assignment/FinalProjectUMLphase2.pdf "UML")
 
-![Use Case Diagram](./Assignment/UseCaseDiagram.pdf "Use Case Diagram")
+![Use Case Diagram](../Assignment/UseCaseDiagram.pdf "Use Case Diagram")
 
 ## Running the application
 1. Download `/SalesApplication` from the repository
