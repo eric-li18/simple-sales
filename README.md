@@ -13,9 +13,17 @@ The app was a culminative project designed to demonstrate an understanding of:
 and much more in an Agile environment.
 
 
-## Screencaps and Demo
+## Demo
 <!-- SCREEN CAPS HERE -->
+            Checking out                        Making a new customer                    Making a return
 
+<img src="demos/checkout.gif" height="400" width="auto" /> <img src="demos/new_customer.gif" height="400" width="auto" /><img src="demos/return.gif" height="400" width="auto" /> 
+
+
+## Screencaps
+
+<img src="demos/login.png" height="400" width="auto"/> <img src="demos/admin.png" height="400" width="auto"/> <img src="demos/employee.png" height="400" width="auto"/>
+<img src="demos/customer.png" height="400" width="auto"/><img src="demos/item.png" height="400" width="auto"/><img src="demos/cart.png" height="400" width="auto"/>
 
 ## Development Details
 
