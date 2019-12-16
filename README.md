@@ -4,7 +4,7 @@ A group project for _CSCB07: Software Design_
 
 Instructor: Professor Joe Bettridge
 
-The app was a culminative project designed to demonstrate an understanding of:
+The app was a cumulative project designed to demonstrate an understanding of:
 - SOLID Principles
 - Android Development
 - Software Design Patterns
