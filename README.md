@@ -22,7 +22,7 @@ and much more in an Agile environment.
 ## Screencaps
 
 <img src="demos/login.png" height="400" width="auto"/> <img src="demos/admin.png" height="400" width="auto"/> <img src="demos/employee.png" height="400" width="auto"/>
-<img src="demos/customer.png" height="400" width="auto"/><img src="demos/item.png" height="400" width="auto"/><img src="demos/cart.png" height="400" width="auto"/>
+<img src="demos/customer.png" height="400" width="auto"/> <img src="demos/item.png" height="400" width="auto"/> <img src="demos/cart.png" height="400" width="auto"/>
 
 ## Development Details
 
