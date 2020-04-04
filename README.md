@@ -16,7 +16,7 @@ and much more in an Agile environment.
 ## Demo
             Checking out                        Making a new customer                    Making a return
 
-<img src="demos/checkout.gif" height="400" width="auto" /> <img src="demos/new_customer.gif" height="400" width="auto" /><img src="demos/return.gif" height="400" width="auto" /> 
+<img src="demos/checkout.gif" height="400" width="auto" /> <img src="demos/new_customer.gif" height="400" width="auto" /> <img src="demos/return.gif" height="400" width="auto" /> 
 
 
 ## Screencaps
