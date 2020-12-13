@@ -1,4 +1,4 @@
-# Sales Application Clone
+# SimpleSales
 
 A group project for _CSCB07: Software Design_
 
